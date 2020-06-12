@@ -11,13 +11,10 @@
 		E2321D4B2493B2DF00E4D76F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D4A2493B2DF00E4D76F /* Enums.swift */; };
 		E2321D502493B8A900E4D76F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D4F2493B8A900E4D76F /* Report.swift */; };
 		E2321D542493BA2F00E4D76F /* TimeMeals.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2321D522493BA2F00E4D76F /* TimeMeals.xcdatamodeld */; };
-		E2321D592493BB4700E4D76F /* MealCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D552493BB4700E4D76F /* MealCD+CoreDataClass.swift */; };
-		E2321D5A2493BB4700E4D76F /* MealCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D562493BB4700E4D76F /* MealCD+CoreDataProperties.swift */; };
-		E2321D5B2493BB4700E4D76F /* ReportCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D572493BB4700E4D76F /* ReportCD+CoreDataClass.swift */; };
-		E2321D5C2493BB4700E4D76F /* ReportCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D582493BB4700E4D76F /* ReportCD+CoreDataProperties.swift */; };
 		E2321D5F2493BBB700E4D76F /* CDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D5E2493BBB700E4D76F /* CDManager.swift */; };
 		E2321D632493BDC000E4D76F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2321D622493BDC000E4D76F /* CloudKit.framework */; };
 		E2321D652493BE4500E4D76F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2321D642493BE4500E4D76F /* CoreData.framework */; };
+		E2321D682493D5CA00E4D76F /* ReportDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D672493D5CA00E4D76F /* ReportDAO.swift */; };
 		E2C1C73E24915E4100EBBC46 /* TimeMeals WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E2C1C73D24915E4100EBBC46 /* TimeMeals WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E2C1C74424915E4100EBBC46 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2C1C74224915E4100EBBC46 /* Interface.storyboard */; };
 		E2C1C74624915E4600EBBC46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2C1C74524915E4600EBBC46 /* Assets.xcassets */; };
@@ -76,14 +73,11 @@
 		E2321D4A2493B2DF00E4D76F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		E2321D4F2493B8A900E4D76F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		E2321D532493BA2F00E4D76F /* TimeMeals.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeMeals.xcdatamodel; sourceTree = "<group>"; };
-		E2321D552493BB4700E4D76F /* MealCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MealCD+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E2321D562493BB4700E4D76F /* MealCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MealCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E2321D572493BB4700E4D76F /* ReportCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportCD+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E2321D582493BB4700E4D76F /* ReportCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2321D5E2493BBB700E4D76F /* CDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDManager.swift; sourceTree = "<group>"; };
 		E2321D602493BDBB00E4D76F /* TimeMeals WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TimeMeals WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		E2321D622493BDC000E4D76F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		E2321D642493BE4500E4D76F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.2.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		E2321D672493D5CA00E4D76F /* ReportDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDAO.swift; sourceTree = "<group>"; };
 		E2C1C73924915E4100EBBC46 /* TimeMeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeMeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C1C73D24915E4100EBBC46 /* TimeMeals WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimeMeals WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C1C74324915E4100EBBC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -117,6 +111,7 @@
 			children = (
 				E2321D462493AEB900E4D76F /* Meal.swift */,
 				E2321D4F2493B8A900E4D76F /* Report.swift */,
+				E2321D662493D59F00E4D76F /* DAO */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -140,10 +135,6 @@
 		E2321D512493B9DF00E4D76F /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				E2321D552493BB4700E4D76F /* MealCD+CoreDataClass.swift */,
-				E2321D562493BB4700E4D76F /* MealCD+CoreDataProperties.swift */,
-				E2321D572493BB4700E4D76F /* ReportCD+CoreDataClass.swift */,
-				E2321D582493BB4700E4D76F /* ReportCD+CoreDataProperties.swift */,
 				E2321D522493BA2F00E4D76F /* TimeMeals.xcdatamodeld */,
 				E2321D5E2493BBB700E4D76F /* CDManager.swift */,
 			);
@@ -157,6 +148,14 @@
 				E2321D622493BDC000E4D76F /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E2321D662493D59F00E4D76F /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				E2321D672493D5CA00E4D76F /* ReportDAO.swift */,
+			);
+			path = DAO;
 			sourceTree = "<group>";
 		};
 		E2C1C73224915E4100EBBC46 = {
@@ -335,17 +334,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2321D472493AEB900E4D76F /* Meal.swift in Sources */,
-				E2321D5A2493BB4700E4D76F /* MealCD+CoreDataProperties.swift in Sources */,
-				E2321D5C2493BB4700E4D76F /* ReportCD+CoreDataProperties.swift in Sources */,
 				E2C1C75624915E4600EBBC46 /* NotificationController.swift in Sources */,
 				E2321D502493B8A900E4D76F /* Report.swift in Sources */,
 				E2C1C75824915E4600EBBC46 /* ComplicationController.swift in Sources */,
 				E2C1C75424915E4600EBBC46 /* ExtensionDelegate.swift in Sources */,
 				E2321D5F2493BBB700E4D76F /* CDManager.swift in Sources */,
-				E2321D5B2493BB4700E4D76F /* ReportCD+CoreDataClass.swift in Sources */,
 				E2321D4B2493B2DF00E4D76F /* Enums.swift in Sources */,
+				E2321D682493D5CA00E4D76F /* ReportDAO.swift in Sources */,
 				E2C1C75224915E4600EBBC46 /* InterfaceController.swift in Sources */,
-				E2321D592493BB4700E4D76F /* MealCD+CoreDataClass.swift in Sources */,
 				E2321D542493BA2F00E4D76F /* TimeMeals.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
