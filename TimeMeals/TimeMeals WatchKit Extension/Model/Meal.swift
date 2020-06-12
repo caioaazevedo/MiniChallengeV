@@ -9,6 +9,7 @@
 import Foundation
 
 struct Meal {
+    //MARK:- Atributes
     var uuid: UUID
     var title: String
     var time: Date

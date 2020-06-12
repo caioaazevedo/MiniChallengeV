@@ -9,9 +9,10 @@
 import Foundation
 
 struct Report {
+    //MARK:- Atributes
     var uuid: UUID
-    var weak: Int
+    var week: Int
     var totalRightTime: Int
     var totalWrongTime: Int
-    var mostWrongTimeMeal: String    
+    var mostWrongTimeMeal: String
 }
