@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2321D472493AEB900E4D76F /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D462493AEB900E4D76F /* Meal.swift */; };
+		E2321D4B2493B2DF00E4D76F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D4A2493B2DF00E4D76F /* Enums.swift */; };
+		E2321D502493B8A900E4D76F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D4F2493B8A900E4D76F /* Report.swift */; };
 		E2C1C73E24915E4100EBBC46 /* TimeMeals WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E2C1C73D24915E4100EBBC46 /* TimeMeals WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E2C1C74424915E4100EBBC46 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2C1C74224915E4100EBBC46 /* Interface.storyboard */; };
 		E2C1C74624915E4600EBBC46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2C1C74524915E4600EBBC46 /* Assets.xcassets */; };
@@ -61,6 +64,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E2321D462493AEB900E4D76F /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		E2321D4A2493B2DF00E4D76F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		E2321D4F2493B8A900E4D76F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		E2C1C73924915E4100EBBC46 /* TimeMeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeMeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C1C73D24915E4100EBBC46 /* TimeMeals WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimeMeals WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C1C74324915E4100EBBC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -87,6 +93,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2321D452493AEA200E4D76F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E2321D462493AEB900E4D76F /* Meal.swift */,
+				E2321D4F2493B8A900E4D76F /* Report.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E2321D482493B29E00E4D76F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E2321D492493B2AD00E4D76F /* Enums */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E2321D492493B2AD00E4D76F /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				E2321D4A2493B2DF00E4D76F /* Enums.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		E2C1C73224915E4100EBBC46 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +150,8 @@
 		E2C1C75024915E4600EBBC46 /* TimeMeals WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E2321D482493B29E00E4D76F /* Helpers */,
+				E2321D452493AEA200E4D76F /* Model */,
 				E2C1C75124915E4600EBBC46 /* InterfaceController.swift */,
 				E2C1C75324915E4600EBBC46 /* ExtensionDelegate.swift */,
 				E2C1C75524915E4600EBBC46 /* NotificationController.swift */,
@@ -257,9 +290,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2321D472493AEB900E4D76F /* Meal.swift in Sources */,
 				E2C1C75624915E4600EBBC46 /* NotificationController.swift in Sources */,
+				E2321D502493B8A900E4D76F /* Report.swift in Sources */,
 				E2C1C75824915E4600EBBC46 /* ComplicationController.swift in Sources */,
 				E2C1C75424915E4600EBBC46 /* ExtensionDelegate.swift in Sources */,
+				E2321D4B2493B2DF00E4D76F /* Enums.swift in Sources */,
 				E2C1C75224915E4600EBBC46 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
