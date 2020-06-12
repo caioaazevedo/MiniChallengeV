@@ -30,11 +30,13 @@ class ReportDAO {
             try context.save()
             completion(true)
         } catch {
-            print("Error do create a report")
+            print("Error when create a report")
             completion(false)
         }
     }
     
+    /// Description: Retrieve all Report entities from Core Data
+    /// - Parameter completion: return the Reports or return nil
     func retrieve(completion: ([Report]?) -> Void){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ReportCD")
         var reports: [Report] = []
@@ -49,11 +51,15 @@ class ReportDAO {
             
             completion(reports)
         }catch {
-            print("Error do retrieve reports")
+            print("Error when retrieve reports")
             completion(reports)
         }
     }
     
+    /// Description: Return a unique report by id
+    /// - Parameters:
+    ///   - id: the id to search
+    ///   - completion: the report searched if found
     func retrieveById(id: UUID, completion: (Report?) -> Void){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ReportCD")
         
@@ -71,8 +77,32 @@ class ReportDAO {
             print("Reports does not exists")
             completion(nil)
         }catch {
-            print("Error do retrieve reports")
+            print("Error when retrieve reports")
             completion(nil)
+        }
+    }
+    
+    func update(report: Report, completion: (Bool) -> Void) {
+        let featchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ReportCD")
+        featchRequest.predicate = NSPredicate(format: "uuid = %@", report.uuid as CVarArg)
+        do {
+            let fetchObjects = try context.fetch(featchRequest)
+            
+            let reportUpdate = fetchObjects[0] as! NSManagedObject
+            reportUpdate.setValue(report.totalRightTime, forKey: "totalRightTime")
+            reportUpdate.setValue(report.totalWrongTime, forKey: "totalWrongTime")
+            reportUpdate.setValue(report.mostWrongTimeMeal, forKey: "mostWrongTimeMeal")
+            do {
+                try context.save()
+                completion(true)
+            } catch {
+                print("Error when update reports")
+                completion(false)
+            }
+            
+        } catch  {
+            print("Error when retrieve reports")
+            completion(false)
         }
     }
     

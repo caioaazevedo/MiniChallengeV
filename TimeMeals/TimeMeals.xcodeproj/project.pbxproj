@@ -148,7 +148,6 @@
 				E2321D572493BB4700E4D76F /* ReportCD+CoreDataClass.swift */,
 				E2321D582493BB4700E4D76F /* ReportCD+CoreDataProperties.swift */,
 				E2321D522493BA2F00E4D76F /* TimeMeals.xcdatamodeld */,
-				E2321D602493BDBB00E4D76F /* TimeMeals WatchKit Extension.entitlements */,
 				E2321D5E2493BBB700E4D76F /* CDManager.swift */,
 			);
 			path = Database;
@@ -204,6 +203,7 @@
 		E2C1C75024915E4600EBBC46 /* TimeMeals WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E2321D602493BDBB00E4D76F /* TimeMeals WatchKit Extension.entitlements */,
 				E2321D512493B9DF00E4D76F /* Database */,
 				E2321D482493B29E00E4D76F /* Helpers */,
 				E2321D452493AEA200E4D76F /* Model */,
