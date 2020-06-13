@@ -13,6 +13,7 @@ import Foundation
 class InterfaceController: WKInterfaceController {
     
     var reportDAO = ReportDAO()
+    var mealDAO = MealDAO()
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -24,6 +25,14 @@ class InterfaceController: WKInterfaceController {
         reportDAO.create(report: report) { (result) in
             if result {
                 print("criado")
+            }
+        }
+        
+        let meal = Meal(uuid: UUID(), title: "Breakfast", time: Date(), status: .notTimeYet, wrongTimes: 0 )
+        
+        mealDAO.create(meal: meal) { (success) in
+            if success {
+                print("meal created")
             }
         }
     }
@@ -46,6 +55,15 @@ class InterfaceController: WKInterfaceController {
                 print(result)
             }
         }
+        
+        mealDAO.retrieve { (meals) in
+            guard let meals = meals else { return }
+            
+            for meal in meals {
+                print(meal)
+            }
+        }
+        
     }
     
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 /// Description: Enum to conform the status of the meal
-enum MealStatus {
+enum MealStatus: String {
     case rightTime
     case wrongTime
     case notTimeYet 
