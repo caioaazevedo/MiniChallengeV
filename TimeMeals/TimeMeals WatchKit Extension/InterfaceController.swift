@@ -8,7 +8,7 @@
 
 import WatchKit
 import Foundation
-
+import UserNotifications
 
 class InterfaceController: WKInterfaceController {
     
@@ -20,11 +20,17 @@ class InterfaceController: WKInterfaceController {
         
         // Configure interface objects here.
         
-        let report = Report(uuid: UUID(), week: 1, totalRightTime: 10, totalWrongTime: 3, mostWrongTimeMeal: "café")
-        
-        reportDAO.create(report: report) { (result) in
-            if result {
-                print("criado")
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            
+            if let error = error {
+                // Handle the error here.
+                print(error)
+            }
+            
+            // Enable or disable features based on the authorization.
+            if granted {
+                print("user authorized")
             }
         }
         
@@ -65,5 +71,4 @@ class InterfaceController: WKInterfaceController {
         }
         
     }
-    
 }
