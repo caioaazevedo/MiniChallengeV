@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FA4B6B32496BE7B00A98649 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4B6B22496BE7B00A98649 /* Time.swift */; };
 		0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE732C32495D63500A0A67C /* MealRowController.swift */; };
 		6CB2716524954DC3009A207F /* MealDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB2716424954DC3009A207F /* MealDAO.swift */; };
 		E2321D472493AEB900E4D76F /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D462493AEB900E4D76F /* Meal.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0FA4B6B22496BE7B00A98649 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		0FE732C32495D63500A0A67C /* MealRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowController.swift; sourceTree = "<group>"; };
 		6CB2716424954DC3009A207F /* MealDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDAO.swift; sourceTree = "<group>"; };
 		E2321D462493AEB900E4D76F /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				E2321D492493B2AD00E4D76F /* Enums */,
+				0FA4B6B22496BE7B00A98649 /* Time.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				E2321D502493B8A900E4D76F /* Report.swift in Sources */,
 				E2C1C75824915E4600EBBC46 /* ComplicationController.swift in Sources */,
 				0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */,
+				0FA4B6B32496BE7B00A98649 /* Time.swift in Sources */,
 				E2C1C75424915E4600EBBC46 /* ExtensionDelegate.swift in Sources */,
 				E2321D5F2493BBB700E4D76F /* CDManager.swift in Sources */,
 				E2321D4B2493B2DF00E4D76F /* Enums.swift in Sources */,

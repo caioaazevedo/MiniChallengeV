@@ -10,8 +10,8 @@ import WatchKit
 import Foundation
 
 
-class InterfaceController: WKInterfaceController, rowButtonClicked {
-  
+class InterfaceController: WKInterfaceController  {
+    
     //MARK: Outlets
     @IBOutlet weak var mealList: WKInterfaceTable!
     
@@ -24,10 +24,6 @@ class InterfaceController: WKInterfaceController, rowButtonClicked {
         super.awake(withContext: context)
         self.fetchMealSchedule()
         self.setUpTable()
-    
-        
-        
-        
         
     }
     
@@ -52,6 +48,7 @@ class InterfaceController: WKInterfaceController, rowButtonClicked {
             row.scheduleLabel.setText(dateFormatter(date: self.mealsSchedule[rowIndex].time))
             row.delegate = self
             row.rowNumber = rowIndex
+            self.verifyMealStatus(row: row)
         }
     }
     
@@ -61,31 +58,50 @@ class InterfaceController: WKInterfaceController, rowButtonClicked {
     }
     
     
+    //MARK: Created Methods
     
-    /// Delegate called when the check button is clicked
-    /// - Parameter index: waht specific row was checked
-    func rowClicked(at index: Int) {
-        self.mealsSchedule[index].status = .rightTime
-        setUpTable()
+    /// Define meal time with current time and change status
+    /// - Parameter row: The index of row in analyze
+    func defineMealStatus(rowIndex:Int){
+
+        if self.mealsSchedule[rowIndex].time.addingTimeInterval(30 * 60) < Date(){
+            self.mealsSchedule[rowIndex].status = .wrongTime
+        }else if self.mealsSchedule[rowIndex].time.addingTimeInterval(30 * 60) > Date(){
+            self.mealsSchedule[rowIndex].status = .notTimeYet
+        }else{
+            self.mealsSchedule[rowIndex].status = .rightTime
+        }
+    }
+    
+    
+    func verifyMealStatus(row: MealRowController){
+        let currentMealStatus = self.mealsSchedule[row.rowNumber].status
+        
+        switch currentMealStatus {
+        case .rightTime:
+            row.buttonStatus.setBackgroundColor(.green)
+        case .notTimeYet:
+            row.buttonStatus.setBackgroundColor(.yellow)
+            print("-----------")
+            print(self.mealsSchedule[row.rowNumber].time)
+            print(Date().addingTimeInterval(6 * 60))
+        case .wrongTime:
+            row.buttonStatus.setBackgroundColor(.red)
+        }
         
     }
-      
     
     
-    //MARK: Created Methods
     
     /// Fetch the mels schedule from Core Data
     func fetchMealSchedule(){
-        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 7, minute: 30), status: .notTimeYet, wrongTimes: 0))
-        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Café da Manhã", time: setUpDate(hour: 7, minute: 29), status: .notTimeYet, wrongTimes: 0))
-        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 6, minute: 0), status: .notTimeYet, wrongTimes: 0))
+        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 17, minute: 35), status: .notTimeYet, wrongTimes: 0))
+        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Café da Manhã", time: setUpDate(hour: 18, minute: 29), status: .notTimeYet, wrongTimes: 0))
+        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 18, minute: 0), status: .notTimeYet, wrongTimes: 0))
         
     }
     
     
-
-   }
-     
     
     
     ///Transform the hour and minute in Date
@@ -98,11 +114,10 @@ class InterfaceController: WKInterfaceController, rowButtonClicked {
         var dateCompenents = DateComponents()
         dateCompenents.hour = hour
         dateCompenents.minute = minute
-        
         //Crate a date with components
         let deviceCalendar = Calendar.current
         let dateTime = deviceCalendar.date(from: dateCompenents)
-        
+       
         return dateTime ?? Date()
     }
     
@@ -116,6 +131,17 @@ class InterfaceController: WKInterfaceController, rowButtonClicked {
         formater.dateFormat = "HH:mm"
         return formater.string(from: date)
     }
+}
+
+
+//MARK: Row Button Clicked Protocol
+
+extension InterfaceController: rowButtonClicked{
     
-    
+    /// Delegate called when the check button is clicked
+    /// - Parameter index: waht specific row was checked
+    func rowClicked(at index: Int) {
+        self.defineMealStatus(rowIndex: index)
+        self.setUpTable()
+    }
 }
