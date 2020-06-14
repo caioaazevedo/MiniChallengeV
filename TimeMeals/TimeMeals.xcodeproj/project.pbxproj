@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE732C32495D63500A0A67C /* MealRowController.swift */; };
 		6CB2716524954DC3009A207F /* MealDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB2716424954DC3009A207F /* MealDAO.swift */; };
 		E2321D472493AEB900E4D76F /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D462493AEB900E4D76F /* Meal.swift */; };
 		E2321D4B2493B2DF00E4D76F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D4A2493B2DF00E4D76F /* Enums.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0FE732C32495D63500A0A67C /* MealRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowController.swift; sourceTree = "<group>"; };
 		6CB2716424954DC3009A207F /* MealDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDAO.swift; sourceTree = "<group>"; };
 		E2321D462493AEB900E4D76F /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		E2321D4A2493B2DF00E4D76F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -108,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FE732C22495D61B00A0A67C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E2C1C75124915E4600EBBC46 /* InterfaceController.swift */,
+				0FE732C32495D63500A0A67C /* MealRowController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E2321D452493AEA200E4D76F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,11 +205,11 @@
 		E2C1C75024915E4600EBBC46 /* TimeMeals WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0FE732C22495D61B00A0A67C /* Controller */,
 				E2321D602493BDBB00E4D76F /* TimeMeals WatchKit Extension.entitlements */,
 				E2321D512493B9DF00E4D76F /* Database */,
 				E2321D482493B29E00E4D76F /* Helpers */,
 				E2321D452493AEA200E4D76F /* Model */,
-				E2C1C75124915E4600EBBC46 /* InterfaceController.swift */,
 				E2C1C75324915E4600EBBC46 /* ExtensionDelegate.swift */,
 				E2C1C75524915E4600EBBC46 /* NotificationController.swift */,
 				E2C1C75724915E4600EBBC46 /* ComplicationController.swift */,
@@ -341,6 +352,7 @@
 				E2C1C75624915E4600EBBC46 /* NotificationController.swift in Sources */,
 				E2321D502493B8A900E4D76F /* Report.swift in Sources */,
 				E2C1C75824915E4600EBBC46 /* ComplicationController.swift in Sources */,
+				0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */,
 				E2C1C75424915E4600EBBC46 /* ExtensionDelegate.swift in Sources */,
 				E2321D5F2493BBB700E4D76F /* CDManager.swift in Sources */,
 				E2321D4B2493B2DF00E4D76F /* Enums.swift in Sources */,
