@@ -11,15 +11,42 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="TimeMeals_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <button width="1" alignment="left" title="Button" id="7iK-oe-pHe">
-                            <connections>
-                                <action selector="action" destination="AgC-eL-Hgc" id="jCy-Qn-KYK"/>
-                            </connections>
-                        </button>
+                        <table alignment="left" id="nD8-oE-gbA">
+                            <items>
+                                <tableRow identifier="MealRow" id="7o2-Ye-9xI" customClass="MealRowController" customModule="TimeMeals_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="pF8-4K-J2L">
+                                        <items>
+                                            <label alignment="left" text="Label" id="u9U-Bt-jyC"/>
+                                        </items>
+                                        <connections>
+                                            <segue destination="7i0-Ie-i24" kind="modal" identifier="showSettings" id="qGs-NL-p3S"/>
+                                        </connections>
+                                    </group>
+                                    <connections>
+                                        <outlet property="scheduleLabel" destination="u9U-Bt-jyC" id="MXU-eD-dtT"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="mealList" destination="nD8-oE-gbA" id="DGx-Tx-zgs"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-95" y="95"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="0Z2-dH-PNO">
+            <objects>
+                <controller identifier="Settings" id="7i0-Ie-i24">
+                    <items>
+                        <label height="20" alignment="left" text="Settings Screen" id="gcj-Ca-O6g"/>
+                        <label alignment="left" text="Simultation" id="z19-0c-cu8"/>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="34" y="242"/>
+            <point key="canvasLocation" x="278" y="78"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
