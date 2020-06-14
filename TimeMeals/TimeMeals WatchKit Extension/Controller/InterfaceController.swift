@@ -10,7 +10,8 @@ import WatchKit
 import Foundation
 
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, rowButtonClicked {
+  
     //MARK: Outlets
     @IBOutlet weak var mealList: WKInterfaceTable!
     
@@ -48,9 +49,9 @@ class InterfaceController: WKInterfaceController {
         self.mealsSchedule.sort(by: {$0.time < $1.time})
         for rowIndex in 0..<self.mealsSchedule.count{
             guard let row = self.mealList.rowController(at: rowIndex) as? MealRowController else {continue}
-            
             row.scheduleLabel.setText(dateFormatter(date: self.mealsSchedule[rowIndex].time))
-            
+            row.delegate = self
+            row.rowNumber = rowIndex
         }
     }
     
@@ -58,6 +59,17 @@ class InterfaceController: WKInterfaceController {
         let meal = self.mealsSchedule[rowIndex]
         presentController(withName: "Settings", context: meal)
     }
+    
+    
+    
+    /// Delegate called when the check button is clicked
+    /// - Parameter index: waht specific row was checked
+    func rowClicked(at index: Int) {
+        self.mealsSchedule[index].status = .rightTime
+        setUpTable()
+        
+    }
+      
     
     
     //MARK: Created Methods
@@ -69,6 +81,12 @@ class InterfaceController: WKInterfaceController {
         self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 6, minute: 0), status: .notTimeYet, wrongTimes: 0))
         
     }
+    
+    
+
+   }
+     
+    
     
     ///Transform the hour and minute in Date
     /// - Parameters:
@@ -97,19 +115,6 @@ class InterfaceController: WKInterfaceController {
         let formater = DateFormatter()
         formater.dateFormat = "HH:mm"
         return formater.string(from: date)
-    }
-    
-    
-    func getSystemHour() -> String{
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        
-        let myDate = self.setUpDate(hour: hour, minute: minute)
-        
-        return self.dateFormatter(date: myDate)
-        
     }
     
     

@@ -17,12 +17,18 @@
                                     <group key="rootItem" width="1" alignment="left" id="pF8-4K-J2L">
                                         <items>
                                             <label alignment="left" text="Label" id="u9U-Bt-jyC"/>
+                                            <button width="33" height="28" alignment="right" verticalAlignment="center" id="7Dw-aO-Zh3">
+                                                <connections>
+                                                    <action selector="buttonClicked" destination="7o2-Ye-9xI" id="jn4-UC-CDf"/>
+                                                </connections>
+                                            </button>
                                         </items>
                                         <connections>
                                             <segue destination="7i0-Ie-i24" kind="modal" identifier="showSettings" id="qGs-NL-p3S"/>
                                         </connections>
                                     </group>
                                     <connections>
+                                        <outlet property="buttonStatus" destination="7Dw-aO-Zh3" id="BZu-MZ-PrU"/>
                                         <outlet property="scheduleLabel" destination="u9U-Bt-jyC" id="MXU-eD-dtT"/>
                                     </connections>
                                 </tableRow>

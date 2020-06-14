@@ -8,7 +8,23 @@
 
 import WatchKit
 
+protocol rowButtonClicked {
+    func rowClicked(at index:Int)
+}
+
 class MealRowController: NSObject {
+    @IBOutlet weak var buttonStatus: WKInterfaceButton!
     @IBOutlet weak var scheduleLabel: WKInterfaceLabel!
+    
+    var delegate: rowButtonClicked? = nil
+    var rowNumber = 0
+    
+    
+    @IBAction func buttonClicked() {
+        print(rowNumber)
+        self.delegate?.rowClicked(at: rowNumber)
+    }
+    
+    
     
 }
