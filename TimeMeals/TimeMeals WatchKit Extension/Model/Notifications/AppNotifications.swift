@@ -41,7 +41,7 @@ class AppNotification: NSObject{
         }
     }
     
-    func sendNotifications() {
+    func sendNotifications(meal: Meal) {
         
         checkAuthorization { (authorized) in
             guard authorized else { return }
@@ -49,8 +49,8 @@ class AppNotification: NSObject{
             print("authorized")
             
             let content = UNMutableNotificationContent()
-            content.title = NSString.localizedUserNotificationString(forKey: "Café da Manhã", arguments: nil)
-            content.subtitle = NSString.localizedUserNotificationString(forKey: "7:00", arguments: nil)
+            content.title = NSString.localizedUserNotificationString(forKey: meal.title, arguments: nil)
+            content.subtitle = NSString.localizedUserNotificationString(forKey: self.dateFormated(date: meal.time), arguments: nil)
             content.sound = UNNotificationSound.default
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
@@ -66,8 +66,33 @@ class AppNotification: NSObject{
             }
         }
         
+    }
+    
+    func sendDynamicNotification(meal: Meal) {
+        let notification = UNMutableNotificationContent()
+        notification.categoryIdentifier = "myCategory"
+        notification.title = dateFormated(date: meal.time)
+        notification.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "FiveSecond", content: notification, trigger: trigger) // Schedule the notification.
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error : Error?) in
+            if let theError = error {
+                // Handle any errors
+                print(("Error: \(theError)"))
+            }
+            
+            print("notify")
+        }
         
         
+    }
+    
+    func dateFormated(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: date)
     }
     
 }

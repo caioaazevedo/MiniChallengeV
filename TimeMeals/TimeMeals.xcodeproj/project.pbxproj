@@ -113,10 +113,11 @@
 		E2321D452493AEA200E4D76F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E2321D6924959E4900E4D76F /* Notifications */,
 				E2321D462493AEB900E4D76F /* Meal.swift */,
 				E2321D4F2493B8A900E4D76F /* Report.swift */,
+				E2321D6C2495A5A700E4D76F /* Entities */,
 				E2321D662493D59F00E4D76F /* DAO */,
+				E2321D6924959E4900E4D76F /* Notifications */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,6 +171,13 @@
 				E2321D6A24959E8800E4D76F /* AppNotifications.swift */,
 			);
 			path = Notifications;
+			sourceTree = "<group>";
+		};
+		E2321D6C2495A5A700E4D76F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		E2C1C73224915E4100EBBC46 = {

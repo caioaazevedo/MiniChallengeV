@@ -29,6 +29,7 @@
                         <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <color key="backgroundColor" red="0.1741943061" green="0.3566455543" blue="0.58826529979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
                         <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
@@ -41,7 +42,9 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="TimeMeals_WatchKit_App" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="TimeMeals_WatchKit_App" customModuleProvider="target">
+                    <color key="backgroundColor" red="0.1741943061" green="0.3566455543" blue="0.58826529979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                </controller>
             </objects>
             <point key="canvasLocation" x="385" y="812"/>
         </scene>

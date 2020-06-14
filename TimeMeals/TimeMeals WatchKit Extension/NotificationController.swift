@@ -38,19 +38,23 @@ class NotificationController: WKUserNotificationInterfaceController {
         // This method is called when a notification needs to be presented.
         // Implement it if you use a dynamic notification interface.
         // Populate your dynamic notification interface as quickly as possible.
+        
         timeMealLabel.setText("07:00")
         titleMealLabel.setText("Breakfast")
     }
     
     @IBAction func markMeal() {
         print("Meal marked as done")
+        performDismissAction()
     }
     
     @IBAction func minDelayMeal() {
-        
+        print("15 minutes - min delay")
+        performDismissAction()
     }
     
     @IBAction func maxDelayMeal() {
-        
+        print("30 minutes - min delay")
+        performDismissAction()
     }
 }

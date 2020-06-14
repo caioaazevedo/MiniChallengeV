@@ -22,13 +22,13 @@ class InterfaceController: WKInterfaceController {
         
         AppNotification().requestAuthorization()
         
-        let meal = Meal(uuid: UUID(), title: "Breakfast", time: Date(), status: .notTimeYet, wrongTimes: 0 )
-        
-        mealDAO.create(meal: meal) { (success) in
-            if success {
-                print("meal created")
-            }
-        }
+//        let meal = Meal(uuid: UUID(), title: "Breakfast", time: Date(), status: .notTimeYet, wrongTimes: 0 )
+//
+//        mealDAO.create(meal: meal) { (success) in
+//            if success {
+//                print("meal created")
+//            }
+//        }
     }
     
     override func willActivate() {
@@ -50,18 +50,13 @@ class InterfaceController: WKInterfaceController {
             }
         }
         
-        mealDAO.retrieve { (meals) in
-            guard let meals = meals else { return }
-            
-            for meal in meals {
-                print(meal)
-            }
-        }
-        
     }
     
     @IBAction func sendNotifcattion() {
         print("send")
-        AppNotification().sendNotifications()
+        
+        let meal = Meal(uuid: UUID(), title: "Café da Manhã", time: Date(), status: .notTimeYet, wrongTimes: 0)
+        
+        AppNotification().sendDynamicNotification(meal: meal)
     }
 }
