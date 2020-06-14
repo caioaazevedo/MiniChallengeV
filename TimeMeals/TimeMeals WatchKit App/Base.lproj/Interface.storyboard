@@ -13,7 +13,7 @@
                     <items>
                         <button width="1" alignment="left" title="Send Notification" id="PzK-KQ-75m">
                             <connections>
-                                <action selector="sendNotification" destination="AgC-eL-Hgc" id="bjb-sM-JEK"/>
+                                <action selector="sendNotifcattion" destination="AgC-eL-Hgc" id="xVu-7p-ehD"/>
                             </connections>
                         </button>
                     </items>

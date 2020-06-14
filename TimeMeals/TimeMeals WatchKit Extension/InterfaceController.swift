@@ -20,19 +20,7 @@ class InterfaceController: WKInterfaceController {
         
         // Configure interface objects here.
         
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            
-            if let error = error {
-                // Handle the error here.
-                print(error)
-            }
-            
-            // Enable or disable features based on the authorization.
-            if granted {
-                print("user authorized")
-            }
-        }
+        AppNotification().requestAuthorization()
         
         let meal = Meal(uuid: UUID(), title: "Breakfast", time: Date(), status: .notTimeYet, wrongTimes: 0 )
         
@@ -70,5 +58,10 @@ class InterfaceController: WKInterfaceController {
             }
         }
         
+    }
+    
+    @IBAction func sendNotifcattion() {
+        print("send")
+        AppNotification().sendNotifications()
     }
 }
