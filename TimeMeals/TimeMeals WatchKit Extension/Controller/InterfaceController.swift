@@ -20,7 +20,6 @@ class InterfaceController: WKInterfaceController  {
     
     //MARK: Life Cycle Methods
     override func awake(withContext context: Any?) {
-        
         super.awake(withContext: context)
         self.fetchMealSchedule()
         self.setUpTable()
@@ -49,6 +48,7 @@ class InterfaceController: WKInterfaceController  {
             row.delegate = self
             row.rowNumber = rowIndex
             self.verifyMealStatus(row: row)
+           
         }
     }
     
@@ -63,17 +63,25 @@ class InterfaceController: WKInterfaceController  {
     /// Define meal time with current time and change status
     /// - Parameter row: The index of row in analyze
     func defineMealStatus(rowIndex:Int){
-
-        if self.mealsSchedule[rowIndex].time.addingTimeInterval(30 * 60) < Date(){
+        let scheduleTime = self.mealsSchedule[rowIndex].time
+        let currentTime = Date().addingTimeInterval(6 * 60)
+        
+        if scheduleTime.addingTimeInterval(30 * 60).time < currentTime.time{
+            //wrogn time
             self.mealsSchedule[rowIndex].status = .wrongTime
-        }else if self.mealsSchedule[rowIndex].time.addingTimeInterval(30 * 60) > Date(){
+            self.mealsSchedule[rowIndex].wrongTimes += 1
+        }else if scheduleTime.addingTimeInterval(-30 * 60).time > Date().time{
+            //so early
             self.mealsSchedule[rowIndex].status = .notTimeYet
         }else{
+            // user got !
             self.mealsSchedule[rowIndex].status = .rightTime
         }
     }
     
     
+    /// Verify the meal status and change the view
+    /// - Parameter row: The row to change
     func verifyMealStatus(row: MealRowController){
         let currentMealStatus = self.mealsSchedule[row.rowNumber].status
         
@@ -82,9 +90,6 @@ class InterfaceController: WKInterfaceController  {
             row.buttonStatus.setBackgroundColor(.green)
         case .notTimeYet:
             row.buttonStatus.setBackgroundColor(.yellow)
-            print("-----------")
-            print(self.mealsSchedule[row.rowNumber].time)
-            print(Date().addingTimeInterval(6 * 60))
         case .wrongTime:
             row.buttonStatus.setBackgroundColor(.red)
         }
@@ -95,9 +100,9 @@ class InterfaceController: WKInterfaceController  {
     
     /// Fetch the mels schedule from Core Data
     func fetchMealSchedule(){
-        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 17, minute: 35), status: .notTimeYet, wrongTimes: 0))
-        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Café da Manhã", time: setUpDate(hour: 18, minute: 29), status: .notTimeYet, wrongTimes: 0))
-        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 18, minute: 0), status: .notTimeYet, wrongTimes: 0))
+        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 15, minute: 35), status: .notTimeYet, wrongTimes: 0))
+        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Café da Manhã", time: setUpDate(hour: 19, minute: 00), status: .notTimeYet, wrongTimes: 0))
+        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 20, minute: 0), status: .notTimeYet, wrongTimes: 0))
         
     }
     
@@ -120,7 +125,6 @@ class InterfaceController: WKInterfaceController  {
        
         return dateTime ?? Date()
     }
-    
     
     
     /// Deffine a date format to HH:mm

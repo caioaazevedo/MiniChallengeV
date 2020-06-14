@@ -21,7 +21,6 @@ class MealRowController: NSObject {
     
     
     @IBAction func buttonClicked() {
-        print(rowNumber)
         self.delegate?.rowClicked(at: rowNumber)
     }
     

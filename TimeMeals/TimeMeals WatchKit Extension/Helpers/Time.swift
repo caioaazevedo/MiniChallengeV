@@ -23,8 +23,6 @@ class Time:Equatable,Comparable{
         secondsDayBegining = dateSeconds
         hour = dateComponentes.hour!
         minute = dateComponentes.minute!
-        
-        
     }
     var hour:Int
     var minute:Int
