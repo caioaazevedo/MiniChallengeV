@@ -23,6 +23,7 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         self.fetchMealSchedule()
         self.setUpTable()
+    
         
         
         
@@ -96,6 +97,19 @@ class InterfaceController: WKInterfaceController {
         let formater = DateFormatter()
         formater.dateFormat = "HH:mm"
         return formater.string(from: date)
+    }
+    
+    
+    func getSystemHour() -> String{
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        
+        let myDate = self.setUpDate(hour: hour, minute: minute)
+        
+        return self.dateFormatter(date: myDate)
+        
     }
     
     
