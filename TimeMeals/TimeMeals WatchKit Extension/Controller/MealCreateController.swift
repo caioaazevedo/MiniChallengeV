@@ -96,7 +96,7 @@ class MealCreateController: WKInterfaceController {
         if(newMeal.title.isEmpty){
             showAlertValidate()
         }else{
-            let mealDAO = MealDAO()
+            let _ = MealDAO()
             
         }
     }
