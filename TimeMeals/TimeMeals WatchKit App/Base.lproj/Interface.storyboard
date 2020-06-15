@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -189,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="385" y="399"/>
         </scene>
-        <!--Dynamic Notification Interface Controller-->
+        <!--Delay Notification Notification Controller-->
         <scene sceneID="0NY-oM-9dS">
             <objects>
-                <controller id="NVc-Dt-z5b"/>
+                <controller id="NVc-Dt-z5b" customClass="DelayNotificationNotificationController" customModule="TimeMeals_WatchKit_Extension"/>
             </objects>
             <point key="canvasLocation" x="385" y="1233"/>
         </scene>

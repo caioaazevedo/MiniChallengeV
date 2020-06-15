@@ -93,7 +93,7 @@ class MealDAO {
         do {
             let fetchedObjects = try context.fetch(fetchRequest)
             
-            guard let mealUpdate = fetchedObjects[0] as? NSManagedObject else { return }
+            guard let mealUpdate = fetchedObjects.first as? NSManagedObject else { return }
             mealUpdate.setValue(meal.title, forKey: "title")
             mealUpdate.setValue(meal.time, forKey: "time")
             mealUpdate.setValue(meal.status.rawValue.data(using: .utf8), forKey: "status")
