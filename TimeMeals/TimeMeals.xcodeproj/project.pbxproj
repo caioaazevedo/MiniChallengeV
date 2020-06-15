@@ -121,6 +121,7 @@
 		0FA4B6B42496C26000A98649 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E2C1C75324915E4600EBBC46 /* ExtensionDelegate.swift */,
 				0FA4B6B52496C26E00A98649 /* DateExtension.swift */,
 				49D164A524978AD000A74A51 /* IntExtension.swift */,
 			);
@@ -135,6 +136,23 @@
 				49D164A32497853E00A74A51 /* MealEditController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		6C0FED5A2497ED2F003AD52D /* Complication */ = {
+			isa = PBXGroup;
+			children = (
+				E2C1C75724915E4600EBBC46 /* ComplicationController.swift */,
+				E2C1C75924915E4800EBBC46 /* Assets.xcassets */,
+			);
+			path = Complication;
+			sourceTree = "<group>";
+		};
+		6C0FED5B2497ED5B003AD52D /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				E2C1C75524915E4600EBBC46 /* NotificationController.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		E2321D452493AEA200E4D76F /* Model */ = {
@@ -153,6 +171,8 @@
 				0FA4B6B42496C26000A98649 /* Extension */,
 				E2321D492493B2AD00E4D76F /* Enums */,
 				0FA4B6B22496BE7B00A98649 /* Time.swift */,
+				E2C1C75C24915E4800EBBC46 /* PushNotificationPayload.apns */,
+				E2321D602493BDBB00E4D76F /* TimeMeals WatchKit Extension.entitlements */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -225,17 +245,13 @@
 		E2C1C75024915E4600EBBC46 /* TimeMeals WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0FE732C22495D61B00A0A67C /* Controller */,
-				E2321D602493BDBB00E4D76F /* TimeMeals WatchKit Extension.entitlements */,
-				E2321D512493B9DF00E4D76F /* Database */,
-				E2321D482493B29E00E4D76F /* Helpers */,
-				E2321D452493AEA200E4D76F /* Model */,
-				E2C1C75324915E4600EBBC46 /* ExtensionDelegate.swift */,
-				E2C1C75524915E4600EBBC46 /* NotificationController.swift */,
-				E2C1C75724915E4600EBBC46 /* ComplicationController.swift */,
-				E2C1C75924915E4800EBBC46 /* Assets.xcassets */,
 				E2C1C75B24915E4800EBBC46 /* Info.plist */,
-				E2C1C75C24915E4800EBBC46 /* PushNotificationPayload.apns */,
+				E2321D512493B9DF00E4D76F /* Database */,
+				E2321D452493AEA200E4D76F /* Model */,
+				0FE732C22495D61B00A0A67C /* Controller */,
+				6C0FED5B2497ED5B003AD52D /* Notification */,
+				6C0FED5A2497ED2F003AD52D /* Complication */,
+				E2321D482493B29E00E4D76F /* Helpers */,
 			);
 			path = "TimeMeals WatchKit Extension";
 			sourceTree = "<group>";
