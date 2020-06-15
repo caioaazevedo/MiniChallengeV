@@ -66,25 +66,25 @@ class MealEditController: WKInterfaceController  {
         guard let text = value else {return}
         currentMeal.title = text as String
     }
-    
+
     //MARK: Picker Action Methods
     
     @IBAction func hourPickerAction(_ value: Int) {
-        var locateCalendar = Calendar.current
-        locateCalendar.locale = .some(.current)
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
         
-        currentMeal.time = Calendar.current.date(bySetting: .hour, value: value, of: currentMeal.time)!
-        print(value)
-        print(currentMeal.time)
+        let minute = calendar.component(.minute, from: currentMeal.time)
+        
+        currentMeal.time = calendar.date(bySettingHour: value, minute: minute, second: 0, of: currentMeal.time)!
     }
     
     @IBAction func minutePickerAction(_ value: Int) {
-        var locateCalendar = Calendar.current
-        locateCalendar.locale = .some(.current)
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
         
-        currentMeal.time = Calendar.current.date(bySetting: .minute, value: value, of: currentMeal.time)!
-        print(value)
-        print(currentMeal.time)
+        let hour = calendar.component(.hour, from: currentMeal.time)
+        
+        currentMeal.time = calendar.date(bySettingHour: hour, minute: value, second: 0, of: currentMeal.time)!
     }
     
     //MARK: Buttons Action Methods
