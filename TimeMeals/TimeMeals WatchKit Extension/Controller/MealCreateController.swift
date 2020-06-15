@@ -97,7 +97,9 @@ class MealCreateController: WKInterfaceController {
             showAlertValidate()
         }else{
             let mealDAO = MealDAO()
-            
+            mealDAO.create(meal: newMeal, completion: {bool in
+                pop()
+            })
         }
     }
     
