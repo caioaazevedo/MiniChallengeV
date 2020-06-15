@@ -41,7 +41,7 @@ class AppNotification: NSObject{
         }
     }
     
-    func sendNotifications(meal: Meal) {
+    func sendNotifications(meal: Meal, delay: Int) {
         
         checkAuthorization { (authorized) in
             guard authorized else { return }
@@ -69,24 +69,39 @@ class AppNotification: NSObject{
     }
     
     func sendDynamicNotification(meal: Meal) {
-        let notification = UNMutableNotificationContent()
-        notification.categoryIdentifier = "myCategory"
-        notification.title = dateFormated(date: meal.time)
-        notification.sound = UNNotificationSound.default
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: "FiveSecond", content: notification, trigger: trigger) // Schedule the notification.
-        let center = UNUserNotificationCenter.current()
-        center.add(request) { (error : Error?) in
-            if let theError = error {
-                // Handle any errors
-                print(("Error: \(theError)"))
-            }
+        checkAuthorization { (authorized) in
+            guard authorized else { return }
             
-            print("notify")
+            print("authorized")
+            
+            let notification = UNMutableNotificationContent()
+            notification.categoryIdentifier = "myCategory"
+            notification.title = meal.title
+            notification.sound = UNNotificationSound.default
+            
+            // Configure the recurring date.
+            var dateComponents = DateComponents()
+            let calendar = Calendar.current
+            dateComponents.calendar = calendar
+            
+//            dateComponents.hour = calendar.component(.hour, from: meal.time)
+//            dateComponents.minute = calendar.component(.minute, from: meal.time)
+            
+//            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let request = UNNotificationRequest(identifier: "", content: notification, trigger: trigger)
+            
+            let center = UNUserNotificationCenter.current()
+            center.add(request) { (error : Error?) in
+                if let theError = error {
+                    // Handle any errors
+                    print(("Error: \(theError)"))
+                }
+                
+                print("notify")
+            }
         }
-        
-        
     }
     
     func dateFormated(date: Date) -> String {

@@ -34,6 +34,10 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        let meal = Meal(uuid: UUID(), title: "Café da Manhã", time: Date(), status: .notTimeYet, wrongTimes: 0)
+        
+        AppNotification().sendDynamicNotification(meal: meal)
     }
     
     override func didDeactivate() {
@@ -55,8 +59,5 @@ class InterfaceController: WKInterfaceController {
     @IBAction func sendNotifcattion() {
         print("send")
         
-        let meal = Meal(uuid: UUID(), title: "Café da Manhã", time: Date(), status: .notTimeYet, wrongTimes: 0)
-        
-        AppNotification().sendDynamicNotification(meal: meal)
     }
 }

@@ -16,22 +16,26 @@ class NotificationController: WKUserNotificationInterfaceController {
     @IBOutlet weak var timeMealLabel: WKInterfaceLabel!
     @IBOutlet weak var titleMealLabel: WKInterfaceLabel!
     
+    var meal: Meal?
     
     override init() {
         // Initialize variables here.
         super.init()
-        
+        meal = Meal(uuid: UUID(), title: "café", time: Date(), status: .notTimeYet, wrongTimes: 0)
         // Configure interface objects here.
+        print("init")
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        print("willActivate")
     }
 
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        print("didDeactivate")
     }
 
     override func didReceive(_ notification: UNNotification) {
@@ -50,6 +54,9 @@ class NotificationController: WKUserNotificationInterfaceController {
     
     @IBAction func minDelayMeal() {
         print("15 minutes - min delay")
+        
+        AppNotification().sendNotifications(meal: meal!, delay: 15)
+        
         performDismissAction()
     }
     
