@@ -17,7 +17,7 @@ class InterfaceController: WKInterfaceController  {
     
     //MARK: Properties
     var mealsSchedule = [Meal]()
-    
+    var mealDAO = MealDAO()
     //MARK: Life Cycle Methods
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -94,16 +94,16 @@ class InterfaceController: WKInterfaceController  {
         case .wrongTime:
             row.buttonStatus.setBackgroundColor(.red)
         }
-        
     }
     
     
     
     /// Fetch the mels schedule from Core Data
     func fetchMealSchedule(){
-        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 15, minute: 35), status: .notTimeYet, wrongTimes: 0))
-        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Café da Manhã", time: setUpDate(hour: 19, minute: 00), status: .notTimeYet, wrongTimes: 0))
-        self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 20, minute: 0), status: .notTimeYet, wrongTimes: 0))
+        self.mealDAO.retrieve { (meal) in
+            guard let meal = meal else{return}
+            self.mealsSchedule = meal
+        }
     }
     
     
