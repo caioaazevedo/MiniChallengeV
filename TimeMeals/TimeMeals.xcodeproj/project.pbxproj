@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F008C852498290400AB3B17 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F008C842498290400AB3B17 /* DateManager.swift */; };
 		0FA4B6B32496BE7B00A98649 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4B6B22496BE7B00A98649 /* Time.swift */; };
 		0FA4B6B62496C26E00A98649 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4B6B52496C26E00A98649 /* DateExtension.swift */; };
 		0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE732C32495D63500A0A67C /* MealRowController.swift */; };
@@ -80,6 +81,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F008C842498290400AB3B17 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		0FA4B6B22496BE7B00A98649 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		0FA4B6B52496C26E00A98649 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0FE732C32495D63500A0A67C /* MealRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				E2C1C75C24915E4800EBBC46 /* PushNotificationPayload.apns */,
 				E2321D602493BDBB00E4D76F /* TimeMeals WatchKit Extension.entitlements */,
 				E20AF64B2498141E00AEC68A /* TimeValidator.swift */,
+				0F008C842498290400AB3B17 /* DateManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				49D164A82498031200A74A51 /* MealCreateController.swift in Sources */,
 				E20AF64A2498037600AEC68A /* DelayNotificationNotificationController.swift in Sources */,
 				E2C1C75624915E4600EBBC46 /* NotificationController.swift in Sources */,
+				0F008C852498290400AB3B17 /* DateManager.swift in Sources */,
 				49D164A624978AD000A74A51 /* IntExtension.swift in Sources */,
 				E2321D502493B8A900E4D76F /* Report.swift in Sources */,
 				E20AF64C2498141E00AEC68A /* TimeValidator.swift in Sources */,

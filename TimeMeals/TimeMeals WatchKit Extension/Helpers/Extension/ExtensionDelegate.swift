@@ -9,20 +9,23 @@
 import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
-
+    
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        if  verifyFirstLaunch(){
+            self.createDefaultMeal()
+        }
     }
-
+    
     func applicationDidBecomeActive() {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillResignActive() {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, etc.
     }
-
+    
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
         // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.
         for task in backgroundTasks {
@@ -52,5 +55,30 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             }
         }
     }
-
+    
+    func createDefaultMeal(){
+        let mealDao = MealDAO()
+        let date = DateManager()
+        let defaultMeals = [Meal(uuid: UUID.init(), title: "Desjejum", time: date.setUpDate(hour: 7, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Café da Manhã", time: date.setUpDate(hour: 11, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Almoço", time: date.setUpDate(hour: 13, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Lanche da Tarde", time: date.setUpDate(hour: 17, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Jantar", time: date.setUpDate(hour: 20, minute: 0), status: .notTimeYet, wrongTimes: 0)
+                            ]
+        defaultMeals.forEach { (meal) in
+            mealDao.create(meal: meal) { _ in
+                return
+            }
+        }
+    }
+    
+    func verifyFirstLaunch() -> Bool{
+        
+        if !UserDefaults.standard.bool(forKey: "appFirstLaunch"){
+            UserDefaults.standard.set(false, forKey: "appFirstLaunch")
+            return true
+        }
+        return false
+    }
+    
 }
