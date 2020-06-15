@@ -12,6 +12,7 @@
 		0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE732C32495D63500A0A67C /* MealRowController.swift */; };
 		49D164A42497853E00A74A51 /* MealEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A32497853E00A74A51 /* MealEditController.swift */; };
 		49D164A624978AD000A74A51 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A524978AD000A74A51 /* IntExtension.swift */; };
+		49D164A82498031200A74A51 /* MealCreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A72498031200A74A51 /* MealCreateController.swift */; };
 		6CB2716524954DC3009A207F /* MealDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB2716424954DC3009A207F /* MealDAO.swift */; };
 		E2321D472493AEB900E4D76F /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D462493AEB900E4D76F /* Meal.swift */; };
 		E2321D4B2493B2DF00E4D76F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D4A2493B2DF00E4D76F /* Enums.swift */; };
@@ -80,6 +81,7 @@
 		0FE732C32495D63500A0A67C /* MealRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowController.swift; sourceTree = "<group>"; };
 		49D164A32497853E00A74A51 /* MealEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEditController.swift; sourceTree = "<group>"; };
 		49D164A524978AD000A74A51 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		49D164A72498031200A74A51 /* MealCreateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateController.swift; sourceTree = "<group>"; };
 		6CB2716424954DC3009A207F /* MealDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDAO.swift; sourceTree = "<group>"; };
 		E2321D462493AEB900E4D76F /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		E2321D4A2493B2DF00E4D76F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				E2C1C75124915E4600EBBC46 /* InterfaceController.swift */,
 				0FE732C32495D63500A0A67C /* MealRowController.swift */,
 				49D164A32497853E00A74A51 /* MealEditController.swift */,
+				49D164A72498031200A74A51 /* MealCreateController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				E2321D472493AEB900E4D76F /* Meal.swift in Sources */,
 				0FA4B6B62496C26E00A98649 /* DateExtension.swift in Sources */,
 				6CB2716524954DC3009A207F /* MealDAO.swift in Sources */,
+				49D164A82498031200A74A51 /* MealCreateController.swift in Sources */,
 				E2C1C75624915E4600EBBC46 /* NotificationController.swift in Sources */,
 				49D164A624978AD000A74A51 /* IntExtension.swift in Sources */,
 				E2321D502493B8A900E4D76F /* Report.swift in Sources */,
