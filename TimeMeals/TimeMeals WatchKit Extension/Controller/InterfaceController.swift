@@ -53,10 +53,11 @@ class InterfaceController: WKInterfaceController  {
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        let meal = self.mealsSchedule[rowIndex]
-        presentController(withName: "Settings", context: meal)
     }
     
+    override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
+        return self.mealsSchedule[rowIndex]
+    }
     
     //MARK: Created Methods
     
@@ -103,7 +104,6 @@ class InterfaceController: WKInterfaceController  {
         self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 15, minute: 35), status: .notTimeYet, wrongTimes: 0))
         self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Café da Manhã", time: setUpDate(hour: 19, minute: 00), status: .notTimeYet, wrongTimes: 0))
         self.mealsSchedule.append(Meal(uuid: UUID.init(), title: "Desjeju,", time: setUpDate(hour: 20, minute: 0), status: .notTimeYet, wrongTimes: 0))
-        
     }
     
     

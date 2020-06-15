@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -23,13 +23,11 @@
                                                 </connections>
                                             </button>
                                         </items>
-                                        <connections>
-                                            <segue destination="7i0-Ie-i24" kind="modal" identifier="showSettings" id="qGs-NL-p3S"/>
-                                        </connections>
                                     </group>
                                     <connections>
                                         <outlet property="buttonStatus" destination="7Dw-aO-Zh3" id="BZu-MZ-PrU"/>
                                         <outlet property="scheduleLabel" destination="u9U-Bt-jyC" id="MXU-eD-dtT"/>
+                                        <segue destination="7i0-Ie-i24" kind="push" id="lGb-Ke-roc"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -45,14 +43,54 @@
         <!--Settings-->
         <scene sceneID="0Z2-dH-PNO">
             <objects>
-                <controller identifier="Settings" id="7i0-Ie-i24">
+                <controller identifier="Settings" id="7i0-Ie-i24" customClass="MealEditController" customModule="TimeMeals_WatchKit_Extension">
                     <items>
-                        <label height="20" alignment="left" text="Settings Screen" id="gcj-Ca-O6g"/>
-                        <label alignment="left" text="Simultation" id="z19-0c-cu8"/>
+                        <group width="1" height="306" alignment="center" layout="vertical" spacing="10" id="9oq-h3-Qrd">
+                            <items>
+                                <label alignment="left" text="Title:" id="gcj-Ca-O6g"/>
+                                <textField width="1" alignment="left" placeholder="Title" id="q3P-cp-5Il">
+                                    <connections>
+                                        <action selector="titleTextFieldAction:" destination="7i0-Ie-i24" id="wIh-DM-QYp"/>
+                                    </connections>
+                                </textField>
+                                <label alignment="left" text="Time:" id="z19-0c-cu8"/>
+                                <group width="1" alignment="left" id="8HK-b8-GGb">
+                                    <items>
+                                        <picker width="60" height="100" alignment="left" id="ihS-sj-rCV">
+                                            <connections>
+                                                <action selector="hourPickerAction:" destination="7i0-Ie-i24" id="i4p-pd-vjV"/>
+                                            </connections>
+                                        </picker>
+                                        <label alignment="center" verticalAlignment="center" text=":" id="cQJ-hl-Pa1"/>
+                                        <picker width="60" height="100" alignment="right" verticalAlignment="center" id="Oxz-Iy-yyu">
+                                            <connections>
+                                                <action selector="minutePickerAction:" destination="7i0-Ie-i24" id="JIg-D5-st8"/>
+                                            </connections>
+                                        </picker>
+                                    </items>
+                                </group>
+                                <button width="1" alignment="left" title="Save" id="xqe-kN-A5S">
+                                    <connections>
+                                        <action selector="saveButtonAction" destination="7i0-Ie-i24" id="ers-B7-Xu0"/>
+                                    </connections>
+                                </button>
+                                <button width="1" alignment="left" title="Delete" id="Efo-ie-OTC">
+                                    <connections>
+                                        <action selector="deleteButtonAction" destination="7i0-Ie-i24" id="7RX-hQ-BuF"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
                     </items>
+                    <connections>
+                        <outlet property="hourPicker" destination="ihS-sj-rCV" id="A8z-eC-Xti"/>
+                        <outlet property="minutePicker" destination="Oxz-Iy-yyu" id="ogZ-ah-7kv"/>
+                        <outlet property="titleTextField" destination="q3P-cp-5Il" id="rMd-7e-McF"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="278" y="78"/>
+            <point key="canvasLocation" x="278" y="152.5"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
