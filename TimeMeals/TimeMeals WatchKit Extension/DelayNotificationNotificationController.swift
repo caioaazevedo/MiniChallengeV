@@ -45,32 +45,13 @@ class DelayNotificationNotificationController: WKUserNotificationInterfaceContro
     }
     
     @IBAction func markAsDone() {
-        meal?.status = .rightTime
-        
-        MealDAO().update(meal: meal!) { (result) in
-            if result {
+        TimeValidator().defineMealStatus(oldMeal: meal!) { (resultMeal) in
+            if resultMeal == nil  {
+                print("Error when update meal`s status on Notification")
+            } else {
                 print("Meal marked as done")
             }
+            performDismissAction()
         }
-        
-        var reportsArray = [Report]()
-        
-        ReportDAO().retrieve { (reports) in
-            
-            guard let reports = reports else {return}
-            reportsArray = reports
-        }
-        
-        reportsArray.sort(by: {$0.week < $1.week})
-        
-        let index = reportsArray.count-1
-        
-        reportsArray[index].totalRightTime += 1
-        
-        ReportDAO().update(report: reportsArray[index]) { (result) in
-            print("report updated")
-        }
-        
-        performDismissAction()
     }
 }

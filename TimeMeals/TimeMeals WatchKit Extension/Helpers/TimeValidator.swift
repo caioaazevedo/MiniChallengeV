@@ -29,35 +29,40 @@ class TimeValidator {
         }
         
         MealDAO().update(meal: meal) { (result) in
-            if result {
-                var reportsArray = [Report]()
+            if !result {
+                completion(nil)
+            }
+            
+            var reportsArray = [Report]()
+            
+            ReportDAO().retrieve { (reports) in
                 
-                ReportDAO().retrieve { (reports) in
+                guard let reports = reports else {
+                    completion(nil)
+                    return
                     
-                    guard let reports = reports else {return}
-                    
-                    reportsArray = reports
-                    
-                    reportsArray.sort(by: {$0.week < $1.week})
-                    
-                    let index = reportsArray.count-1
-                    
-                    if meal.status == .rightTime {
-                        reportsArray[index].totalRightTime += 1
-                    } else {
-                        reportsArray[index].totalWrongTime += 1
-                    }
-                    
-                    ReportDAO().update(report: reportsArray[index]) { (result) in
-                        if result {
-                            print("report updated")
-                            completion(meal)
-                        }
-                    }
                 }
                 
-            } else {
-                completion(nil)
+                reportsArray = reports
+                
+                reportsArray.sort(by: {$0.week < $1.week})
+                
+                let index = reportsArray.count-1
+                
+                if meal.status == .rightTime {
+                    reportsArray[index].totalRightTime += 1
+                } else {
+                    reportsArray[index].totalWrongTime += 1
+                }
+                
+                ReportDAO().update(report: reportsArray[index]) { (result) in
+                    if !result {
+                        completion(nil)
+                    }
+                    
+                    print("report updated")
+                    completion(meal)
+                }
             }
         }
     }
