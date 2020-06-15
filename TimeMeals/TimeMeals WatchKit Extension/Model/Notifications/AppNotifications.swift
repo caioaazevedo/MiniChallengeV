@@ -48,13 +48,16 @@ class AppNotification: NSObject{
             
             print("authorized")
             
+            let delayTime = TimeInterval(delay)
+            
             let content = UNMutableNotificationContent()
+            content.categoryIdentifier = "myCategory"
             content.title = NSString.localizedUserNotificationString(forKey: meal.title, arguments: nil)
-            content.subtitle = NSString.localizedUserNotificationString(forKey: self.dateFormated(date: meal.time), arguments: nil)
+            content.subtitle = NSString.localizedUserNotificationString(forKey: self.dateFormated(date: meal.time.addingTimeInterval(delayTime)), arguments: nil)
             content.sound = UNNotificationSound.default
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            let request = UNNotificationRequest(identifier: "FiveSecond", content: content, trigger: trigger) // Schedule the notification.
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: delayTime, repeats: false)
+            let request = UNNotificationRequest(identifier: "notficationWiithDelay", content: content, trigger: trigger) // Schedule the notification.
             let center = UNUserNotificationCenter.current()
             center.add(request) { (error : Error?) in
                 if let theError = error {
@@ -76,7 +79,8 @@ class AppNotification: NSObject{
             
             let notification = UNMutableNotificationContent()
             notification.categoryIdentifier = "myCategory"
-            notification.title = meal.title
+            notification.title = NSString.localizedUserNotificationString(forKey: meal.title, arguments: nil)
+            notification.subtitle = NSString.localizedUserNotificationString(forKey: self.dateFormated(date: meal.time), arguments: nil)
             notification.sound = UNNotificationSound.default
             
             // Configure the recurring date.
@@ -90,7 +94,7 @@ class AppNotification: NSObject{
 //            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            let request = UNNotificationRequest(identifier: "", content: notification, trigger: trigger)
+            let request = UNNotificationRequest(identifier: "notfication", content: notification, trigger: trigger)
             
             let center = UNUserNotificationCenter.current()
             center.add(request) { (error : Error?) in

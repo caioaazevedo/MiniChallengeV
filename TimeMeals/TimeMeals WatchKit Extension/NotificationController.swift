@@ -48,13 +48,21 @@ class NotificationController: WKUserNotificationInterfaceController {
     }
     
     @IBAction func markMeal() {
-        print("Meal marked as done")
+        meal?.status = .rightTime
+        
+        MealDAO().update(meal: meal!) { (result) in
+            if result {
+                print("Meal marked as done")
+            }
+        }
+        
         performDismissAction()
     }
     
     @IBAction func minDelayMeal() {
         print("15 minutes - min delay")
         
+        // Scheduule a notifcation with 30 minutes delay
         AppNotification().sendNotifications(meal: meal!, delay: 15)
         
         performDismissAction()
@@ -62,6 +70,10 @@ class NotificationController: WKUserNotificationInterfaceController {
     
     @IBAction func maxDelayMeal() {
         print("30 minutes - min delay")
+        
+        // Scheduule a notifcation with 30 minutes delay
+        AppNotification().sendNotifications(meal: meal!, delay: 30)
+        
         performDismissAction()
     }
 }
