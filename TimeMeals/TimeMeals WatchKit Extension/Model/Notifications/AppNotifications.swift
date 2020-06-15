@@ -12,6 +12,7 @@ import UserNotifications
 class AppNotification: NSObject{
     let notificationCenter = UNUserNotificationCenter.current()
     
+    /// Description: request the user authorization to send notifications
     func requestAuthorization(){
         let authorizationOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         
@@ -28,6 +29,8 @@ class AppNotification: NSObject{
         }
     }
     
+    /// Description: check if the user authorized send notifications
+    /// - Parameter completion: return a boolean in case of success or failure
     func checkAuthorization(completion: @escaping (Bool) -> Void){
         notificationCenter.getNotificationSettings { (settings) in
             guard settings.authorizationStatus == .authorized else {
@@ -41,6 +44,10 @@ class AppNotification: NSObject{
         }
     }
     
+    /// Description: sendo notification with delay
+    /// - Parameters:
+    ///   - meal: the meal information for notification data
+    ///   - delay: the ttime delay of the notification
     func sendNotifications(meal: Meal, delay: Int) {
         
         checkAuthorization { (authorized) in
@@ -48,10 +55,10 @@ class AppNotification: NSObject{
             
             print("authorized")
             
-            let delayTime = TimeInterval(delay)
+            let delayTime = TimeInterval(delay) // add * 60 - to convert to minutes
             
             let content = UNMutableNotificationContent()
-            content.categoryIdentifier = "myCategory"
+            content.categoryIdentifier = "delayNotification"
             content.title = NSString.localizedUserNotificationString(forKey: meal.title, arguments: nil)
             content.subtitle = NSString.localizedUserNotificationString(forKey: self.dateFormated(date: meal.time.addingTimeInterval(delayTime)), arguments: nil)
             content.sound = UNNotificationSound.default
@@ -71,6 +78,8 @@ class AppNotification: NSObject{
         
     }
     
+    /// Description: the dynamic notification to remember the user every day
+    /// - Parameter meal: the meal information for notification data
     func sendDynamicNotification(meal: Meal) {
         checkAuthorization { (authorized) in
             guard authorized else { return }
@@ -88,12 +97,15 @@ class AppNotification: NSObject{
             let calendar = Calendar.current
             dateComponents.calendar = calendar
             
-//            dateComponents.hour = calendar.component(.hour, from: meal.time)
-//            dateComponents.minute = calendar.component(.minute, from: meal.time)
             
-//            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            dateComponents.hour = calendar.component(.hour, from: meal.time)
+            dateComponents.minute = calendar.component(.minute, from: meal.time)
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            
+            // Uncomment this line to test
+            // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
             let request = UNNotificationRequest(identifier: "notfication", content: notification, trigger: trigger)
             
             let center = UNUserNotificationCenter.current()
@@ -108,6 +120,9 @@ class AppNotification: NSObject{
         }
     }
     
+    /// Description: format a date
+    /// - Parameter date: the date to format
+    /// - Returns: the hours and minutes of the date as String
     func dateFormated(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"

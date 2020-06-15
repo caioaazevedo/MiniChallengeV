@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6CB2716524954DC3009A207F /* MealDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB2716424954DC3009A207F /* MealDAO.swift */; };
+		E20AF64A2498037600AEC68A /* DelayNotificationNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20AF6492498037600AEC68A /* DelayNotificationNotificationController.swift */; };
 		E2321D472493AEB900E4D76F /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D462493AEB900E4D76F /* Meal.swift */; };
 		E2321D4B2493B2DF00E4D76F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D4A2493B2DF00E4D76F /* Enums.swift */; };
 		E2321D502493B8A900E4D76F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D4F2493B8A900E4D76F /* Report.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		6CB2716424954DC3009A207F /* MealDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDAO.swift; sourceTree = "<group>"; };
+		E20AF6492498037600AEC68A /* DelayNotificationNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayNotificationNotificationController.swift; sourceTree = "<group>"; };
 		E2321D462493AEB900E4D76F /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		E2321D4A2493B2DF00E4D76F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		E2321D4F2493B8A900E4D76F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				E2C1C75924915E4800EBBC46 /* Assets.xcassets */,
 				E2C1C75B24915E4800EBBC46 /* Info.plist */,
 				E2C1C75C24915E4800EBBC46 /* PushNotificationPayload.apns */,
+				E20AF6492498037600AEC68A /* DelayNotificationNotificationController.swift */,
 			);
 			path = "TimeMeals WatchKit Extension";
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				E2321D6B24959E8800E4D76F /* AppNotifications.swift in Sources */,
 				E2321D472493AEB900E4D76F /* Meal.swift in Sources */,
 				6CB2716524954DC3009A207F /* MealDAO.swift in Sources */,
+				E20AF64A2498037600AEC68A /* DelayNotificationNotificationController.swift in Sources */,
 				E2C1C75624915E4600EBBC46 /* NotificationController.swift in Sources */,
 				E2321D502493B8A900E4D76F /* Report.swift in Sources */,
 				E2C1C75824915E4600EBBC46 /* ComplicationController.swift in Sources */,
