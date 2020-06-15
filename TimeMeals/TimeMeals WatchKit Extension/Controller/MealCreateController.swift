@@ -1,5 +1,5 @@
 //
-//  MealEditController.swift
+//  MealCreateController.swift
 //  TimeMeals WatchKit Extension
 //
 //  Created by Jonatas Coutinho de Faria on 15/06/20.
@@ -8,7 +8,7 @@
 
 import WatchKit
 
-class MealEditController: WKInterfaceController  {
+class MealCreateController: WKInterfaceController {
     
     //MARK: Outlets
     @IBOutlet weak var titleTextField: WKInterfaceTextField!
@@ -16,15 +16,18 @@ class MealEditController: WKInterfaceController  {
     @IBOutlet weak var minutePicker: WKInterfacePicker!
     
     //MARK: Properties
-    var currentMeal: Meal!
+    var newMeal: Meal!
+    
+    override init() {
+        let initialTime = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())
+        
+        self.newMeal = Meal(uuid: UUID.init(), title: "", time: initialTime!, status: .notTimeYet, wrongTimes: 0)
+    }
     
     //MARK: Life Cycle Methods
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        guard let meal = context as? Meal else {return}
-        
-        currentMeal = meal
         setUpPickers()
     }
     
@@ -36,7 +39,7 @@ class MealEditController: WKInterfaceController  {
         var hourOptions: [WKPickerItem] = []
         var minuteOptions: [WKPickerItem] = []
         
-        titleTextField.setText(currentMeal.title)
+        titleTextField.setText(newMeal.title)
         
         for i in 0...23{
             let item = WKPickerItem()
@@ -53,8 +56,8 @@ class MealEditController: WKInterfaceController  {
         hourPicker.setItems(hourOptions)
         minutePicker.setItems(minuteOptions)
         
-        let currentHour = Calendar.current.component(.hour, from: currentMeal.time)
-        let currentminute = Calendar.current.component(.minute, from: currentMeal.time)
+        let currentHour = Calendar.current.component(.hour, from: newMeal.time)
+        let currentminute = Calendar.current.component(.minute, from: newMeal.time)
         
         hourPicker.setSelectedItemIndex(currentHour)
         minutePicker.setSelectedItemIndex(currentminute)
@@ -64,7 +67,7 @@ class MealEditController: WKInterfaceController  {
     
     @IBAction func titleTextFieldAction(_ value: NSString?) {
         guard let text = value else {return}
-        currentMeal.title = text as String
+        newMeal.title = text as String
     }
 
     //MARK: Picker Action Methods
@@ -73,35 +76,30 @@ class MealEditController: WKInterfaceController  {
         var calendar = Calendar.current
         calendar.timeZone = TimeZone(abbreviation: "UTC")!
         
-        let minute = calendar.component(.minute, from: currentMeal.time)
+        let minute = calendar.component(.minute, from: newMeal.time)
         
-        currentMeal.time = calendar.date(bySettingHour: value, minute: minute, second: 0, of: currentMeal.time)!
+        newMeal.time = calendar.date(bySettingHour: value, minute: minute, second: 0, of: newMeal.time)!
     }
     
     @IBAction func minutePickerAction(_ value: Int) {
         var calendar = Calendar.current
         calendar.timeZone = TimeZone(abbreviation: "UTC")!
         
-        let hour = calendar.component(.hour, from: currentMeal.time)
+        let hour = calendar.component(.hour, from: newMeal.time)
         
-        currentMeal.time = calendar.date(bySettingHour: hour, minute: value, second: 0, of: currentMeal.time)!
+        newMeal.time = calendar.date(bySettingHour: hour, minute: value, second: 0, of: newMeal.time)!
     }
     
     //MARK: Buttons Action Methods
 
-    @IBAction func saveButtonAction() {
-        if(currentMeal.title.isEmpty){
+    @IBAction func createButtonAction() {
+        if(newMeal.title.isEmpty){
             showAlertValidate()
         }else{
-            showAlertChange()
+            let mealDAO = MealDAO()
+            
         }
     }
-    
-    @IBAction func deleteButtonAction() {
-        showAlertDelete()
-    }
-    
-    //MARK: Validate and Alerts Functions
     
     /// Description: Show the validate alert
     func showAlertValidate(){
@@ -109,37 +107,5 @@ class MealEditController: WKInterfaceController  {
         let action = WKAlertAction(title: "Close", style: .default) {}
         
         presentAlert(withTitle: "Attention", message: "The meal title can not be empty.", preferredStyle: .actionSheet, actions: [action])
-    }
-    
-    /// Description: Show the change meal alert
-    func showAlertChange(){
-        
-        let action1 = WKAlertAction(title: "Change", style: .destructive) {
-            let mealDAO = MealDAO()
-            
-            mealDAO.update(meal: self.currentMeal, completion: {_ in
-                self.pop()
-            })
-        }
-        
-        let action2 = WKAlertAction(title: "Cancel", style: .default) {}
-        
-        presentAlert(withTitle: "Attention", message: "Are you sure you want to change this meal? The weekly report will be restarted.", preferredStyle: .actionSheet, actions: [action1,action2])
-    }
-    
-    /// Description: Show the delete alert
-    func showAlertDelete(){
-
-        let action1 = WKAlertAction(title: "Delete", style: .destructive) {
-            let mealDAO = MealDAO()
-            
-            mealDAO.delete(meal: self.currentMeal, completion: {_ in
-                self.pop()
-            })
-        }
-        
-        let action2 = WKAlertAction(title: "Cancel", style: .cancel) {}
-
-        presentAlert(withTitle: "Attention", message: "Are you sure you want to delete this meal? The weekly report will be restarted.", preferredStyle: .actionSheet, actions: [action1,action2])
     }
 }
