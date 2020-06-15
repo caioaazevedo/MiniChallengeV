@@ -12,6 +12,7 @@
 		0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE732C32495D63500A0A67C /* MealRowController.swift */; };
 		49D164A42497853E00A74A51 /* MealEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A32497853E00A74A51 /* MealEditController.swift */; };
 		49D164A624978AD000A74A51 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A524978AD000A74A51 /* IntExtension.swift */; };
+		6C0FED5E2497F1B2003AD52D /* ReportMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0FED5D2497F1B2003AD52D /* ReportMetrics.swift */; };
 		6CB2716524954DC3009A207F /* MealDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB2716424954DC3009A207F /* MealDAO.swift */; };
 		E2321D472493AEB900E4D76F /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D462493AEB900E4D76F /* Meal.swift */; };
 		E2321D4B2493B2DF00E4D76F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D4A2493B2DF00E4D76F /* Enums.swift */; };
@@ -80,6 +81,7 @@
 		0FE732C32495D63500A0A67C /* MealRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowController.swift; sourceTree = "<group>"; };
 		49D164A32497853E00A74A51 /* MealEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEditController.swift; sourceTree = "<group>"; };
 		49D164A524978AD000A74A51 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		6C0FED5D2497F1B2003AD52D /* ReportMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMetrics.swift; sourceTree = "<group>"; };
 		6CB2716424954DC3009A207F /* MealDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDAO.swift; sourceTree = "<group>"; };
 		E2321D462493AEB900E4D76F /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		E2321D4A2493B2DF00E4D76F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		0FA4B6B42496C26000A98649 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E2C1C75324915E4600EBBC46 /* ExtensionDelegate.swift */,
 				0FA4B6B52496C26E00A98649 /* DateExtension.swift */,
 				49D164A524978AD000A74A51 /* IntExtension.swift */,
 			);
@@ -137,12 +140,38 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		6C0FED5A2497ED2F003AD52D /* Complication */ = {
+			isa = PBXGroup;
+			children = (
+				E2C1C75724915E4600EBBC46 /* ComplicationController.swift */,
+				E2C1C75924915E4800EBBC46 /* Assets.xcassets */,
+			);
+			path = Complication;
+			sourceTree = "<group>";
+		};
+		6C0FED5B2497ED5B003AD52D /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				E2C1C75524915E4600EBBC46 /* NotificationController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		6C0FED5C2497F0B7003AD52D /* BO */ = {
+			isa = PBXGroup;
+			children = (
+				6C0FED5D2497F1B2003AD52D /* ReportMetrics.swift */,
+			);
+			path = BO;
+			sourceTree = "<group>";
+		};
 		E2321D452493AEA200E4D76F /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E2321D462493AEB900E4D76F /* Meal.swift */,
 				E2321D4F2493B8A900E4D76F /* Report.swift */,
 				E2321D662493D59F00E4D76F /* DAO */,
+				6C0FED5C2497F0B7003AD52D /* BO */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,6 +182,8 @@
 				0FA4B6B42496C26000A98649 /* Extension */,
 				E2321D492493B2AD00E4D76F /* Enums */,
 				0FA4B6B22496BE7B00A98649 /* Time.swift */,
+				E2C1C75C24915E4800EBBC46 /* PushNotificationPayload.apns */,
+				E2321D602493BDBB00E4D76F /* TimeMeals WatchKit Extension.entitlements */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -225,17 +256,13 @@
 		E2C1C75024915E4600EBBC46 /* TimeMeals WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0FE732C22495D61B00A0A67C /* Controller */,
-				E2321D602493BDBB00E4D76F /* TimeMeals WatchKit Extension.entitlements */,
-				E2321D512493B9DF00E4D76F /* Database */,
-				E2321D482493B29E00E4D76F /* Helpers */,
-				E2321D452493AEA200E4D76F /* Model */,
-				E2C1C75324915E4600EBBC46 /* ExtensionDelegate.swift */,
-				E2C1C75524915E4600EBBC46 /* NotificationController.swift */,
-				E2C1C75724915E4600EBBC46 /* ComplicationController.swift */,
-				E2C1C75924915E4800EBBC46 /* Assets.xcassets */,
 				E2C1C75B24915E4800EBBC46 /* Info.plist */,
-				E2C1C75C24915E4800EBBC46 /* PushNotificationPayload.apns */,
+				E2321D512493B9DF00E4D76F /* Database */,
+				E2321D452493AEA200E4D76F /* Model */,
+				0FE732C22495D61B00A0A67C /* Controller */,
+				6C0FED5B2497ED5B003AD52D /* Notification */,
+				6C0FED5A2497ED2F003AD52D /* Complication */,
+				E2321D482493B29E00E4D76F /* Helpers */,
 			);
 			path = "TimeMeals WatchKit Extension";
 			sourceTree = "<group>";
@@ -374,6 +401,7 @@
 				49D164A624978AD000A74A51 /* IntExtension.swift in Sources */,
 				E2321D502493B8A900E4D76F /* Report.swift in Sources */,
 				E2C1C75824915E4600EBBC46 /* ComplicationController.swift in Sources */,
+				6C0FED5E2497F1B2003AD52D /* ReportMetrics.swift in Sources */,
 				0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */,
 				0FA4B6B32496BE7B00A98649 /* Time.swift in Sources */,
 				E2C1C75424915E4600EBBC46 /* ExtensionDelegate.swift in Sources */,
