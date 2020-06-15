@@ -100,6 +100,7 @@
                         <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <color key="backgroundColor" red="0.1741943061" green="0.3566455543" blue="0.58826529979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
                         <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
@@ -112,9 +113,28 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="TimeMeals_WatchKit_App" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="TimeMeals_WatchKit_App" customModuleProvider="target">
+                    <color key="backgroundColor" red="0.1741943061" green="0.3566455543" blue="0.58826529979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                </controller>
             </objects>
             <point key="canvasLocation" x="385" y="812"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="3Vb-AR-GRD">
+            <objects>
+                <notificationController id="wqS-uM-6E8">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IzJ-1Q-KZo"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="delayNotification" id="6Rv-bY-L2c"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IzJ-1Q-KZo" id="TMM-Am-VCU"/>
+                        <segue destination="NVc-Dt-z5b" kind="relationship" relationship="dynamicNotificationInterface" id="iEx-jm-Dwm"/>
+                        <segue destination="4D2-Wx-SE7" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="cUs-s5-dlU"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="-41" y="1439"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
@@ -159,6 +179,42 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="385" y="399"/>
+        </scene>
+        <!--Dynamic Notification Interface Controller-->
+        <scene sceneID="0NY-oM-9dS">
+            <objects>
+                <controller id="NVc-Dt-z5b"/>
+            </objects>
+            <point key="canvasLocation" x="385" y="1233"/>
+        </scene>
+        <!--Delay Notification Notification Controller-->
+        <scene sceneID="IKy-bU-QqM">
+            <objects>
+                <controller id="4D2-Wx-SE7" customClass="DelayNotificationNotificationController" customModule="TimeMeals_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" spacing="9" id="Ttd-I7-0uc">
+                            <items>
+                                <label width="1" alignment="left" text="time" textAlignment="center" id="Cav-EJ-NvW"/>
+                                <label width="1" alignment="left" text="Meal" textAlignment="center" id="Ucg-Fp-lEp"/>
+                                <separator alignment="left" id="sdd-oj-Cuo"/>
+                                <label width="1" alignment="left" text="Did you eat your meal?" textAlignment="center" numberOfLines="0" id="eym-zt-LHk"/>
+                                <button width="1" alignment="left" title="Mark as done" id="0ru-fV-3zU">
+                                    <color key="backgroundColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="markAsDone" destination="4D2-Wx-SE7" id="Law-yN-Nu4"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <color key="backgroundColor" red="0.74901960779999999" green="0.38823529410000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="timeLabel" destination="Cav-EJ-NvW" id="u0t-a4-Lgo"/>
+                        <outlet property="titleLabel" destination="Ucg-Fp-lEp" id="GrR-69-2zT"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="385" y="1598"/>
         </scene>
     </scenes>
 </document>
