@@ -60,25 +60,6 @@ class InterfaceController: WKInterfaceController  {
     
     //MARK: Created Methods
     
-    /// Define meal time with current time and change status
-    /// - Parameter row: The index of row in analyze
-    func defineMealStatus(rowIndex:Int){
-        let scheduleTime = self.mealsSchedule[rowIndex].time
-        let currentTime = Date().addingTimeInterval(6 * 60)
-        
-        if scheduleTime.addingTimeInterval(30 * 60).time < currentTime.time{
-            //wrogn time
-            self.mealsSchedule[rowIndex].status = .wrongTime
-            self.mealsSchedule[rowIndex].wrongTimes += 1
-        }else if scheduleTime.addingTimeInterval(-30 * 60).time > Date().time{
-            //so early
-            self.mealsSchedule[rowIndex].status = .notTimeYet
-        }else{
-            // user got !
-            self.mealsSchedule[rowIndex].status = .rightTime
-        }
-    }
-    
     
     /// Verify the meal status and change the view
     /// - Parameter row: The row to change
@@ -144,7 +125,15 @@ extension InterfaceController: rowButtonClicked{
     /// Delegate called when the check button is clicked
     /// - Parameter index: waht specific row was checked
     func rowClicked(at index: Int) {
-        self.defineMealStatus(rowIndex: index)
-        self.setUpTable()
+        TimeValidator().defineMealStatus(oldMeal: mealsSchedule[index]) { (meal) in
+            guard let meal = meal else {
+                print("error")
+                return
+            }
+            
+            mealsSchedule[index] = meal
+            self.setUpTable()
+        }
+        
     }
 }
