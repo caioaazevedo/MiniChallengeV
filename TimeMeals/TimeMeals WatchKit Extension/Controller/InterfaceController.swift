@@ -18,24 +18,23 @@ class InterfaceController: WKInterfaceController  {
     //MARK: Properties
     var mealsSchedule = [Meal]()
     var mealDAO = MealDAO()
+    
     //MARK: Life Cycle Methods
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        self.fetchMealSchedule()
-        self.setUpTable()
-        
     }
     
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        
+        self.fetchMealSchedule()
+        self.setUpTable()
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
     //MARK: Table Methods
     
     /// Set up table rows
