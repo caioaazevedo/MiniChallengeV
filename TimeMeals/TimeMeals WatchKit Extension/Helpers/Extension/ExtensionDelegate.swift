@@ -79,6 +79,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         let report = Report(uuid: UUID(), week: 0, totalRightTime: 0, totalWrongTime: 0, mostWrongTimeMeal: nil)
         
         ReportDAO().create(report: report) { _ in
+            
             return
         }
     }
