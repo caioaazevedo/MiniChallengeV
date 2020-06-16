@@ -14,6 +14,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Perform any final initialization of your application.
         if  verifyFirstLaunch(){
             self.createDefaultMeal()
+            self.createFirstReport()
         }
     }
     
@@ -56,6 +57,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
     
+    /// Description: creates and initializes the standard diet for the user to follow
     func createDefaultMeal(){
         let mealDao = MealDAO()
         let date = DateManager()
@@ -72,6 +74,19 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
     
+    /// Description:  create the first report of the app
+    func createFirstReport(){
+        let report = Report(uuid: UUID(), week: 0, totalRightTime: 0, totalWrongTime: 0, mostWrongTimeMeal: nil)
+        
+        ReportDAO().create(report: report) { (result) in
+            let msg = result == true ? "First Report Created" : "Error when create report"
+            
+            print(msg)
+        }
+    }
+    
+    /// Description: Verify if is the first time launch the app
+    /// - Returns: return the status of the first time
     func verifyFirstLaunch() -> Bool{
         
         if !UserDefaults.standard.bool(forKey: "appFirstLaunch"){

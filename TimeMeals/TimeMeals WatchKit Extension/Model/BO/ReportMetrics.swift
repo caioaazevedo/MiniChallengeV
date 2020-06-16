@@ -38,7 +38,7 @@ class ReportMetrics {
         }
     }
     
-    func mostWrongTimeMeal(completion: (String)-> Void) {
+    func mostWrongTimeMeal(completion: (String?)-> Void) {
         atualReport { (report) in
             completion(report.mostWrongTimeMeal)
         }
