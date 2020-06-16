@@ -196,6 +196,22 @@
             </objects>
             <point key="canvasLocation" x="385" y="1233"/>
         </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="oNk-ru-id5">
+            <objects>
+                <notificationController id="joj-w7-DBG">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="Xgb-ju-0jU"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="reportNotification" id="3tu-ve-TaE"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="Xgb-ju-0jU" id="d9f-7J-8T1"/>
+                        <segue destination="na1-Za-4iJ" kind="relationship" relationship="dynamicNotificationInterface" id="4Zz-f5-49P"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="-112" y="2423"/>
+        </scene>
         <!--Delay Notification Notification Controller-->
         <scene sceneID="IKy-bU-QqM">
             <objects>
@@ -223,7 +239,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="385" y="1598"/>
+            <point key="canvasLocation" x="385" y="1669"/>
         </scene>
         <!--Criate-->
         <scene sceneID="GSc-Cj-KvX">
@@ -272,5 +288,27 @@
             </objects>
             <point key="canvasLocation" x="385" y="-190"/>
         </scene>
+        <!--Roport Notification Controller-->
+        <scene sceneID="32t-cX-hdo">
+            <objects>
+                <controller id="na1-Za-4iJ" customClass="RoportNotificationController" customModule="TimeMeals_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Report" id="c0K-8Y-YYE"/>
+                        <imageView width="45" height="51" alignment="center" image="doc.text" catalog="system" contentMode="scaleAspectFit" id="XzX-vP-Jed"/>
+                        <separator alignment="left" id="Ezl-lZ-hr2"/>
+                        <label alignment="center" verticalAlignment="center" text="rigthPercent" id="FqN-oR-HfP"/>
+                        <label alignment="center" verticalAlignment="center" text="wrongPercent" id="Jv2-hp-iZV"/>
+                    </items>
+                    <connections>
+                        <outlet property="rightPercentLabel" destination="FqN-oR-HfP" id="sn7-dt-jeW"/>
+                        <outlet property="wrongPercentLabel" destination="Jv2-hp-iZV" id="eAu-RF-oak"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="294" y="2430"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="doc.text" catalog="system" width="117" height="128"/>
+    </resources>
 </document>

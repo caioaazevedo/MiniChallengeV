@@ -55,7 +55,7 @@ class AppNotification: NSObject{
             
             print("authorized")
             
-            let delayTime = TimeInterval(delay) // add * 60 - to convert to minutes
+            let delayTime = TimeInterval(delay * 60) // add * 60 - to convert to minutes
             
             let content = UNMutableNotificationContent()
             content.categoryIdentifier = "delayNotification"
@@ -75,6 +75,41 @@ class AppNotification: NSObject{
             }
         }
         
+    }
+    
+    ///Description: The notification to send week report
+    /// - Parameter report: the report information for notification data
+    func sendReportNotification(report: Report) {
+        checkAuthorization { (authorized) in
+            guard authorized else { return }
+            print("authorized")
+            
+            let notification = UNMutableNotificationContent()
+            notification.categoryIdentifier = "reportNotification"
+            notification.title = NSString.localizedUserNotificationString(forKey: "Report", arguments: nil)
+            notification.sound = .default
+            
+            var dateComponents = DateComponents()
+            let calendar = Calendar.current
+            dateComponents.calendar = calendar
+            
+            dateComponents.weekday = 7
+            dateComponents.hour = 9
+            dateComponents.minute = 0
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            
+            let request = UNNotificationRequest(identifier: "\(report.uuid.uuidString)", content: notification, trigger: trigger)
+            
+            let center = UNUserNotificationCenter.current()
+            center.add(request) { (error) in
+                if let err = error {
+                    print("Error : \(err)")
+                }
+                print("notify")
+            }
+            
+        }
     }
     
     /// Description: the dynamic notification to remember the user every day

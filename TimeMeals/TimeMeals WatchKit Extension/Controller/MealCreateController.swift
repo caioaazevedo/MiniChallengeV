@@ -73,12 +73,13 @@ class MealCreateController: WKInterfaceController {
     //MARK: Picker Action Methods
     
     @IBAction func hourPickerAction(_ value: Int) {
-        var calendar = Calendar.current
-        calendar.timeZone = TimeZone(abbreviation: "UTC")!
+        let calendar = Calendar.current
+        var components = DateComponents()
         
+        components.hour = value
         let minute = calendar.component(.minute, from: newMeal.time)
         
-        newMeal.time = calendar.date(bySettingHour: value, minute: minute, second: 0, of: newMeal.time)!
+        newMeal.time = calendar.date(bySettingHour: components.hour!, minute: minute, second: 0, of: newMeal.time)!
     }
     
     @IBAction func minutePickerAction(_ value: Int) {
