@@ -16,6 +16,7 @@
 		49D164A82498031200A74A51 /* MealCreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A72498031200A74A51 /* MealCreateController.swift */; };
 		6C0FED5E2497F1B2003AD52D /* ReportMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0FED5D2497F1B2003AD52D /* ReportMetrics.swift */; };
 		6CB2716524954DC3009A207F /* MealDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB2716424954DC3009A207F /* MealDAO.swift */; };
+		6CCEE63C249958DC00DF53D8 /* RoportNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEE63B249958DC00DF53D8 /* RoportNotificationController.swift */; };
 		E20AF64A2498037600AEC68A /* DelayNotificationNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20AF6492498037600AEC68A /* DelayNotificationNotificationController.swift */; };
 		E20AF64C2498141E00AEC68A /* TimeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20AF64B2498141E00AEC68A /* TimeValidator.swift */; };
 		E2321D472493AEB900E4D76F /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2321D462493AEB900E4D76F /* Meal.swift */; };
@@ -90,6 +91,7 @@
 		49D164A72498031200A74A51 /* MealCreateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateController.swift; sourceTree = "<group>"; };
 		6C0FED5D2497F1B2003AD52D /* ReportMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMetrics.swift; sourceTree = "<group>"; };
 		6CB2716424954DC3009A207F /* MealDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDAO.swift; sourceTree = "<group>"; };
+		6CCEE63B249958DC00DF53D8 /* RoportNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoportNotificationController.swift; sourceTree = "<group>"; };
 		E20AF6492498037600AEC68A /* DelayNotificationNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayNotificationNotificationController.swift; sourceTree = "<group>"; };
 		E20AF64B2498141E00AEC68A /* TimeValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeValidator.swift; sourceTree = "<group>"; };
 		E2321D462493AEB900E4D76F /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		E2321D622493BDC000E4D76F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		E2321D642493BE4500E4D76F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.2.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		E2321D672493D5CA00E4D76F /* ReportDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDAO.swift; sourceTree = "<group>"; };
-		E2321D6A24959E8800E4D76F /* AppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
+		E2321D6A24959E8800E4D76F /* AppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		E2C1C73924915E4100EBBC46 /* TimeMeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeMeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C1C73D24915E4100EBBC46 /* TimeMeals WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimeMeals WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C1C74324915E4100EBBC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				E20AF6492498037600AEC68A /* DelayNotificationNotificationController.swift */,
 				E2321D6A24959E8800E4D76F /* AppNotifications.swift */,
 				E2C1C75524915E4600EBBC46 /* NotificationController.swift */,
+				6CCEE63B249958DC00DF53D8 /* RoportNotificationController.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2321D6B24959E8800E4D76F /* AppNotifications.swift in Sources */,
+				6CCEE63C249958DC00DF53D8 /* RoportNotificationController.swift in Sources */,
 				E2321D472493AEB900E4D76F /* Meal.swift in Sources */,
 				0FA4B6B62496C26E00A98649 /* DateExtension.swift in Sources */,
 				6CB2716524954DC3009A207F /* MealDAO.swift in Sources */,
