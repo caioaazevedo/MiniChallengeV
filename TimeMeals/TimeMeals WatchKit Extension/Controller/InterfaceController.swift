@@ -40,7 +40,7 @@ class InterfaceController: WKInterfaceController  {
     /// Set up table rows
     func setUpTable(){
         self.mealList.setNumberOfRows(self.mealsSchedule.count, withRowType: "MealRow")
-        self.mealsSchedule.sort(by: {$0.time < $1.time})
+        self.mealsSchedule.sort(by: {$0.time.time < $1.time.time})
         for rowIndex in 0..<self.mealsSchedule.count{
             guard let row = self.mealList.rowController(at: rowIndex) as? MealRowController else {continue}
             row.scheduleLabel.setText(dateFormatter(date: self.mealsSchedule[rowIndex].time))

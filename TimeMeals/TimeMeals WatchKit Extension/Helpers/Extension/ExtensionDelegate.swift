@@ -78,10 +78,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func createFirstReport(){
         let report = Report(uuid: UUID(), week: 0, totalRightTime: 0, totalWrongTime: 0, mostWrongTimeMeal: nil)
         
-        ReportDAO().create(report: report) { (result) in
-            let msg = result == true ? "First Report Created" : "Error when create report"
-            
-            print(msg)
+        ReportDAO().create(report: report) { _ in
+            return
         }
     }
     
