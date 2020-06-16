@@ -111,6 +111,12 @@ extension InterfaceController: rowButtonClicked{
                 return
             }
             
+            /// Remove Delay Notifcatiion
+            AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)Delay")
+            
+            ///Remove Standart Meal Notification
+            AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)")
+            
             mealsSchedule[index] = meal
             self.setUpTable()
         }

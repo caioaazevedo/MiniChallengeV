@@ -64,7 +64,7 @@ class AppNotification: NSObject{
             content.sound = UNNotificationSound.default
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: delayTime, repeats: false)
-            let request = UNNotificationRequest(identifier: meal.uuid.uuidString, content: content, trigger: trigger) // Schedule the notification.
+            let request = UNNotificationRequest(identifier: "\(meal.uuid.uuidString)Delay", content: content, trigger: trigger) // Schedule the notification.
             self.notificationCenter.add(request) { (error : Error?) in
                 if let theError = error {
                     // Handle any errors
