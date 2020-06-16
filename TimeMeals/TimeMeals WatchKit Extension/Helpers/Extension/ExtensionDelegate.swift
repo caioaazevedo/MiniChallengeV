@@ -15,6 +15,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         if  verifyFirstLaunch(){
             self.createDefaultMeal()
             self.createFirstReport()
+            AppNotification().requestAuthorization()
         }
     }
     

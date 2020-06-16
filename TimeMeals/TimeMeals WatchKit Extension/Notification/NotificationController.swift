@@ -21,21 +21,23 @@ class NotificationController: WKUserNotificationInterfaceController {
     override init() {
         // Initialize variables here.
         super.init()
-        meal = Meal(uuid: UUID(), title: "café", time: Date(), status: .notTimeYet, wrongTimes: 0)
         // Configure interface objects here.
-        print("init")
+        
+        TimeValidator().searchMealByCurrentTime { (meal) in
+            if meal != nil {
+                self.meal = meal
+            }
+        }
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        print("willActivate")
     }
 
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
-        print("didDeactivate")
     }
 
     override func didReceive(_ notification: UNNotification) {
@@ -43,8 +45,10 @@ class NotificationController: WKUserNotificationInterfaceController {
         // Implement it if you use a dynamic notification interface.
         // Populate your dynamic notification interface as quickly as possible.
         
-        timeMealLabel.setText("07:00")
-        titleMealLabel.setText("Breakfast")
+        let dateFormated = AppNotification().dateFormated(date: meal?.time ?? Date())
+        
+        timeMealLabel.setText(dateFormated)
+        titleMealLabel.setText(meal?.title ?? "Meal")
     }
     
     @IBAction func markMeal() {

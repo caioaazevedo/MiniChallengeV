@@ -22,7 +22,11 @@ class DelayNotificationNotificationController: WKUserNotificationInterfaceContro
         
         // Configure interface objects here.
         
-        meal = Meal(uuid: UUID(), title: "café", time: Date(), status: .notTimeYet, wrongTimes: 0)
+        TimeValidator().searchMealByCurrentTime { (meal) in
+            if meal != nil {
+                self.meal = meal
+            }
+        }
     }
 
     override func willActivate() {
@@ -40,8 +44,10 @@ class DelayNotificationNotificationController: WKUserNotificationInterfaceContro
         // Implement it if you use a dynamic notification interface.
         // Populate your dynamic notification interface as quickly as possible.
         
-        timeLabel.setText("07:00")
-        titleLabel.setText("Breakfast")
+        let dateFormated = AppNotification().dateFormated(date: meal?.time ?? Date())
+        
+        timeLabel.setText(dateFormated)
+        titleLabel.setText(meal?.title ?? "Meal")
     }
     
     @IBAction func markAsDone() {

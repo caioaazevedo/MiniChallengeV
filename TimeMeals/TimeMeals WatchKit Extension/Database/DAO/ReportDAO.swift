@@ -111,7 +111,7 @@ class ReportDAO {
         let week = reportCD.value(forKey: "week") as! Int32
         let totalRightTime = reportCD.value(forKey: "totalRightTime") as! Int32
         let totalWrongTime = reportCD.value(forKey: "totalWrongTime") as! Int32
-        let mostWrongTimeMeal = reportCD.value(forKey: "mostWrongTimeMeal") as! String
+        let mostWrongTimeMeal = reportCD.value(forKey: "mostWrongTimeMeal") as? String
         
         let reportEntity = Report(uuid: uuid, week: Int(week), totalRightTime: Int(totalRightTime), totalWrongTime: Int(totalWrongTime), mostWrongTimeMeal: mostWrongTimeMeal)
         

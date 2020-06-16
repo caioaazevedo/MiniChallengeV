@@ -66,4 +66,31 @@ class TimeValidator {
             }
         }
     }
+    
+    /// Description: get the meal whose time is equal to the current time
+    /// - Parameter completion: returne the searched meal by current time
+    func searchMealByCurrentTime (completion: (Meal?) -> Void){
+        let calendar = Calendar.current
+        var componentsCurrent = DateComponents()
+        componentsCurrent.hour = calendar.component(.hour, from: Date())
+        componentsCurrent.minute = calendar.component(.minute, from: Date())
+        
+        MealDAO().retrieve { (meals) in
+            meals?.forEach({ (meal) in
+                var componentsMeal = DateComponents()
+                
+                componentsMeal.hour = calendar.component(.hour, from: meal.time)
+                componentsMeal.minute = calendar.component(.minute, from: meal.time)
+                
+                guard let minutesMeals = componentsMeal.minute, let currentMinutes = componentsCurrent.minute else { return }
+                
+                let difference = minutesMeals - currentMinutes
+                
+                /// If the components are equals or the user had a delay of 5 min -> return the meal
+                if componentsMeal == componentsCurrent ||  difference >= 5 || difference <= 5 {
+                    completion(meal)
+                }
+            })
+        }
+    }
 }
