@@ -98,6 +98,7 @@ class MealCreateController: WKInterfaceController {
         }else{
             let mealDAO = MealDAO()
             mealDAO.create(meal: newMeal, completion: {bool in
+                AppNotification().sendDynamicNotification(meal: newMeal)
                 pop()
             })
         }

@@ -64,9 +64,8 @@ class AppNotification: NSObject{
             content.sound = UNNotificationSound.default
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: delayTime, repeats: false)
-            let request = UNNotificationRequest(identifier: "notficationWiithDelay", content: content, trigger: trigger) // Schedule the notification.
-            let center = UNUserNotificationCenter.current()
-            center.add(request) { (error : Error?) in
+            let request = UNNotificationRequest(identifier: meal.uuid.uuidString, content: content, trigger: trigger) // Schedule the notification.
+            self.notificationCenter.add(request) { (error : Error?) in
                 if let theError = error {
                     // Handle any errors
                     print(("Error: \(theError)"))
@@ -106,10 +105,9 @@ class AppNotification: NSObject{
             
             // Uncomment this line to test
             // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            let request = UNNotificationRequest(identifier: "notfication", content: notification, trigger: trigger)
+            let request = UNNotificationRequest(identifier: meal.uuid.uuidString, content: notification, trigger: trigger)
             
-            let center = UNUserNotificationCenter.current()
-            center.add(request) { (error : Error?) in
+            self.notificationCenter.add(request) { (error : Error?) in
                 if let theError = error {
                     // Handle any errors
                     print(("Error: \(theError)"))
@@ -118,6 +116,12 @@ class AppNotification: NSObject{
                 print("notify")
             }
         }
+    }
+    
+    /// Description: Function to remove a notification
+    /// - Parameter identifier: notification identifier
+    func removeNotification(identifier: String) {
+        notificationCenter.removeDeliveredNotifications(withIdentifiers: [identifier])
     }
     
     /// Description: format a date
