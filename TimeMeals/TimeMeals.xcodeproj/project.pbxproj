@@ -11,6 +11,7 @@
 		0FA4B6B32496BE7B00A98649 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4B6B22496BE7B00A98649 /* Time.swift */; };
 		0FA4B6B62496C26E00A98649 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4B6B52496C26E00A98649 /* DateExtension.swift */; };
 		0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE732C32495D63500A0A67C /* MealRowController.swift */; };
+		49A8095B249976A00045A1B5 /* CircleProgressScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8095A249976A00045A1B5 /* CircleProgressScene.swift */; };
 		49D164A42497853E00A74A51 /* MealEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A32497853E00A74A51 /* MealEditController.swift */; };
 		49D164A624978AD000A74A51 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A524978AD000A74A51 /* IntExtension.swift */; };
 		49D164A82498031200A74A51 /* MealCreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A72498031200A74A51 /* MealCreateController.swift */; };
@@ -86,6 +87,7 @@
 		0FA4B6B22496BE7B00A98649 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		0FA4B6B52496C26E00A98649 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0FE732C32495D63500A0A67C /* MealRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowController.swift; sourceTree = "<group>"; };
+		49A8095A249976A00045A1B5 /* CircleProgressScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressScene.swift; sourceTree = "<group>"; };
 		49D164A32497853E00A74A51 /* MealEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEditController.swift; sourceTree = "<group>"; };
 		49D164A524978AD000A74A51 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		49D164A72498031200A74A51 /* MealCreateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,14 @@
 				49D164A72498031200A74A51 /* MealCreateController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		49A80959249976730045A1B5 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				49A8095A249976A00045A1B5 /* CircleProgressScene.swift */,
+			);
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		6C0FED5A2497ED2F003AD52D /* Complication */ = {
@@ -287,8 +297,9 @@
 				0FE732C22495D61B00A0A67C /* Controller */,
 				6C0FED5B2497ED5B003AD52D /* Notification */,
 				6C0FED5A2497ED2F003AD52D /* Complication */,
-				E2321D482493B29E00E4D76F /* Helpers */,
+				49A80959249976730045A1B5 /* Scene */,
 				E2321D452493AEA200E4D76F /* Model */,
+				E2321D482493B29E00E4D76F /* Helpers */,
 			);
 			path = "TimeMeals WatchKit Extension";
 			sourceTree = "<group>";
@@ -429,6 +440,7 @@
 				E20AF64A2498037600AEC68A /* DelayNotificationNotificationController.swift in Sources */,
 				E2C1C75624915E4600EBBC46 /* NotificationController.swift in Sources */,
 				0F008C852498290400AB3B17 /* DateManager.swift in Sources */,
+				49A8095B249976A00045A1B5 /* CircleProgressScene.swift in Sources */,
 				49D164A624978AD000A74A51 /* IntExtension.swift in Sources */,
 				E2321D502493B8A900E4D76F /* Report.swift in Sources */,
 				E20AF64C2498141E00AEC68A /* TimeValidator.swift in Sources */,
