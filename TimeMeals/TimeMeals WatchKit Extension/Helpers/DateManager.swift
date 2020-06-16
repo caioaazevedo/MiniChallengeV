@@ -1,4 +1,3 @@
-//
 //  DateManager.swift
 //  TimeMeals WatchKit Extension
 //
@@ -15,14 +14,16 @@ class DateManager {
     ///   - minute: minute of meal
     /// - Returns: A date with dates components
     func setUpDate(hour:Int,minute:Int) -> Date{
+        var myDate = Date()
+        let calendar = Calendar.current
+        var components = DateComponents()
         //Assign date components
-        var dateCompenents = DateComponents()
-        dateCompenents.hour = hour
-        dateCompenents.minute = minute
-        //Crate a date with components
-        let deviceCalendar = Calendar.current
-        let dateTime = deviceCalendar.date(from: dateCompenents)
-        
-        return dateTime ?? Date()
+       components.hour = hour
+       components.minute = minute
+      
+        //Pass defined components from my date
+        myDate =  calendar.date(bySettingHour: components.hour!, minute: components.minute!, second: 0, of: myDate)!
+
+        return myDate
     }
 }
