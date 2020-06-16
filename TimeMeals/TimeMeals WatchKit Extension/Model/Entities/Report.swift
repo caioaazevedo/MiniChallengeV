@@ -14,5 +14,5 @@ struct Report {
     var week: Int
     var totalRightTime: Int
     var totalWrongTime: Int
-    var mostWrongTimeMeal: String
+    var mostWrongTimeMeal: String?
 }
