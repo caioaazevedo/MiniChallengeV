@@ -44,7 +44,7 @@ class ReportMetrics {
         }
     }
     
-    private func atualReport(completion: (Report)->Void) {
+    func atualReport(completion: (Report)->Void) {
         let reportDAO = ReportDAO()
         reportDAO.retrieve { (reports) in
             guard var reports = reports else { return }
