@@ -12,11 +12,14 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
-//        if  verifyFirstLaunch(){
-//            self.createDefaultMeal()
-//            self.createFirstReport()
-//            AppNotification().requestAuthorization()
-//        }
+        if  verifyFirstLaunch(){
+            self.createDefaultMeal()
+            self.createFirstReport()
+            AppNotification().requestAuthorization()
+        }
+        
+        scheduleNewMealStatusInBackground()
+        scheduleNewMealStatusInForeground()
     }
     
     func applicationDidBecomeActive() {
@@ -35,6 +38,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             switch task {
             case let backgroundTask as WKApplicationRefreshBackgroundTask:
                 // Be sure to complete the background task once you’re done.
+                resetMeals()
                 backgroundTask.setTaskCompletedWithSnapshot(false)
             case let snapshotTask as WKSnapshotRefreshBackgroundTask:
                 // Snapshot tasks have a unique completion call, make sure to set your expiration date
@@ -93,6 +97,51 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             return true
         }
         return false
+    }
+    
+    /// Description: schedule to update the meals status in background
+    func scheduleNewMealStatusInBackground() {
+        
+        let date = DateManager().setUpDate(hour: 0, minute: 0)
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+        
+        WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: tomorrow, userInfo: nil) { (error) in
+            if let error = error {
+                print("Error occurred while scheduling background refresh: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    /// Description: Set meal status to 'notTimeYet' in all meals in Core Data
+    @objc func resetMeals() {
+        MealDAO.shared.retrieve { (meals) in
+            guard let meals = meals else { return }
+            var updatedMeals: [Meal] = []
+            meals.forEach {
+                var updatedMeal = $0
+                updatedMeal.status = MealStatus.notTimeYet
+                updatedMeals.append(updatedMeal)
+            }
+            updateThis(meals: updatedMeals)
+            print("all meals updated in background")
+        }
+    }
+    
+    /// Description: Uptade meals in Core Data
+    /// - Parameter meals: Meals that will be updated
+    func updateThis(meals: [Meal]) {
+        meals.forEach {
+            MealDAO.shared.update(meal: $0) { _ in }
+        }
+    }
+    
+    /// Description: schedule to update the meals status in foreground
+    func scheduleNewMealStatusInForeground() {
+        let date = DateManager().setUpDate(hour: 0, minute: 0)
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+        
+        let timer = Timer(fireAt: tomorrow, interval: 0, target: self, selector: #selector(resetMeals), userInfo: nil, repeats: false)
+        RunLoop.main.add(timer, forMode: .common)
     }
     
 }

@@ -12,6 +12,8 @@
 		0FA4B6B62496C26E00A98649 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4B6B52496C26E00A98649 /* DateExtension.swift */; };
 		0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE732C32495D63500A0A67C /* MealRowController.swift */; };
 		49A8095B249976A00045A1B5 /* CircleProgressScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8095A249976A00045A1B5 /* CircleProgressScene.swift */; };
+		49A80961249A9DC90045A1B5 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A80960249A9DC90045A1B5 /* Report.storyboard */; };
+		49A80963249AA0DD0045A1B5 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A80962249AA0DD0045A1B5 /* ReportController.swift */; };
 		49D164A42497853E00A74A51 /* MealEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A32497853E00A74A51 /* MealEditController.swift */; };
 		49D164A624978AD000A74A51 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A524978AD000A74A51 /* IntExtension.swift */; };
 		49D164A82498031200A74A51 /* MealCreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D164A72498031200A74A51 /* MealCreateController.swift */; };
@@ -88,6 +90,8 @@
 		0FA4B6B52496C26E00A98649 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0FE732C32495D63500A0A67C /* MealRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowController.swift; sourceTree = "<group>"; };
 		49A8095A249976A00045A1B5 /* CircleProgressScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressScene.swift; sourceTree = "<group>"; };
+		49A80960249A9DC90045A1B5 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
+		49A80962249AA0DD0045A1B5 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
 		49D164A32497853E00A74A51 /* MealEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEditController.swift; sourceTree = "<group>"; };
 		49D164A524978AD000A74A51 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		49D164A72498031200A74A51 /* MealCreateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateController.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				0FE732C32495D63500A0A67C /* MealRowController.swift */,
 				49D164A32497853E00A74A51 /* MealEditController.swift */,
 				49D164A72498031200A74A51 /* MealCreateController.swift */,
+				49A80962249AA0DD0045A1B5 /* ReportController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				E2C1C74224915E4100EBBC46 /* Interface.storyboard */,
+				49A80960249A9DC90045A1B5 /* Report.storyboard */,
 				E2C1C74524915E4600EBBC46 /* Assets.xcassets */,
 				E2C1C74724915E4600EBBC46 /* Info.plist */,
 			);
@@ -413,6 +419,7 @@
 			files = (
 				E2C1C74624915E4600EBBC46 /* Assets.xcassets in Resources */,
 				E2C1C74424915E4100EBBC46 /* Interface.storyboard in Resources */,
+				49A80961249A9DC90045A1B5 /* Report.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +452,7 @@
 				E2321D502493B8A900E4D76F /* Report.swift in Sources */,
 				E20AF64C2498141E00AEC68A /* TimeValidator.swift in Sources */,
 				E2C1C75824915E4600EBBC46 /* ComplicationController.swift in Sources */,
+				49A80963249AA0DD0045A1B5 /* ReportController.swift in Sources */,
 				6C0FED5E2497F1B2003AD52D /* ReportMetrics.swift in Sources */,
 				0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */,
 				0FA4B6B32496BE7B00A98649 /* Time.swift in Sources */,

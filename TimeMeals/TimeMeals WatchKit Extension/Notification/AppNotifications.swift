@@ -19,6 +19,7 @@ class AppNotification: NSObject{
         notificationCenter.requestAuthorization(options: authorizationOptions) { (authorized, error) in
             if authorized {
                 print("User Authorized")
+                self.setUpNotifications()
             } else {
                 print("User not authorized")
             }
@@ -154,6 +155,17 @@ class AppNotification: NSObject{
                 
                 print("notify")
             }
+        }
+    }
+    
+    /// Description: Initialize all Meal's notifications 
+    func setUpNotifications(){
+        
+        MealDAO.shared.retrieve { (meals) in
+            
+            meals?.forEach({ (meal) in
+                sendDynamicNotification(meal: meal)
+            })
         }
     }
     
