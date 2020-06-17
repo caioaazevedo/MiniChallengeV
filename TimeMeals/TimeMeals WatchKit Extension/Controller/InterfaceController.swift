@@ -28,12 +28,6 @@ class InterfaceController: WKInterfaceController  {
         super.willActivate()
         self.fetchMealSchedule()
         self.setUpTable()
-        
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (notifications) in
-            notifications.forEach { (request) in
-                print("Request: \(request.identifier)")
-            }
-        }
     }
     
     override func didDeactivate() {
@@ -122,22 +116,41 @@ extension InterfaceController: rowButtonClicked{
                 
                 WKInterfaceDevice.current().play(.success)
                 
-                /// Remove Delay Notifcatiion
+                ///Remove Standart Meal Notification
                 print("Identifier: \(meal.uuid.uuidString)")
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [meal.uuid.uuidString])
                 
-                UNUserNotificationCenter.current().getPendingNotificationRequests { (notifications) in
-                    notifications.forEach { (request) in
-                        print("Request: \(request.identifier)")
-                    }
-                }
+                let delay = getTimeDiference(timeMeal: meal.time)
                 
-                ///Remove Standart Meal Notification
-//                AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)")
+                /// Send notification after the old notification time scheduled
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                    AppNotification().sendDynamicNotification(meal: meal)
+                }
                 
                 mealsSchedule[index] = meal
                 self.setUpTable()
             }
         }
+    }
+    
+    /// Description: Get the difference of the dates based on their hour and minutes
+    /// - Parameter timeMeal: the time of the meal to calculate the difference
+    /// - Returns: the difference between the time of the meal and the current time
+    func getTimeDiference(timeMeal: Date) -> Double{
+        var mealComponents = DateComponents()
+        var currentComponents = DateComponents()
+        let calendar = Calendar.current
+        
+        /// Convert only the hour and minutes in Date
+        mealComponents.hour = calendar.component(.hour, from: timeMeal)
+        mealComponents.minute = calendar.component(.minute, from: timeMeal)
+        
+        currentComponents.hour = calendar.component(.hour, from: Date())
+        currentComponents.minute = calendar.component(.minute, from: Date())
+        
+        let mealDate = calendar.date(from: mealComponents)!
+        let currentDate = calendar.date(from: currentComponents)!
+        
+        return currentDate.distance(to: mealDate) + 60.0 // difference + 1 min
     }
 }
