@@ -18,7 +18,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             AppNotification().requestAuthorization()
         }
         
-        scheduleNewMealStatus()
+        scheduleNewMealStatusInBackground()
+        scheduleNewMealStatusInForeground()
     }
     
     func applicationDidBecomeActive() {
@@ -98,8 +99,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         return false
     }
     
-    /// Description: update the meals status in background
-    func scheduleNewMealStatus() {
+    /// Description: schedule to update the meals status in background
+    func scheduleNewMealStatusInBackground() {
         
         let date = DateManager().setUpDate(hour: 0, minute: 0)
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: date)!
@@ -112,7 +113,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
     
     /// Description: Set meal status to 'notTimeYet' in all meals in Core Data
-    func resetMeals() {
+    @objc func resetMeals() {
         MealDAO.shared.retrieve { (meals) in
             guard let meals = meals else { return }
             var updatedMeals: [Meal] = []
@@ -132,6 +133,15 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         meals.forEach {
             MealDAO.shared.update(meal: $0) { _ in }
         }
+    }
+    
+    /// Description: schedule to update the meals status in foreground
+    func scheduleNewMealStatusInForeground() {
+        let date = DateManager().setUpDate(hour: 0, minute: 0)
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+        
+        let timer = Timer(fireAt: tomorrow, interval: 0, target: self, selector: #selector(resetMeals), userInfo: nil, repeats: false)
+        RunLoop.main.add(timer, forMode: .common)
     }
     
 }
