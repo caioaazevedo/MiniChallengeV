@@ -10,6 +10,10 @@ import Foundation
 import CoreData
 
 class ReportDAO {
+    static let shared = ReportDAO()
+    private init () {}
+    
+    
     //MARK:- Database Context
     let context = CDManager.shared.persistentContainer.viewContext
     

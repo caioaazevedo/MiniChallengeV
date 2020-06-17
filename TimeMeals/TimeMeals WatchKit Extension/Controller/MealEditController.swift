@@ -115,9 +115,8 @@ class MealEditController: WKInterfaceController  {
     func showAlertChange(){
         
         let action1 = WKAlertAction(title: "Change", style: .destructive) {
-            let mealDAO = MealDAO()
             
-            mealDAO.update(meal: self.currentMeal, completion: {_ in
+            MealDAO.shared.update(meal: self.currentMeal, completion: {_ in
                 AppNotification().removeNotification(identifier: self.currentMeal.uuid.uuidString)
                 AppNotification().sendDynamicNotification(meal: self.currentMeal)
                 self.pop()
@@ -133,9 +132,8 @@ class MealEditController: WKInterfaceController  {
     func showAlertDelete(){
 
         let action1 = WKAlertAction(title: "Delete", style: .destructive) {
-            let mealDAO = MealDAO()
             
-            mealDAO.delete(meal: self.currentMeal, completion: {_ in
+            MealDAO.shared.delete(meal: self.currentMeal, completion: {_ in
                 AppNotification().removeNotification(identifier: self.currentMeal.uuid.uuidString) 
                 self.pop()
             })

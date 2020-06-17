@@ -60,7 +60,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     /// Description: creates and initializes the standard diet for the user to follow
     func createDefaultMeal(){
-        let mealDao = MealDAO()
         let date = DateManager()
         let defaultMeals = [Meal(uuid: UUID.init(), title: "Desjejum", time: date.setUpDate(hour: 7, minute: 0), status: .notTimeYet, wrongTimes: 0),
                             Meal(uuid: UUID.init(), title: "Café da Manhã", time: date.setUpDate(hour: 11, minute: 0), status: .notTimeYet, wrongTimes: 0),
@@ -69,7 +68,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                             Meal(uuid: UUID.init(), title: "Jantar", time: date.setUpDate(hour: 20, minute: 0), status: .notTimeYet, wrongTimes: 0)
                             ]
         defaultMeals.forEach { (meal) in
-            mealDao.create(meal: meal) { _ in
+            MealDAO.shared.create(meal: meal) { _ in
                 return
             }
         }
@@ -79,7 +78,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func createFirstReport(){
         let report = Report(uuid: UUID(), week: 0, totalRightTime: 0, totalWrongTime: 0, mostWrongTimeMeal: nil)
         
-        ReportDAO().create(report: report) { _ in
+        ReportDAO.shared.create(report: report) { _ in
             
             return
         }

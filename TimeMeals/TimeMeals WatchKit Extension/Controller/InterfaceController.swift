@@ -17,7 +17,6 @@ class InterfaceController: WKInterfaceController  {
     
     //MARK: Properties
     var mealsSchedule = [Meal]()
-    var mealDAO = MealDAO()
     
     //MARK: Life Cycle Methods
     override func awake(withContext context: Any?) {
@@ -80,7 +79,7 @@ class InterfaceController: WKInterfaceController  {
     
     /// Fetch the mels schedule from Core Data
     func fetchMealSchedule(){
-        self.mealDAO.retrieve { (meal) in
+        MealDAO.shared.retrieve { (meal) in
             guard let meal = meal else{return}
             self.mealsSchedule = meal
         }
