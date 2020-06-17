@@ -52,7 +52,7 @@ class ReportController: WKInterfaceController  {
     
     override func didAppear() {
         reportMetrics.rigthTimeMealsPercent(completion: { percent in
-            scene.animateCircleProgress(percent: 100)
+            scene.animateCircleProgress(percent: percent)
         })
     }
 }
