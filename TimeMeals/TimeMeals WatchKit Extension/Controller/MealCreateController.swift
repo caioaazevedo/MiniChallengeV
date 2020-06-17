@@ -20,7 +20,7 @@ class MealCreateController: WKInterfaceController {
     //MARK: Properties
     var newMeal: Meal!
     var mealList: [Meal]?
-    
+    var dateManager = DateManager()
     override init() {
         let initialTime = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())
         
@@ -74,7 +74,7 @@ class MealCreateController: WKInterfaceController {
         guard let text = value else {return}
         newMeal.title = text as String
     }
-
+    
     //MARK: Picker Action Methods
     
     @IBAction func hourPickerAction(_ value: Int) {
@@ -85,7 +85,12 @@ class MealCreateController: WKInterfaceController {
         let minute = calendar.component(.minute, from: newMeal.time)
         
         newMeal.time = calendar.date(bySettingHour: components.hour!, minute: minute, second: 0, of: newMeal.time)!
-        self.invalidHourLabel.setHidden(self.validTime(date: newMeal.time))
+        if let meals = self.mealList{
+            let isValid = self.dateManager.validTime(date: newMeal.time, mealList: meals)
+            self.invalidHourLabel.setHidden(isValid)
+            self.createBtn.setEnabled(isValid)
+        }
+        
     }
     
     @IBAction func minutePickerAction(_ value: Int) {
@@ -95,25 +100,17 @@ class MealCreateController: WKInterfaceController {
         let hour = calendar.component(.hour, from: newMeal.time)
         
         newMeal.time = calendar.date(bySettingHour: hour, minute: value, second: 0, of: newMeal.time)!
-         self.invalidHourLabel.setHidden(self.validTime(date: newMeal.time))
-    }
-    
-    /// Verify if the choosed time  equals an existing one and enable or disable create button
-    /// - Parameter date: New date  choosed on picker
-    /// - Returns: Return if the date is valid or not
-    func validTime(date:Date) -> Bool{
-        var isValid = true
-        self.mealList?.forEach({ (meal) in
-            if meal.time.time == date.time{
-                isValid = false
-            }
-        })
-        self.createBtn.setEnabled(isValid)
-        return isValid
+        //if hava some meal created compare time with them
+        if let meals = self.mealList{
+            let isValid = self.dateManager.validTime(date: newMeal.time, mealList: meals)
+            self.invalidHourLabel.setHidden(isValid)
+            self.createBtn.setEnabled(isValid)
+        }
+        
     }
     
     //MARK: Buttons Action Methods
-
+    
     @IBAction func createButtonAction() {
         if(newMeal.title.isEmpty){
             showAlertValidate()
