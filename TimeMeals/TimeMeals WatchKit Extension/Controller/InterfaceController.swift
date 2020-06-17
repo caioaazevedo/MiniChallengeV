@@ -111,6 +111,8 @@ extension InterfaceController: rowButtonClicked{
                 return
             }
             
+            WKInterfaceDevice.current().play(.success)
+            
             /// Remove Delay Notifcatiion
             AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)Delay")
             
