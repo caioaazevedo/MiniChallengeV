@@ -30,8 +30,10 @@ class MealCreateController: WKInterfaceController {
     //MARK: Life Cycle Methods
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
         setUpPickers()
+        self.invalidHourLabel.setHidden(true)
+        guard let meals = context as? [Meal] else {return}
+        self.mealList = meals
     }
     
     //MARK: Picker Methods
@@ -83,6 +85,7 @@ class MealCreateController: WKInterfaceController {
         let minute = calendar.component(.minute, from: newMeal.time)
         
         newMeal.time = calendar.date(bySettingHour: components.hour!, minute: minute, second: 0, of: newMeal.time)!
+        self.invalidHourLabel.setHidden(self.validTime(date: newMeal.time))
     }
     
     @IBAction func minutePickerAction(_ value: Int) {
@@ -92,21 +95,22 @@ class MealCreateController: WKInterfaceController {
         let hour = calendar.component(.hour, from: newMeal.time)
         
         newMeal.time = calendar.date(bySettingHour: hour, minute: value, second: 0, of: newMeal.time)!
+         self.invalidHourLabel.setHidden(self.validTime(date: newMeal.time))
     }
     
-        /// Verify if the choosed time  equals an existing one and enable or disable create button
-        /// - Parameter date: New date  choosed on picker
-        /// - Returns: Return if the date is valid or not
-        func validTime(date:Date) -> Bool{
-            var isValid = true
-            self.mealList?.forEach({ (meal) in
-                if meal.time.time == date.time{
-                    isValid = false
-                }
-            })
-            self.createBtn.setEnabled(isValid)
-            return isValid
-        }
+    /// Verify if the choosed time  equals an existing one and enable or disable create button
+    /// - Parameter date: New date  choosed on picker
+    /// - Returns: Return if the date is valid or not
+    func validTime(date:Date) -> Bool{
+        var isValid = true
+        self.mealList?.forEach({ (meal) in
+            if meal.time.time == date.time{
+                isValid = false
+            }
+        })
+        self.createBtn.setEnabled(isValid)
+        return isValid
+    }
     
     //MARK: Buttons Action Methods
 
