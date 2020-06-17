@@ -32,6 +32,7 @@ class MealCreateController: WKInterfaceController {
         super.awake(withContext: context)
         setUpPickers()
         self.invalidHourLabel.setHidden(true)
+        self.invalidHourLabel.setText("Need at least 40m interval")
         guard let meals = context as? [Meal] else {return}
         self.mealList = meals
     }

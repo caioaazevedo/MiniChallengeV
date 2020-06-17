@@ -78,6 +78,9 @@
                                         </picker>
                                     </items>
                                 </group>
+                                <label alignment="left" text="Label" id="CV4-ls-LW7">
+                                    <color key="textColor" red="0.7843137255" green="0.30196078430000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </label>
                                 <button width="1" alignment="left" title="Save" id="xqe-kN-A5S">
                                     <connections>
                                         <action selector="saveButtonAction" destination="7i0-Ie-i24" id="ers-B7-Xu0"/>
@@ -94,7 +97,9 @@
                     </items>
                     <connections>
                         <outlet property="hourPicker" destination="ihS-sj-rCV" id="A8z-eC-Xti"/>
+                        <outlet property="invalidHourLabel" destination="CV4-ls-LW7" id="zUb-9n-Hje"/>
                         <outlet property="minutePicker" destination="Oxz-Iy-yyu" id="ogZ-ah-7kv"/>
+                        <outlet property="saveBtn" destination="xqe-kN-A5S" id="tPE-uE-KuE"/>
                         <outlet property="titleTextField" destination="q3P-cp-5Il" id="rMd-7e-McF"/>
                     </connections>
                 </controller>

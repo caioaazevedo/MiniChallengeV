@@ -12,11 +12,11 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
-        if  verifyFirstLaunch(){
-            self.createDefaultMeal()
-            self.createFirstReport()
-            AppNotification().requestAuthorization()
-        }
+//        if  verifyFirstLaunch(){
+//            self.createDefaultMeal()
+//            self.createFirstReport()
+//            AppNotification().requestAuthorization()
+//        }
     }
     
     func applicationDidBecomeActive() {
@@ -63,9 +63,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         let date = DateManager()
         let defaultMeals = [Meal(uuid: UUID.init(), title: "Desjejum", time: date.setUpDate(hour: 7, minute: 0), status: .notTimeYet, wrongTimes: 0),
                             Meal(uuid: UUID.init(), title: "Café da Manhã", time: date.setUpDate(hour: 11, minute: 0), status: .notTimeYet, wrongTimes: 0),
-                            Meal(uuid: UUID.init(), title: "Almoço", time: date.setUpDate(hour: 13, minute: 0), status: .notTimeYet, wrongTimes: 0),
-                            Meal(uuid: UUID.init(), title: "Lanche da Tarde", time: date.setUpDate(hour: 17, minute: 0), status: .notTimeYet, wrongTimes: 0),
-                            Meal(uuid: UUID.init(), title: "Jantar", time: date.setUpDate(hour: 20, minute: 0), status: .notTimeYet, wrongTimes: 0)
+//                            Meal(uuid: UUID.init(), title: "Almoço", time: date.setUpDate(hour: 13, minute: 0), status: .notTimeYet, wrongTimes: 0),
+//                            Meal(uuid: UUID.init(), title: "Lanche da Tarde", time: date.setUpDate(hour: 17, minute: 0), status: .notTimeYet, wrongTimes: 0),
+//                            Meal(uuid: UUID.init(), title: "Jantar", time: date.setUpDate(hour: 20, minute: 0), status: .notTimeYet, wrongTimes: 0)
                             ]
         defaultMeals.forEach { (meal) in
             MealDAO.shared.create(meal: meal) { _ in
