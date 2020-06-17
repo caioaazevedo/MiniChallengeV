@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
+    </dependencies>
+    <scenes>
+        <!--ReportController-->
+        <scene sceneID="7n6-Zk-fXR">
+            <objects>
+                <controller identifier="ReportController" id="XYp-Ex-J4S" customClass="ReportController" customModule="TimeMeals_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="169" alignment="left" id="tsV-Wf-O2Q">
+                            <items>
+                                <spriteKitScene width="1" height="152" alignment="left" id="OyP-EO-9h1"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" id="z7X-X5-jt7">
+                            <items>
+                                <label width="1" alignment="left" text="Most inconsistent meal" textAlignment="center" minimumScaleFactor="0.10000000000000001" id="c2J-6C-LDo"/>
+                                <label width="1" alignment="left" text="Café da Manhã" textAlignment="center" id="PD9-60-WTB">
+                                    <color key="textColor" red="0.43968814610000001" green="0.9452940822" blue="0.91373521089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </label>
+                            </items>
+                        </group>
+                        <separator alignment="left" id="WVm-bi-ShT"/>
+                        <group width="1" alignment="left" layout="vertical" id="wzd-Zo-72d">
+                            <items>
+                                <label width="1" alignment="left" text="Done meals" textAlignment="center" numberOfLines="0" id="W5J-Mo-FJf"/>
+                                <label width="1" alignment="left" text="30 / 70%" textAlignment="center" id="D87-SL-b5H">
+                                    <color key="textColor" red="0.39665943380000002" green="0.85809940100000004" blue="0.49013745780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </label>
+                            </items>
+                        </group>
+                        <separator alignment="left" id="Kxb-aS-omO"/>
+                        <group width="1" alignment="left" layout="vertical" id="IQ6-PU-5Cv">
+                            <items>
+                                <label width="1" alignment="left" text="Missed meals" textAlignment="center" numberOfLines="0" id="MLc-Bd-pfe"/>
+                                <label width="1" alignment="left" text="10 / 30%" textAlignment="center" id="hUg-ZS-hp8">
+                                    <color key="textColor" red="0.90008777380000005" green="0.2110249102" blue="0.3294050992" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </label>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="circleProgressScene" destination="OyP-EO-9h1" id="l3c-UQ-TEl"/>
+                        <outlet property="doneMealLabel" destination="D87-SL-b5H" id="auf-CJ-DD4"/>
+                        <outlet property="inconsistentMealLabel" destination="PD9-60-WTB" id="zqq-xO-ZIw"/>
+                        <outlet property="missedMealLabel" destination="hUg-ZS-hp8" id="ske-7Y-3YB"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="111" y="-51"/>
+        </scene>
+    </scenes>
+</document>
