@@ -270,6 +270,9 @@
                                         </picker>
                                     </items>
                                 </group>
+                                <label alignment="left" text="Label" id="r6J-qf-gtM">
+                                    <color key="textColor" red="0.7843137255" green="0.30196078430000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </label>
                                 <button width="1" alignment="left" title="Create" id="qYN-03-hqs">
                                     <connections>
                                         <action selector="createButtonAction" destination="YB2-jT-Eo2" id="6tj-dB-Iq0"/>
@@ -280,7 +283,9 @@
                         </group>
                     </items>
                     <connections>
+                        <outlet property="createBtn" destination="qYN-03-hqs" id="Wof-Uv-0yp"/>
                         <outlet property="hourPicker" destination="f8H-8h-8T3" id="gLQ-wN-Qye"/>
+                        <outlet property="invalidHourLabel" destination="r6J-qf-gtM" id="C1W-t2-y5p"/>
                         <outlet property="minutePicker" destination="r10-5G-R4K" id="gWb-gd-FtZ"/>
                         <outlet property="titleTextField" destination="TbJ-zD-16q" id="qOv-lf-2vs"/>
                     </connections>

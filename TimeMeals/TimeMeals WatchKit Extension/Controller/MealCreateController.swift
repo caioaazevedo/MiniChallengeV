@@ -13,10 +13,13 @@ class MealCreateController: WKInterfaceController {
     //MARK: Outlets
     @IBOutlet weak var titleTextField: WKInterfaceTextField!
     @IBOutlet weak var hourPicker: WKInterfacePicker!
+    @IBOutlet weak var invalidHourLabel: WKInterfaceLabel!
     @IBOutlet weak var minutePicker: WKInterfacePicker!
+    @IBOutlet weak var createBtn: WKInterfaceButton!
     
     //MARK: Properties
     var newMeal: Meal!
+    var mealList: [Meal]?
     
     override init() {
         let initialTime = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())
@@ -90,6 +93,20 @@ class MealCreateController: WKInterfaceController {
         
         newMeal.time = calendar.date(bySettingHour: hour, minute: value, second: 0, of: newMeal.time)!
     }
+    
+        /// Verify if the choosed time  equals an existing one and enable or disable create button
+        /// - Parameter date: New date  choosed on picker
+        /// - Returns: Return if the date is valid or not
+        func validTime(date:Date) -> Bool{
+            var isValid = true
+            self.mealList?.forEach({ (meal) in
+                if meal.time.time == date.time{
+                    isValid = false
+                }
+            })
+            self.createBtn.setEnabled(isValid)
+            return isValid
+        }
     
     //MARK: Buttons Action Methods
 
