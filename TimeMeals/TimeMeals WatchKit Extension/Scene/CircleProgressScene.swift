@@ -73,6 +73,7 @@ class CircleProgressScene: SKScene {
         let radius = path.boundingBox.width/2
         
         let animationAction = SKAction.customAction(withDuration: TimeInterval(duration)) { (node, elpasedTime) in
+            
             let currentPercent =  elpasedTime/CGFloat(duration)
             
             if Int(currentPercent * 100) <= percent{

@@ -25,16 +25,22 @@ class ReportMetrics {
     func rigthTimeMealsPercent(completion: (Int)-> Void) {
         atualReport { (report) in
             let totalMeals = report.totalRightTime + report.totalWrongTime
-            let percent = report.totalRightTime * 100 / totalMeals
-            completion(percent)
+            if(totalMeals != 0){
+                let percent = report.totalRightTime * 100 / totalMeals
+                completion(percent)
+            }
+            completion(0)
         }
     }
     
     func wrongTimeMealsPercent(completion: (Int)-> Void) {
         atualReport { (report) in
             let totalMeals = report.totalRightTime + report.totalWrongTime
-            let percent = report.totalWrongTime * 100 / totalMeals
-            completion(percent)
+            if(totalMeals != 0){
+                let percent = report.totalWrongTime * 100 / totalMeals
+                completion(percent)
+            }
+            completion(0)
         }
     }
     

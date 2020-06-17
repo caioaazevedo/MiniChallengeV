@@ -11,9 +11,9 @@
             <objects>
                 <controller identifier="ReportController" id="XYp-Ex-J4S" customClass="ReportController" customModule="TimeMeals_WatchKit_Extension">
                     <items>
-                        <group width="1" height="169" alignment="left" id="tsV-Wf-O2Q">
+                        <group height="208" alignment="left" id="tsV-Wf-O2Q">
                             <items>
-                                <spriteKitScene width="1" height="152" alignment="left" id="OyP-EO-9h1"/>
+                                <spriteKitScene width="1" height="174" alignment="left" id="OyP-EO-9h1"/>
                             </items>
                         </group>
                         <group width="1" alignment="left" layout="vertical" id="z7X-X5-jt7">
@@ -51,7 +51,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="111" y="-51"/>
+            <point key="canvasLocation" x="111" y="58.5"/>
         </scene>
     </scenes>
 </document>
