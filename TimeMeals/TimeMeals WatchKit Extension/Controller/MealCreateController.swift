@@ -97,8 +97,7 @@ class MealCreateController: WKInterfaceController {
         if(newMeal.title.isEmpty){
             showAlertValidate()
         }else{
-            let mealDAO = MealDAO()
-            mealDAO.create(meal: newMeal, completion: {bool in
+            MealDAO.shared.create(meal: newMeal, completion: {bool in
                 AppNotification().sendDynamicNotification(meal: newMeal)
                 pop()
             })
