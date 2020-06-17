@@ -11,15 +11,19 @@
             <objects>
                 <controller identifier="ReportController" id="XYp-Ex-J4S" customClass="ReportController" customModule="TimeMeals_WatchKit_Extension">
                     <items>
-                        <group width="1" height="169" alignment="left" id="tsV-Wf-O2Q">
+                        <group width="1" height="195" alignment="left" id="2iH-RS-M4l">
                             <items>
-                                <spriteKitScene width="1" height="152" alignment="left" id="OyP-EO-9h1"/>
+                                <spriteKitScene width="1" height="1" alignment="center" id="OyP-EO-9h1"/>
                             </items>
+                            <variation key="device=watch38mm" height="150"/>
+                            <variation key="device=watch40mm" height="170"/>
+                            <variation key="device=watch42mm" height="172"/>
+                            <variation key="device=watch44mm" height="195"/>
                         </group>
                         <group width="1" alignment="left" layout="vertical" id="z7X-X5-jt7">
                             <items>
                                 <label width="1" alignment="left" text="Most inconsistent meal" textAlignment="center" minimumScaleFactor="0.10000000000000001" id="c2J-6C-LDo"/>
-                                <label width="1" alignment="left" text="Café da Manhã" textAlignment="center" id="PD9-60-WTB">
+                                <label width="1" alignment="left" textAlignment="center" minimumScaleFactor="0.5" id="PD9-60-WTB">
                                     <color key="textColor" red="0.43968814610000001" green="0.9452940822" blue="0.91373521089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </label>
                             </items>
@@ -51,7 +55,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="111" y="-51"/>
+            <point key="canvasLocation" x="111" y="58.5"/>
         </scene>
     </scenes>
 </document>

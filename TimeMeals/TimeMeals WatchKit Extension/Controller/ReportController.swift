@@ -20,21 +20,40 @@ class ReportController: WKInterfaceController  {
     
     //MARK: Properties
     var scene: CircleProgressScene!
+    let reportMetrics = ReportMetrics()
     
     //MARK: Life Cycle Methods
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        let currentDevice = WKInterfaceDevice.current()
+        let bounds = currentDevice.screenBounds
+        
         // configure the circle progress scene
-        scene = CircleProgressScene(size: CGSize(width: 100, height: 100))
-        scene.scaleMode = .aspectFit
+        scene = CircleProgressScene(size: CGSize(width: bounds.width, height: bounds.height))
+        scene.scaleMode = .aspectFill
         
         circleProgressScene.presentScene(scene)
+        
+        // get the report data
+        reportMetrics.mostWrongTimeMeal(completion: { meal in
+            guard let mealText = meal else{return}
+            inconsistentMealLabel.setText(mealText)
+        })
+        
+        reportMetrics.rigthTimeMealsPercent(completion: { percent in
+            doneMealLabel.setText("\(percent)%")
+        })
+        
+        reportMetrics.wrongTimeMealsPercent(completion: { percent in
+            missedMealLabel.setText("\(percent)%")
+        })
     }
     
     override func didAppear() {
-        scene.animateCircleProgress(percent: 50)
+        reportMetrics.rigthTimeMealsPercent(completion: { percent in
+            scene.animateCircleProgress(percent: 100)
+        })
     }
-    
 }
 
