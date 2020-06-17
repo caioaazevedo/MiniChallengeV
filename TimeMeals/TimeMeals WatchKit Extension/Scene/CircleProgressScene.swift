@@ -25,19 +25,19 @@ class CircleProgressScene: SKScene {
         
         // set up the label
         labelNode = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        labelNode.fontSize = 15
-        labelNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2 - labelNode.fontSize / 2.5)
+        labelNode.fontSize = self.size.width / 6
+        labelNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.7 - labelNode.fontSize / 2.5)
         self.addChild(labelNode)
         
         // set up the main circle
-        let path = UIBezierPath(arcCenter: .zero, radius: 30, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+        let path = UIBezierPath(arcCenter: .zero, radius: self.size.width / 3, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
         
         mainCircle = SKShapeNode(path: path.cgPath)
         mainCircle.strokeColor = .blue
         mainCircle.fillColor = .clear
-        mainCircle.lineWidth = 4
+        mainCircle.lineWidth = 10
         mainCircle.lineCap = .round
-        mainCircle.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        mainCircle.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.7)
         mainCircle.zPosition = 2
         self.addChild(mainCircle)
         
@@ -56,8 +56,8 @@ class CircleProgressScene: SKScene {
     /// Get the current circle format for the animation
     /// - Parameter radius: the circle radius
     /// - Parameter withPercent: get the current percent of the circle
-    private func getCirclePath(ofRadius radius :CGFloat, withPercent percent:CGFloat) -> CGPath {
-        return  UIBezierPath(arcCenter: .zero, radius: radius , startAngle: 2 * .pi * percent, endAngle: 0, clockwise: true).cgPath
+    private func getCirclePath(withPercent percent:CGFloat) -> CGPath {
+        return  UIBezierPath(arcCenter: .zero, radius: self.size.width / 3 , startAngle: 2 * .pi * percent, endAngle: 0, clockwise: true).cgPath
     }
     
     /// Make the circle animation based on the percent
@@ -66,18 +66,12 @@ class CircleProgressScene: SKScene {
         
         let duration = 5
         
-        guard let path = mainCircle.path else {
-            return
-        }
-        
-        let radius = path.boundingBox.width/2
-        
         let animationAction = SKAction.customAction(withDuration: TimeInterval(duration)) { (node, elpasedTime) in
             
             let currentPercent =  elpasedTime/CGFloat(duration)
             
             if Int(currentPercent * 100) <= percent{
-                (node as! SKShapeNode).path = self.getCirclePath(ofRadius: radius, withPercent: -currentPercent)
+                (node as! SKShapeNode).path = self.getCirclePath(withPercent: -currentPercent)
                 self.labelNode.text = "\(Int(currentPercent * 100))%"
             }
             
