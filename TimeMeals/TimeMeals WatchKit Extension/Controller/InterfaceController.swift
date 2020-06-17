@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import UserNotifications
 
 
 class InterfaceController: WKInterfaceController  {
@@ -115,15 +116,41 @@ extension InterfaceController: rowButtonClicked{
                 
                 WKInterfaceDevice.current().play(.success)
                 
-                /// Remove Delay Notifcatiion
-                AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)Delay")
-                
                 ///Remove Standart Meal Notification
-                AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)")
+                print("Identifier: \(meal.uuid.uuidString)")
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [meal.uuid.uuidString])
+                
+                let delay = getTimeDiference(timeMeal: meal.time)
+                
+                /// Send notification after the old notification time scheduled
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                    AppNotification().sendDynamicNotification(meal: meal)
+                }
                 
                 mealsSchedule[index] = meal
                 self.setUpTable()
             }
         }
+    }
+    
+    /// Description: Get the difference of the dates based on their hour and minutes
+    /// - Parameter timeMeal: the time of the meal to calculate the difference
+    /// - Returns: the difference between the time of the meal and the current time
+    func getTimeDiference(timeMeal: Date) -> Double{
+        var mealComponents = DateComponents()
+        var currentComponents = DateComponents()
+        let calendar = Calendar.current
+        
+        /// Convert only the hour and minutes in Date
+        mealComponents.hour = calendar.component(.hour, from: timeMeal)
+        mealComponents.minute = calendar.component(.minute, from: timeMeal)
+        
+        currentComponents.hour = calendar.component(.hour, from: Date())
+        currentComponents.minute = calendar.component(.minute, from: Date())
+        
+        let mealDate = calendar.date(from: mealComponents)!
+        let currentDate = calendar.date(from: currentComponents)!
+        
+        return currentDate.distance(to: mealDate) + 60.0 // difference + 1 min
     }
 }
