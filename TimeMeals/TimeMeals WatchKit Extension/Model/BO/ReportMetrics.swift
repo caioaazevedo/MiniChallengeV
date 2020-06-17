@@ -45,8 +45,8 @@ class ReportMetrics {
     }
     
     func atualReport(completion: (Report)->Void) {
-        let reportDAO = ReportDAO()
-        reportDAO.retrieve { (reports) in
+       
+        ReportDAO.shared.retrieve { (reports) in
             guard var reports = reports else { return }
             reports.sort { $0.week > $1.week }
             guard let atualReport = reports.first else { return }

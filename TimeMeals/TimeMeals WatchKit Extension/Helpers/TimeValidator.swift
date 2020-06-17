@@ -28,14 +28,14 @@ class TimeValidator {
             meal.status = .rightTime
         }
         
-        MealDAO().update(meal: meal) { (result) in
+        MealDAO.shared.update(meal: meal) { (result) in
             if !result {
                 completion(nil)
             }
             
             var reportsArray = [Report]()
             
-            ReportDAO().retrieve { (reports) in
+            ReportDAO.shared.retrieve { (reports) in
                 
                 guard let reports = reports else {
                     completion(nil)
@@ -55,7 +55,7 @@ class TimeValidator {
                     reportsArray[index].totalWrongTime += 1
                 }
                 
-                ReportDAO().update(report: reportsArray[index]) { (result) in
+                ReportDAO.shared.update(report: reportsArray[index]) { (result) in
                     if !result {
                         completion(nil)
                     }
@@ -75,7 +75,7 @@ class TimeValidator {
         componentsCurrent.hour = calendar.component(.hour, from: Date())
         componentsCurrent.minute = calendar.component(.minute, from: Date())
         
-        MealDAO().retrieve { (meals) in
+        MealDAO.shared.retrieve { (meals) in
             meals?.forEach({ (meal) in
                 var componentsMeal = DateComponents()
                 

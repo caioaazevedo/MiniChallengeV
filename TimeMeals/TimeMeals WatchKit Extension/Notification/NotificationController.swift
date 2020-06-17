@@ -58,6 +58,7 @@ class NotificationController: WKUserNotificationInterfaceController {
                 print("Error when update meal`s status on Notification")
             } else {
                 print("Meal marked as done")
+                WKInterfaceDevice.current().play(.success)
             }
             performDismissAction()
         }

@@ -17,7 +17,6 @@ class InterfaceController: WKInterfaceController  {
     
     //MARK: Properties
     var mealsSchedule = [Meal]()
-    var mealDAO = MealDAO()
     
     //MARK: Life Cycle Methods
     override func awake(withContext context: Any?) {
@@ -47,7 +46,7 @@ class InterfaceController: WKInterfaceController  {
             row.delegate = self
             row.rowNumber = rowIndex
             self.verifyMealStatus(row: row)
-           
+            
         }
     }
     
@@ -85,13 +84,13 @@ class InterfaceController: WKInterfaceController  {
     
     /// Fetch the mels schedule from Core Data
     func fetchMealSchedule(){
-        self.mealDAO.retrieve { (meal) in
+        MealDAO.shared.retrieve { (meal) in
             guard let meal = meal else{return}
             self.mealsSchedule = meal
         }
     }
     
-
+    
     /// Deffine a date format to HH:mm
     /// - Parameter date: Date to recive a  format
     /// - Returns: A string with date HH:mm format
@@ -110,21 +109,26 @@ extension InterfaceController: rowButtonClicked{
     /// Delegate called when the check button is clicked
     /// - Parameter index: waht specific row was checked
     func rowClicked(at index: Int) {
-        TimeValidator().defineMealStatus(oldMeal: mealsSchedule[index]) { (meal) in
-            guard let meal = meal else {
-                print("error")
-                return
-            }
-            
-            /// Remove Delay Notifcatiion
-            AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)Delay")
-            
-            ///Remove Standart Meal Notification
-            AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)")
-            
-            mealsSchedule[index] = meal
-            self.setUpTable()
-        }
         
+        // Only change status if the status has not yet changed
+        if mealsSchedule[index].status == .notTimeYet {
+            TimeValidator().defineMealStatus(oldMeal: mealsSchedule[index]) { (meal) in
+                guard let meal = meal else {
+                    print("error")
+                    return
+                }
+                
+                WKInterfaceDevice.current().play(.success)
+                
+                /// Remove Delay Notifcatiion
+                AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)Delay")
+                
+                ///Remove Standart Meal Notification
+                AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)")
+                
+                mealsSchedule[index] = meal
+                self.setUpTable()
+            }
+        }
     }
 }

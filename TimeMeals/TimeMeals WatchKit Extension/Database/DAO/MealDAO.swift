@@ -10,6 +10,9 @@ import Foundation
 import CoreData
 
 class MealDAO {
+    static let shared = MealDAO()
+    private init () {}
+    
     //MARK:- Database Context
     let context = CDManager.shared.persistentContainer.viewContext
     
