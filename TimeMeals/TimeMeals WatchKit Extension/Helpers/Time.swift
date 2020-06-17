@@ -48,6 +48,14 @@ class Time:Equatable,Comparable{
         return lhs.secondsDayBegining > rhs.secondsDayBegining
     }
     
+    static func >= (lhs: Time, rhs: Time) -> Bool {
+        return lhs.secondsDayBegining >= rhs.secondsDayBegining
+    }
     
     
+    static func <= (lhs: Time, rhs: Time) -> Bool {
+        return lhs.secondsDayBegining <= rhs.secondsDayBegining
+    }
+    
+ 
 }

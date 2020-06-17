@@ -14,19 +14,45 @@ class MealEditController: WKInterfaceController  {
     @IBOutlet weak var titleTextField: WKInterfaceTextField!
     @IBOutlet weak var hourPicker: WKInterfacePicker!
     @IBOutlet weak var minutePicker: WKInterfacePicker!
+    @IBOutlet weak var invalidHourLabel: WKInterfaceLabel!
+    @IBOutlet weak var saveBtn: WKInterfaceButton!
     
     //MARK: Properties
     var currentMeal: Meal!
-    
+    var mealsSchedule: [Meal]?
+    var dateManager = DateManager()
     //MARK: Life Cycle Methods
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
+        self.invalidHourLabel.setHidden(true)
+        self.invalidHourLabel.setText("At least 40m interval")
         guard let meal = context as? Meal else {return}
-        
-        currentMeal = meal
-        setUpPickers()
+        self.fetchMealSchedule()
+        self.currentMeal = meal
+        self.removeCurrentMeal()
+        self.setUpPickers()
     }
+    
+    
+    //MARK: Meals list methods
+    
+    /// Fetch the mels schedule from Core Data
+    func fetchMealSchedule(){
+        MealDAO.shared.retrieve { (meal) in
+            guard let meal = meal else{return}
+            self.mealsSchedule = meal
+        }
+    }
+    
+    func removeCurrentMeal(){
+        guard let meal = self.mealsSchedule else{return}
+        for(index,element) in meal.enumerated(){
+            if element.uuid ==  self.currentMeal.uuid{
+                self.mealsSchedule?.remove(at: index)
+            }
+        }
+    }
+    
     
     //MARK: Picker Methods
     
@@ -66,7 +92,7 @@ class MealEditController: WKInterfaceController  {
         guard let text = value else {return}
         currentMeal.title = text as String
     }
-
+    
     //MARK: Picker Action Methods
     
     @IBAction func hourPickerAction(_ value: Int) {
@@ -77,6 +103,11 @@ class MealEditController: WKInterfaceController  {
         let minute = calendar.component(.minute, from: currentMeal.time)
         
         currentMeal.time = calendar.date(bySettingHour: components.hour!, minute: minute, second: 0, of: currentMeal.time)!
+        if let meals = self.mealsSchedule{
+            let isValid = self.dateManager.validTime(date: currentMeal.time, mealList: meals)
+            self.invalidHourLabel.setHidden(isValid)
+            self.saveBtn.setEnabled(isValid)
+        }
     }
     
     @IBAction func minutePickerAction(_ value: Int) {
@@ -86,10 +117,15 @@ class MealEditController: WKInterfaceController  {
         let hour = calendar.component(.hour, from: currentMeal.time)
         
         currentMeal.time = calendar.date(bySettingHour: hour, minute: value, second: 0, of: currentMeal.time)!
+        if let meals = self.mealsSchedule{
+            let isValid = self.dateManager.validTime(date: currentMeal.time, mealList: meals)
+            self.invalidHourLabel.setHidden(isValid)
+            self.saveBtn.setEnabled(isValid)
+        }
     }
     
     //MARK: Buttons Action Methods
-
+    
     @IBAction func saveButtonAction() {
         if(currentMeal.title.isEmpty){
             showAlertValidate()
@@ -131,7 +167,7 @@ class MealEditController: WKInterfaceController  {
     
     /// Description: Show the delete alert
     func showAlertDelete(){
-
+        
         let action1 = WKAlertAction(title: "Delete", style: .destructive) {
             
             MealDAO.shared.delete(meal: self.currentMeal, completion: {_ in
@@ -141,7 +177,7 @@ class MealEditController: WKInterfaceController  {
         }
         
         let action2 = WKAlertAction(title: "Cancel", style: .cancel) {}
-
+        
         presentAlert(withTitle: "Attention", message: "Are you sure you want to delete this meal? The weekly report will be restarted.", preferredStyle: .actionSheet, actions: [action1,action2])
     }
 }

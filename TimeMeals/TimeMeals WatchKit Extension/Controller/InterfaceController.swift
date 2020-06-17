@@ -58,6 +58,11 @@ class InterfaceController: WKInterfaceController  {
         return self.mealsSchedule[rowIndex]
     }
     
+    
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
+        return self.mealsSchedule
+    }
+    
     //MARK: Created Methods
     
     
