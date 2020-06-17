@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import UserNotifications
 
 
 class InterfaceController: WKInterfaceController  {
@@ -27,6 +28,12 @@ class InterfaceController: WKInterfaceController  {
         super.willActivate()
         self.fetchMealSchedule()
         self.setUpTable()
+        
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notifications) in
+            notifications.forEach { (request) in
+                print("Request: \(request.identifier)")
+            }
+        }
     }
     
     override func didDeactivate() {
@@ -116,10 +123,17 @@ extension InterfaceController: rowButtonClicked{
                 WKInterfaceDevice.current().play(.success)
                 
                 /// Remove Delay Notifcatiion
-                AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)Delay")
+                print("Identifier: \(meal.uuid.uuidString)")
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [meal.uuid.uuidString])
+                
+                UNUserNotificationCenter.current().getPendingNotificationRequests { (notifications) in
+                    notifications.forEach { (request) in
+                        print("Request: \(request.identifier)")
+                    }
+                }
                 
                 ///Remove Standart Meal Notification
-                AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)")
+//                AppNotification().removeNotification(identifier: "\(meal.uuid.uuidString)")
                 
                 mealsSchedule[index] = meal
                 self.setUpTable()
