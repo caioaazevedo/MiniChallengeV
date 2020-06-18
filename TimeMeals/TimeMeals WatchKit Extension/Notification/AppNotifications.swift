@@ -79,7 +79,7 @@ class AppNotification: NSObject{
     }
     
     ///Description: The notification to send week report
-    func sendReportNotification() {
+    func sendReportNotification(report: Report) {
         checkAuthorization { (authorized) in
             guard authorized else { return }
             print("authorized")
@@ -97,20 +97,16 @@ class AppNotification: NSObject{
             dateComponents.hour = 9
             dateComponents.minute = 0
             
-            let reportMetrics = ReportMetrics()
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             
-            reportMetrics.atualReport { (report) in
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-                
-                let request = UNNotificationRequest(identifier: "\(report.uuid.uuidString)", content: notification, trigger: trigger)
-                
-                let center = UNUserNotificationCenter.current()
-                center.add(request) { (error) in
-                    if let err = error {
-                        print("Error : \(err)")
-                    }
-                    print("notify")
+            let request = UNNotificationRequest(identifier: "\(report.uuid.uuidString)", content: notification, trigger: trigger)
+            
+            let center = UNUserNotificationCenter.current()
+            center.add(request) { (error) in
+                if let err = error {
+                    print("Error : \(err)")
                 }
+                print("notify")
             }
             
             
