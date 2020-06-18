@@ -28,6 +28,13 @@ class InterfaceController: WKInterfaceController  {
         super.willActivate()
         self.fetchMealSchedule()
         self.setUpTable()
+        for index in 0..<self.mealsSchedule.count {
+            TimeValidator().defineMealStatus(oldMeal: self.mealsSchedule[index]) { (meal) in
+                guard let mealStatus = meal else{return}
+                self.mealsSchedule[index] = mealStatus
+            }
+        }
+        
     }
     
     override func didDeactivate() {
@@ -43,7 +50,8 @@ class InterfaceController: WKInterfaceController  {
         self.mealsSchedule.sort(by: {$0.time.time < $1.time.time})
         for rowIndex in 0..<self.mealsSchedule.count{
             guard let row = self.mealList.rowController(at: rowIndex) as? MealRowController else {continue}
-            row.scheduleLabel.setText(dateFormatter(date: self.mealsSchedule[rowIndex].time))
+            row.mealNameLabel.setText(self.mealsSchedule[rowIndex].title)
+            row.hourLabel.setText(dateFormatter(date: self.mealsSchedule[rowIndex].time))
             row.delegate = self
             row.rowNumber = rowIndex
             self.verifyMealStatus(row: row)
@@ -118,8 +126,12 @@ extension InterfaceController: rowButtonClicked{
                     print("error")
                     return
                 }
+                if meal.status == .rightTime{
+                    WKInterfaceDevice.current().play(.success)
+                }else if meal.status == .wrongTime{
+                    WKInterfaceDevice.current().play(.failure)
+                }
                 
-                WKInterfaceDevice.current().play(.success)
                 
                 ///Remove Standart Meal Notification
                 print("Identifier: \(meal.uuid.uuidString)")
