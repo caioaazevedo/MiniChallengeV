@@ -37,9 +37,8 @@ class ReportController: WKInterfaceController  {
     }
     
     override func didAppear() {
-        reportMetrics.rigthTimeMealsPercent(completion: { percent in
-            scene.animateCircleProgress(percent: percent)
-        })
+
+        scene.animateCircleProgress(percent: reportMetrics.rigthTimeMealsPercent())
         
         // get the report data
         
@@ -54,10 +53,6 @@ class ReportController: WKInterfaceController  {
                 inconsistentMealLabel.setText(mealText)
             }
         }
-    }
-    
-    override func didAppear() {
-        scene.animateCircleProgress(percent: reportMetrics.rigthTimeMealsPercent())
     }
 }
 
