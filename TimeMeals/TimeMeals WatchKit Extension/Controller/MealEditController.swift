@@ -163,14 +163,15 @@ class MealEditController: WKInterfaceController  {
             //Reset the week
             let reportMetrics = ReportMetrics()
             
-            reportMetrics.atualReport { (report) in
-                let newReport = Report(uuid: report.uuid, week: report.week, totalRightTime: 0, totalWrongTime: 0)
+            reportMetrics.getAtualReport(completion: { _ in
+                let report = reportMetrics.atualReport
+                let newReport = Report(uuid: report!.uuid, week: report!.week, totalRightTime: 0, totalWrongTime: 0)
 
                 ReportDAO.shared.update(report: newReport, completion: {_ in
                     self.resetMeals()
                     self.pop()
                 })
-            }
+            })
         }
         return action
     }
