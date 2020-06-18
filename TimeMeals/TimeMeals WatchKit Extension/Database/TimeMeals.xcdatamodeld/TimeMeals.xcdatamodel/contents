@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AppUtilsCD" representedClassName="AppUtilsCD" syncable="YES" codeGenerationType="class">
+        <attribute name="applicationSuspendedTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="expectedTimeDelay" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstTimeInTheApp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <entity name="MealCD" representedClassName="MealCD" syncable="YES" codeGenerationType="class">
         <attribute name="status" optional="YES" attributeType="Binary"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -17,5 +22,6 @@
     <elements>
         <element name="MealCD" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="ReportCD" positionX="-54" positionY="27" width="128" height="118"/>
+        <element name="AppUtilsCD" positionX="-54" positionY="45" width="128" height="88"/>
     </elements>
 </model>
