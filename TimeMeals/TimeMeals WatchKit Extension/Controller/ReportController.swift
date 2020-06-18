@@ -34,6 +34,12 @@ class ReportController: WKInterfaceController  {
         scene.scaleMode = .aspectFill
         
         circleProgressScene.presentScene(scene)
+    }
+    
+    override func didAppear() {
+        reportMetrics.rigthTimeMealsPercent(completion: { percent in
+            scene.animateCircleProgress(percent: percent)
+        })
         
         // get the report data
         reportMetrics.mostWrongTimeMeal(completion: { meal in
@@ -47,12 +53,6 @@ class ReportController: WKInterfaceController  {
         
         reportMetrics.wrongTimeMealsPercent(completion: { percent in
             missedMealLabel.setText("\(percent)%")
-        })
-    }
-    
-    override func didAppear() {
-        reportMetrics.rigthTimeMealsPercent(completion: { percent in
-            scene.animateCircleProgress(percent: percent)
         })
     }
 }
