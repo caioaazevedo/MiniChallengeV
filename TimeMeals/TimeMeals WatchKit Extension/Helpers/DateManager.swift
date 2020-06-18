@@ -14,7 +14,7 @@ class DateManager {
     ///   - minute: minute of meal
     /// - Returns: A date with dates components
     func setUpDate(hour:Int,minute:Int) -> Date{
-        var myDate = Date()
+        var myDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())
         let calendar = Calendar.current
         var components = DateComponents()
         //Assign date components
@@ -22,9 +22,8 @@ class DateManager {
         components.minute = minute
         
         //Pass defined components from my date
-        myDate =  calendar.date(bySettingHour: components.hour!, minute: components.minute!, second: 0, of: myDate)!
-        
-        return myDate
+        myDate =  calendar.date(bySettingHour: components.hour!, minute: components.minute!, second: 0, of: myDate!)
+        return myDate ?? Date()
     }
     
     
