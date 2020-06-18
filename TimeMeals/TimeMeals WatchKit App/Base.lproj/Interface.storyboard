@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -16,19 +16,34 @@
                                 <table alignment="left" id="nD8-oE-gbA">
                                     <items>
                                         <tableRow identifier="MealRow" id="7o2-Ye-9xI" customClass="MealRowController" customModule="TimeMeals_WatchKit_Extension">
-                                            <group key="rootItem" width="1" alignment="left" id="pF8-4K-J2L">
+                                            <group key="rootItem" width="1" height="43" alignment="left" id="pF8-4K-J2L">
                                                 <items>
-                                                    <label alignment="left" text="Label" id="u9U-Bt-jyC"/>
-                                                    <button width="33" height="28" alignment="right" verticalAlignment="center" id="7Dw-aO-Zh3">
-                                                        <connections>
-                                                            <action selector="buttonClicked" destination="7o2-Ye-9xI" id="jn4-UC-CDf"/>
-                                                        </connections>
-                                                    </button>
+                                                    <group width="91" alignment="left" verticalAlignment="center" layout="vertical" id="sAE-BL-8Ye">
+                                                        <items>
+                                                            <label alignment="left" verticalAlignment="center" text="Label" id="u9U-Bt-jyC"/>
+                                                            <label alignment="left" verticalAlignment="center" text="Label" id="JNv-cz-uxL">
+                                                                <fontDescription key="font" type="system" pointSize="10"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
+                                                    <group alignment="right" verticalAlignment="center" layout="vertical" id="7Qg-jt-fZE">
+                                                        <items>
+                                                            <button width="20" height="20" alignment="center" verticalAlignment="center" id="hOW-YF-7xZ">
+                                                                <connections>
+                                                                    <action selector="buttonClicked" destination="7o2-Ye-9xI" id="zxU-BV-IZz"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label alignment="center" verticalAlignment="bottom" text="Label" id="5un-xt-tPg">
+                                                                <fontDescription key="font" type="system" pointSize="10"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
                                                 </items>
                                             </group>
                                             <connections>
-                                                <outlet property="buttonStatus" destination="7Dw-aO-Zh3" id="BZu-MZ-PrU"/>
-                                                <outlet property="scheduleLabel" destination="u9U-Bt-jyC" id="MXU-eD-dtT"/>
+                                                <outlet property="buttonStatus" destination="hOW-YF-7xZ" id="07v-yi-SDq"/>
+                                                <outlet property="hourLabel" destination="JNv-cz-uxL" id="4NW-hc-e8g"/>
+                                                <outlet property="mealNameLabel" destination="u9U-Bt-jyC" id="9tO-5V-XgR"/>
                                                 <segue destination="7i0-Ie-i24" kind="push" id="lGb-Ke-roc"/>
                                             </connections>
                                         </tableRow>

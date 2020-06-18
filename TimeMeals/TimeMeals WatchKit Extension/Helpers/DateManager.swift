@@ -46,6 +46,11 @@ class DateManager {
         return isValid
     }
     
+    /// Compare both dates
+    /// - Parameters:
+    ///   - start: the starter date to compare
+    ///   - end: the end date to compare
+    /// - Returns: Difference between the dates in minutes
     func getDateDiff(start: Date, end: Date) -> Int  {
        let calendar = Calendar.current
        let timeComponents = calendar.dateComponents([.hour, .minute], from: start)

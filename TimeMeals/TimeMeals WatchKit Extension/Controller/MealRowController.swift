@@ -14,7 +14,9 @@ protocol rowButtonClicked {
 
 class MealRowController: NSObject {
     @IBOutlet weak var buttonStatus: WKInterfaceButton!
-    @IBOutlet weak var scheduleLabel: WKInterfaceLabel!
+    @IBOutlet weak var mealNameLabel: WKInterfaceLabel!
+    
+    @IBOutlet weak var hourLabel: WKInterfaceLabel!
     
     var delegate: rowButtonClicked? = nil
     var rowNumber = 0
