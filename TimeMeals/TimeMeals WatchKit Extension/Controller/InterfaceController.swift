@@ -137,12 +137,22 @@ extension InterfaceController: rowButtonClicked{
                 print("Identifier: \(meal.uuid.uuidString)")
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [meal.uuid.uuidString])
                 
+                /// 'Delete' delay value by returnig the value to nil
+                AppUtilsDAO.shared.saveAppUtils(expectedTimeDelay: nil) { _ in
+                    print("expectedTimeDelay was deleted")
+                }
+                
                 let delay = getTimeDiference(timeMeal: meal.time)
                 
                 /// Send notification after the old notification time scheduled
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                    AppUtilsDAO.shared.saveAppUtils(expectedTimeDelay: Date().addingTimeInterval(delay)) { (result) in
+                        print("Delay Saved")
+                    }
                     AppNotification().sendDynamicNotification(meal: meal)
                 }
+                
+                scheduleNotificationInBackground(timeDelay: Int(delay), meal: meal)
                 
                 mealsSchedule[index] = meal
                 self.setUpTable()
@@ -169,5 +179,25 @@ extension InterfaceController: rowButtonClicked{
         let currentDate = calendar.date(from: currentComponents)!
         
         return currentDate.distance(to: mealDate) + 60.0 // difference + 1 min
+    }
+    
+    func scheduleNotificationInBackground(timeDelay: Int, meal: Meal) {
+        
+        let prefferedDate = Date().addingTimeInterval(TimeInterval(timeDelay))
+        
+        WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: prefferedDate, userInfo: nil) { (error) in
+            if let error = error {
+                print("Background error: \(error.localizedDescription)")
+            } else {
+                AppUtilsDAO.shared.retrieve { (retrieve) in
+                    guard let appUtils = retrieve else { return }
+                    
+                    /// Noification already scheduled
+                    if appUtils.expectedTimeDelay != nil { return }
+                    
+                    AppNotification().sendDynamicNotification(meal: meal)
+                }
+            }
+        }
     }
 }
