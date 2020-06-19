@@ -79,6 +79,7 @@ class AppNotification: NSObject{
     }
     
     ///Description: The notification to send week report
+    /// - Parameter report: 
     func sendReportNotification(report: Report) {
         checkAuthorization { (authorized) in
             guard authorized else { return }
@@ -89,13 +90,12 @@ class AppNotification: NSObject{
             notification.title = NSString.localizedUserNotificationString(forKey: "Report", arguments: nil)
             notification.sound = .default
             
-            var dateComponents = DateComponents()
-            let calendar = Calendar.current
-            dateComponents.calendar = calendar
+            let date = DateManager().setUpDate(hour: 9, minute: 0)
+            let sevenDaysAfterNow = Calendar.current.date(byAdding: .day, value: 7, to: date)!
+            let components: Set<Calendar.Component> = [.hour,.minute,.weekday]
             
-            dateComponents.weekday = 7
-            dateComponents.hour = 9
-            dateComponents.minute = 0
+            let calendar = Calendar.current
+            let dateComponents = calendar.dateComponents(components, from: sevenDaysAfterNow)
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             
@@ -106,7 +106,7 @@ class AppNotification: NSObject{
                 if let err = error {
                     print("Error : \(err)")
                 }
-                print("notify")
+                print("notify report")
             }
             
             

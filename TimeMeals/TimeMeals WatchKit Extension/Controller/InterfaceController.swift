@@ -29,14 +29,6 @@ class InterfaceController: WKInterfaceController  {
         self.fetchMealSchedule()
         self.setUpStatusOnTable()
         self.setUpTable()
-        
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (notifications) in
-            var i = 0
-            for request in notifications {
-                i += 1
-                print("Requests (\(i): \(request.identifier)")
-            }
-        }
     }
     
     override func didDeactivate() {
