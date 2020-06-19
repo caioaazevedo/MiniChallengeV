@@ -33,12 +33,13 @@ class CircleProgressScene: SKScene {
         let path = UIBezierPath(arcCenter: .zero, radius: self.size.width / 3, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
         
         mainCircle = SKShapeNode(path: path.cgPath)
-        mainCircle.strokeColor = .blue
         mainCircle.fillColor = .clear
         mainCircle.lineWidth = 10
         mainCircle.lineCap = .round
         mainCircle.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.7)
+        mainCircle.strokeColor = #colorLiteral(red: 0.3407858908, green: 0.7046723962, blue: 0.4099263251, alpha: 1)
         mainCircle.zPosition = 2
+        mainCircle.isHidden = true
         self.addChild(mainCircle)
         
         // set up the background circle
@@ -48,8 +49,8 @@ class CircleProgressScene: SKScene {
         shapeNode2.lineWidth = mainCircle.lineWidth
         shapeNode2.lineCap = mainCircle.lineCap
         shapeNode2.position = mainCircle.position
+        shapeNode2.strokeColor = #colorLiteral(red: 0.9001363516, green: 0.1284931004, blue: 0.3204272389, alpha: 1)
         shapeNode2.zPosition = 1
-        shapeNode2.alpha = 0.4
         self.addChild(shapeNode2)
     }
     
@@ -64,10 +65,16 @@ class CircleProgressScene: SKScene {
     /// - Parameter porcent: the maximum percent of the circle animation
     func animateCircleProgress(percent: Int)  {
         
-        let duration = 5
+        if percent == 0{
+            self.labelNode.text = "0%"
+            return
+        }
+        
+        mainCircle.isHidden = false
+        
+        let duration = 4
         
         let animationAction = SKAction.customAction(withDuration: TimeInterval(duration)) { (node, elpasedTime) in
-            
             let currentPercent =  elpasedTime/CGFloat(duration)
             
             if Int(currentPercent * 100) <= percent{

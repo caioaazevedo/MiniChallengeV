@@ -29,21 +29,31 @@
                             </items>
                         </group>
                         <separator alignment="left" id="WVm-bi-ShT"/>
-                        <group width="1" alignment="left" layout="vertical" id="wzd-Zo-72d">
+                        <group width="1" alignment="left" spacing="8" id="zyv-AD-aa4">
                             <items>
-                                <label width="1" alignment="left" text="Done meals" textAlignment="center" numberOfLines="0" id="W5J-Mo-FJf"/>
-                                <label width="1" alignment="left" text="30 / 70%" textAlignment="center" id="D87-SL-b5H">
-                                    <color key="textColor" red="0.39665943380000002" green="0.85809940100000004" blue="0.49013745780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </label>
+                                <imageView width="30" height="30" alignment="left" verticalAlignment="center" image="star.circle.fill" catalog="system" id="FPl-9v-9Wc"/>
+                                <group width="124" alignment="left" layout="vertical" id="wzd-Zo-72d">
+                                    <items>
+                                        <label width="1" alignment="left" text="Done meals" textAlignment="left" id="W5J-Mo-FJf"/>
+                                        <label width="1" alignment="left" text="30" textAlignment="left" id="D87-SL-b5H">
+                                            <color key="textColor" red="0.39665943380000002" green="0.85809940100000004" blue="0.49013745780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </label>
+                                    </items>
+                                </group>
                             </items>
                         </group>
                         <separator alignment="left" id="Kxb-aS-omO"/>
-                        <group width="1" alignment="left" layout="vertical" id="IQ6-PU-5Cv">
+                        <group width="1" alignment="left" spacing="8" id="acN-gU-ycS">
                             <items>
-                                <label width="1" alignment="left" text="Missed meals" textAlignment="center" numberOfLines="0" id="MLc-Bd-pfe"/>
-                                <label width="1" alignment="left" text="10 / 30%" textAlignment="center" id="hUg-ZS-hp8">
-                                    <color key="textColor" red="0.90008777380000005" green="0.2110249102" blue="0.3294050992" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </label>
+                                <imageView width="30" height="30" alignment="left" verticalAlignment="center" image="heart.circle.fill" catalog="system" id="Tbi-Sr-Djy"/>
+                                <group width="124" alignment="left" layout="vertical" id="IQ6-PU-5Cv">
+                                    <items>
+                                        <label width="1" alignment="right" text="Missed meals" textAlignment="left" id="MLc-Bd-pfe"/>
+                                        <label width="1" alignment="left" text="10" textAlignment="left" id="hUg-ZS-hp8">
+                                            <color key="textColor" red="0.90008777380000005" green="0.2110249102" blue="0.3294050992" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </label>
+                                    </items>
+                                </group>
                             </items>
                         </group>
                     </items>
@@ -55,7 +65,11 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="111" y="58.5"/>
+            <point key="canvasLocation" x="111" y="58"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="star.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
 </document>
