@@ -116,6 +116,9 @@ class MealCreateController: WKInterfaceController {
         if(newMeal.title.isEmpty){
             showAlertValidate()
         }else{
+            if self.newMeal.time.time < Date().time{
+                self.newMeal.status = .wrongTime
+            }
             MealDAO.shared.create(meal: newMeal, completion: {bool in
                 AppNotification().sendDynamicNotification(meal: newMeal)
                 pop()

@@ -155,6 +155,9 @@ class MealEditController: WKInterfaceController  {
         let action = WKAlertAction(title: "Edit", style: .destructive) {
             
             //Reset the meal notification time
+            if self.currentMeal.time.time < Date().time{
+                self.currentMeal.status = .wrongTime
+            }
             MealDAO.shared.update(meal: self.currentMeal, completion: {_ in
                 AppNotification().removeNotification(identifier: self.currentMeal.uuid.uuidString)
                 AppNotification().sendDynamicNotification(meal: self.currentMeal)
