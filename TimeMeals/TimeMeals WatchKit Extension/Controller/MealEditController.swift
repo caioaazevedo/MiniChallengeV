@@ -164,13 +164,21 @@ class MealEditController: WKInterfaceController  {
             let reportMetrics = ReportMetrics()
             
             reportMetrics.getAtualReport(completion: { _ in
-                let report = reportMetrics.atualReport
-                let newReport = Report(uuid: report!.uuid, week: report!.week, totalRightTime: 0, totalWrongTime: 0)
-
-                ReportDAO.shared.update(report: newReport, completion: {_ in
+                
+                guard let report = reportMetrics.atualReport else { return }
+                
+                let newReport = Report(uuid: UUID(), week: report.week+1, totalRightTime: 0, totalWrongTime: 0, mostWrongTimeMeal: "None")
+                
+                // Create new report in Core Data
+                ReportDAO.shared.create(report: newReport) { _ in
+                    // Remove pending notification from old report
+                    AppNotification().notificationCenter.removePendingNotificationRequests(withIdentifiers: [report.uuid.uuidString])
+                    //Create notification from new report
+                    AppNotification().sendReportNotification(report: newReport)
+                
                     self.resetMeals()
                     self.pop()
-                })
+                }
             })
         }
         return action
