@@ -33,15 +33,16 @@ class DateManager {
     func validTime(date:Date,mealList: [Meal]) -> Bool{
         var isValid = true
         
-        mealList.forEach({ (meal) in
+       for meal in mealList{
             if meal.time.time == date.time{
-                isValid = false
+                return false
             }else if getDateDiff(start: meal.time, end: date) < -39  || getDateDiff(start: meal.time, end: date) > 39{
-                isValid = true
+                isValid =  true
             }else{
-                isValid = false
+                return  false
             }
-        })
+        }
+        
         return isValid
     }
     
