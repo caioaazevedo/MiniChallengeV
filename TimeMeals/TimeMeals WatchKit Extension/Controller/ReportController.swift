@@ -34,6 +34,11 @@ class ReportController: WKInterfaceController  {
         scene.scaleMode = .aspectFill
         
         circleProgressScene.presentScene(scene)
+    }
+    
+    override func didAppear() {
+
+        scene.animateCircleProgress(percent: reportMetrics.rigthTimeMealsPercent())
         
         // get the report data
         
@@ -48,10 +53,6 @@ class ReportController: WKInterfaceController  {
                 inconsistentMealLabel.setText(mealText)
             }
         }
-    }
-    
-    override func didAppear() {
-        scene.animateCircleProgress(percent: reportMetrics.rigthTimeMealsPercent())
     }
 }
 

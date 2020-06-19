@@ -148,21 +148,66 @@ class MealEditController: WKInterfaceController  {
         presentAlert(withTitle: "Attention", message: "The meal title can not be empty.", preferredStyle: .actionSheet, actions: [action])
     }
     
-    /// Description: Show the change meal alert
-    func showAlertChange(){
+    /// Description: Reset the week report
+    /// - Returns: A WKAlertAction to delete the week report
+    func resetWeekReportAction() -> WKAlertAction{
         
-        let action1 = WKAlertAction(title: "Change", style: .destructive) {
+        let action = WKAlertAction(title: "Edit", style: .destructive) {
             
+            //Reset the meal notification time
             MealDAO.shared.update(meal: self.currentMeal, completion: {_ in
                 AppNotification().removeNotification(identifier: self.currentMeal.uuid.uuidString)
                 AppNotification().sendDynamicNotification(meal: self.currentMeal)
-                self.pop()
+            })
+            
+            //Reset the week
+            let reportMetrics = ReportMetrics()
+            
+            reportMetrics.getAtualReport(completion: { _ in
+                let report = reportMetrics.atualReport
+                let newReport = Report(uuid: report!.uuid, week: report!.week, totalRightTime: 0, totalWrongTime: 0)
+
+                ReportDAO.shared.update(report: newReport, completion: {_ in
+                    self.resetMeals()
+                    self.pop()
+                })
             })
         }
+        return action
+    }
+    
+    /// Description: Set meal status to 'notTimeYet' and the wrongTimes to 0 in all meals in Core Data
+    @objc func resetMeals() {
+        MealDAO.shared.retrieve { (meals) in
+            guard let meals = meals else { return }
+            var updatedMeals: [Meal] = []
+            
+            meals.forEach {
+                var updatedMeal = $0
+                updatedMeal.wrongTimes = 0
+                updatedMeals.append(updatedMeal)
+            }
+            
+            updateMeals(meals: updatedMeals)
+        }
+    }
+    
+    /// Description: Uptade all meals in Core Data
+    /// - Parameter meals: Meals that will be updated
+    func updateMeals(meals: [Meal]) {
+        meals.forEach {
+            MealDAO.shared.update(meal: $0) { _ in }
+        }
+    }
+    
+    /// Description: Show the change meal alert
+    func showAlertChange(){
+        
+        let action1 = resetWeekReportAction()
         
         let action2 = WKAlertAction(title: "Cancel", style: .default) {}
         
-        presentAlert(withTitle: "Attention", message: "Are you sure you want to change this meal? The weekly report will be restarted.", preferredStyle: .actionSheet, actions: [action1,action2])
+        presentAlert(withTitle: "Attention", message: "Are you sure you want to edit this meal? The weekly report will be restarted.", preferredStyle: .actionSheet, actions: [action1,action2])
     }
     
     /// Description: Show the delete alert
