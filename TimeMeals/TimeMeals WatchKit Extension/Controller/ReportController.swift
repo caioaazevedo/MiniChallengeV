@@ -37,17 +37,17 @@ class ReportController: WKInterfaceController  {
     }
     
     override func didAppear() {
-
-        scene.animateCircleProgress(percent: reportMetrics.rigthTimeMealsPercent())
-        
         // get the report data
         
         reportMetrics.getAtualReport { (_) in
-            let rightPercent = reportMetrics.rigthTimeMealsPercent()
-            doneMealLabel.setText("\(rightPercent)%")
             
-            let wrongPercent = reportMetrics.wrongTimeMealsPercent()
-            missedMealLabel.setText("\(wrongPercent)%")
+            scene.animateCircleProgress(percent: reportMetrics.rigthTimeMealsPercent())
+            
+            let rightTimes = reportMetrics.atualReport?.totalRightTime
+            doneMealLabel.setText("\(rightTimes ?? 0) meals")
+            
+            let wrongTimes = reportMetrics.atualReport?.totalWrongTime
+            missedMealLabel.setText("\(wrongTimes ?? 0) meals")
             
             reportMetrics.mostWrongTimeMeal { (mealText) in
                 inconsistentMealLabel.setText(mealText)
