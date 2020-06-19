@@ -62,6 +62,11 @@ class InterfaceController: WKInterfaceController  {
             if self.mealsSchedule[index].time.addingTimeInterval(30 * 60).time < Date().time{
                 //wrong time
                 self.mealsSchedule[index].status = .wrongTime
+                self.mealsSchedule[index].wrongTimes += 1
+                MealDAO.shared.update(meal:  self.mealsSchedule[index]) { _ in
+                    return
+                }
+                
             }
         }
     }
