@@ -66,7 +66,11 @@ func mostWrongTimeMeal(completion: (String) -> Void) {
             
             let mostWrongTimeMeal = meals.max { a, b in a.wrongTimes < b.wrongTimes}
             
-            completion(mostWrongTimeMeal?.title ?? "None")
+            if mostWrongTimeMeal?.wrongTimes == 0 {
+                completion("None")
+            } else {
+                completion(mostWrongTimeMeal?.title ?? "None")
+            }
         }
     }
 }
