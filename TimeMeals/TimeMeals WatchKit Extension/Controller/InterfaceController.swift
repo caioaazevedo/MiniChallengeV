@@ -29,7 +29,6 @@ class InterfaceController: WKInterfaceController  {
         self.fetchMealSchedule()
         self.setUpStatusOnTable()
         self.setUpTable()
-        
     }
     
     override func didDeactivate() {
@@ -147,10 +146,20 @@ extension InterfaceController: rowButtonClicked{
                 print("Identifier: \(meal.uuid.uuidString)")
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [meal.uuid.uuidString])
                 
+                /// 'Delete' delay value by returnig the value to nil
+                AppUtilsDAO.shared.saveAppUtils(expectedTimeDelay: nil) { _ in
+                    print("expectedTimeDelay was deleted")
+                }
+                
                 let delay = getTimeDiference(timeMeal: meal.time)
+                
+                print("delay: \(delay)")
                 
                 /// Send notification after the old notification time scheduled
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                    AppUtilsDAO.shared.saveAppUtils(expectedTimeDelay: Date().addingTimeInterval(delay)) { (result) in
+                        print("Delay Saved")
+                    }
                     AppNotification().sendDynamicNotification(meal: meal)
                 }
                 
