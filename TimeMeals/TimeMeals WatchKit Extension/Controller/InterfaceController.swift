@@ -30,6 +30,13 @@ class InterfaceController: WKInterfaceController  {
         self.setUpStatusOnTable()
         self.setUpTable()
         
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notifications) in
+            var i = 0
+            for request in notifications {
+                i += 1
+                print("Requests (\(i): \(request.identifier)")
+            }
+        }
     }
     
     override func didDeactivate() {
@@ -154,6 +161,8 @@ extension InterfaceController: rowButtonClicked{
                 
                 let delay = getTimeDiference(timeMeal: meal.time)
                 
+                print("delay: \(delay)")
+                
                 /// Send notification after the old notification time scheduled
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                     AppUtilsDAO.shared.saveAppUtils(expectedTimeDelay: Date().addingTimeInterval(delay)) { (result) in
@@ -161,8 +170,6 @@ extension InterfaceController: rowButtonClicked{
                     }
                     AppNotification().sendDynamicNotification(meal: meal)
                 }
-                
-                scheduleNotificationInBackground(timeDelay: Int(delay), meal: meal)
                 
                 mealsSchedule[index] = meal
                 self.setUpTable()
@@ -189,25 +196,5 @@ extension InterfaceController: rowButtonClicked{
         let currentDate = calendar.date(from: currentComponents)!
         
         return currentDate.distance(to: mealDate) + 60.0 // difference + 1 min
-    }
-    
-    func scheduleNotificationInBackground(timeDelay: Int, meal: Meal) {
-        
-        let prefferedDate = Date().addingTimeInterval(TimeInterval(timeDelay))
-        
-        WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: prefferedDate, userInfo: nil) { (error) in
-            if let error = error {
-                print("Background error: \(error.localizedDescription)")
-            } else {
-                AppUtilsDAO.shared.retrieve { (retrieve) in
-                    guard let appUtils = retrieve else { return }
-                    
-                    /// Noification already scheduled
-                    if appUtils.expectedTimeDelay != nil { return }
-                    
-                    AppNotification().sendDynamicNotification(meal: meal)
-                }
-            }
-        }
     }
 }

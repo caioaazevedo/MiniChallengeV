@@ -7,15 +7,18 @@
 //
 
 import WatchKit
+import UserNotifications
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         if  verifyFirstLaunch(){
+            self.createDefaultMeal()
+            self.createFirstReport()
+            
             AppUtilsDAO.shared.createAppUtils {
-                self.createDefaultMeal()
-                self.createFirstReport()
+                print("create utils")
             }
             
             AppNotification().requestAuthorization()
@@ -42,6 +45,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             switch task {
             case let backgroundTask as WKApplicationRefreshBackgroundTask:
                 // Be sure to complete the background task once you’re done.
+                checkAsyncSchedule()
                 resetMeals()
                 backgroundTask.setTaskCompletedWithSnapshot(false)
             case let snapshotTask as WKSnapshotRefreshBackgroundTask:
@@ -135,6 +139,30 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
     
+    /// Description: checks the need to fetch the meal without notification created
+    func checkAsyncSchedule(){
+        AppUtilsDAO.shared.retrieve { (retrieve) in
+            guard let appUtils = retrieve else { return }
+            
+            /// Noification not scheduled
+            if appUtils.expectedTimeDelay == nil {
+                
+                // Retrieve the data of the meals and pending notifications
+                MealDAO.shared.retrieve { (retrieve) in
+                    guard let meals = retrieve else { return }
+                    
+                    AppNotification().notificationCenter.getPendingNotificationRequests { (requests) in
+                        
+                        
+                        self.scheduleNotification(meals: meals, requests: requests)
+                    }
+                }
+            }
+            
+            print("Deleay CD: \(String(describing: appUtils.expectedTimeDelay))")
+        }
+    }
+    
     /// Description: Uptade meals in Core Data
     /// - Parameter meals: Meals that will be updated
     func updateThis(meals: [Meal]) {
@@ -152,4 +180,26 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         RunLoop.main.add(timer, forMode: .common)
     }
     
+    /// Description: Find the meals without a notification
+    /// - Parameters:
+    ///   - meals: meals array o verify the missed notificatiion
+    ///   - requests: requests array of pending notifications
+    func scheduleNotification(meals: [Meal], requests: [UNNotificationRequest]) {
+        var hasNotification = false
+        
+        for meal in meals {
+            for request in requests {
+                if meal.uuid.uuidString == request.identifier {
+                    hasNotification = true
+                }
+            }
+            
+            // If any of the request array matches the meals identifier, than create a notification
+            if !hasNotification {
+                AppNotification().sendDynamicNotification(meal: meal)
+            }
+            
+            hasNotification = false
+        }
+    }
 }
