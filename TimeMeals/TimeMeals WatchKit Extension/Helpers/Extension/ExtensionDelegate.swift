@@ -14,6 +14,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         if  verifyFirstLaunch(){
+            
             self.createDefaultMeal()
             self.createFirstReport()
             
@@ -105,7 +106,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func verifyFirstLaunch() -> Bool{
         
         if !UserDefaults.standard.bool(forKey: "appFirstLaunch"){
-            UserDefaults.standard.set(false, forKey: "appFirstLaunch")
+            UserDefaults.standard.set(true, forKey: "appFirstLaunch")
             return true
         }
         return false

@@ -619,14 +619,15 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YWRG4H69V8;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = C4S2S39VU4;
 				INFOPLIST_FILE = "TimeMeals WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.academy.test.MiniChallengeV.TimeMeals.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TimeMeals.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -642,14 +643,15 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YWRG4H69V8;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = C4S2S39VU4;
 				INFOPLIST_FILE = "TimeMeals WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.academy.test.MiniChallengeV.TimeMeals.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TimeMeals.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -665,10 +667,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KFC8C5H4A6;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = C4S2S39VU4;
 				IBSC_MODULE = TimeMeals_WatchKit_Extension;
 				INFOPLIST_FILE = "TimeMeals WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.academy.test.MiniChallengeV.TimeMeals.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TimeMeals.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -684,10 +687,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KFC8C5H4A6;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = C4S2S39VU4;
 				IBSC_MODULE = TimeMeals_WatchKit_Extension;
 				INFOPLIST_FILE = "TimeMeals WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.academy.test.MiniChallengeV.TimeMeals.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TimeMeals.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -701,10 +705,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KFC8C5H4A6;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = C4S2S39VU4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.academy.test.MiniChallengeV.TimeMeals;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TimeMeals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -714,10 +718,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KFC8C5H4A6;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = C4S2S39VU4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.academy.test.MiniChallengeV.TimeMeals;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TimeMeals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
