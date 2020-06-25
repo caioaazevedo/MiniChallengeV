@@ -11,46 +11,69 @@
             <objects>
                 <controller identifier="ReportController" id="XYp-Ex-J4S" customClass="ReportController" customModule="TimeMeals_WatchKit_Extension">
                     <items>
-                        <group width="1" height="195" alignment="left" id="2iH-RS-M4l">
+                        <group width="1" alignment="left" layout="vertical" spacing="6" id="IFA-sx-Ak0">
                             <items>
-                                <spriteKitScene width="1" height="1" alignment="center" id="OyP-EO-9h1"/>
-                            </items>
-                            <variation key="device=watch38mm" height="150"/>
-                            <variation key="device=watch40mm" height="170"/>
-                            <variation key="device=watch42mm" height="172"/>
-                            <variation key="device=watch44mm" height="195"/>
-                        </group>
-                        <group width="1" alignment="left" layout="vertical" id="z7X-X5-jt7">
-                            <items>
-                                <label width="1" alignment="left" text="Most inconsistent meal" textAlignment="center" minimumScaleFactor="0.10000000000000001" id="c2J-6C-LDo"/>
-                                <label width="1" alignment="left" textAlignment="center" minimumScaleFactor="0.5" id="PD9-60-WTB">
-                                    <color key="textColor" red="0.43968814610000001" green="0.9452940822" blue="0.91373521089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <label alignment="center" text="You completed" id="bhJ-t1-vik">
+                                    <fontDescription key="font" type="system" pointSize="18"/>
                                 </label>
-                            </items>
-                        </group>
-                        <separator alignment="left" id="WVm-bi-ShT"/>
-                        <group width="1" alignment="left" spacing="8" id="zyv-AD-aa4">
-                            <items>
-                                <imageView width="30" height="30" alignment="left" verticalAlignment="center" image="star.circle.fill" catalog="system" id="FPl-9v-9Wc"/>
-                                <group width="124" alignment="left" layout="vertical" id="wzd-Zo-72d">
+                                <group width="1" height="195" alignment="left" id="2iH-RS-M4l">
                                     <items>
-                                        <label width="1" alignment="left" text="Done meals" textAlignment="left" id="W5J-Mo-FJf"/>
-                                        <label width="1" alignment="left" text="30" textAlignment="left" id="D87-SL-b5H">
-                                            <color key="textColor" red="0.39665943380000002" green="0.85809940100000004" blue="0.49013745780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </label>
+                                        <spriteKitScene alignment="center" id="OyP-EO-9h1"/>
+                                    </items>
+                                    <variation key="device=watch38mm" height="150"/>
+                                    <variation key="device=watch40mm" height="170"/>
+                                    <variation key="device=watch42mm" height="172"/>
+                                    <variation key="device=watch44mm" height="195"/>
+                                </group>
+                                <separator alignment="left" id="WVm-bi-ShT">
+                                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </separator>
+                                <group width="134" alignment="left" spacing="10" id="zyv-AD-aa4">
+                                    <items>
+                                        <imageView width="29" height="37" alignment="left" verticalAlignment="center" image="CorrectMeal" id="FPl-9v-9Wc"/>
+                                        <group width="71" height="23" alignment="center" verticalAlignment="center" spacing="4" id="wzd-Zo-72d">
+                                            <items>
+                                                <label height="23" alignment="left" text="Done" textAlignment="left" id="W5J-Mo-FJf">
+                                                    <fontDescription key="font" type="system" pointSize="16"/>
+                                                </label>
+                                                <label alignment="left" text="30" textAlignment="left" id="D87-SL-b5H">
+                                                    <color key="textColor" red="0.33725490196078434" green="0.65098039215686276" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <fontDescription key="font" type="system" pointSize="16"/>
+                                                </label>
+                                            </items>
+                                        </group>
                                     </items>
                                 </group>
-                            </items>
-                        </group>
-                        <separator alignment="left" id="Kxb-aS-omO"/>
-                        <group width="1" alignment="left" spacing="8" id="acN-gU-ycS">
-                            <items>
-                                <imageView width="30" height="30" alignment="left" verticalAlignment="center" image="heart.circle.fill" catalog="system" id="Tbi-Sr-Djy"/>
-                                <group width="124" alignment="left" layout="vertical" id="IQ6-PU-5Cv">
+                                <separator alignment="left" id="Kxb-aS-omO">
+                                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </separator>
+                                <group width="1" alignment="left" spacing="10" id="acN-gU-ycS">
                                     <items>
-                                        <label width="1" alignment="right" text="Missed meals" textAlignment="left" id="MLc-Bd-pfe"/>
-                                        <label width="1" alignment="left" text="10" textAlignment="left" id="hUg-ZS-hp8">
-                                            <color key="textColor" red="0.90008777380000005" green="0.2110249102" blue="0.3294050992" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <imageView width="29" height="37" alignment="left" verticalAlignment="center" image="IncorrectMeal" id="Tbi-Sr-Djy"/>
+                                        <group alignment="center" verticalAlignment="center" spacing="4" id="IQ6-PU-5Cv">
+                                            <items>
+                                                <label alignment="left" text="Not Done" textAlignment="left" id="MLc-Bd-pfe">
+                                                    <fontDescription key="font" type="system" pointSize="16"/>
+                                                </label>
+                                                <label alignment="left" text="10" textAlignment="left" id="hUg-ZS-hp8">
+                                                    <color key="textColor" red="0.86274509803921573" green="0.011764705882352941" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <fontDescription key="font" type="system" pointSize="16"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                                <separator alignment="left" id="KqG-6H-ZN1">
+                                    <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </separator>
+                                <group alignment="center" layout="vertical" id="z7X-X5-jt7">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="center" text="Forgotten meal" textAlignment="center" id="c2J-6C-LDo">
+                                            <fontDescription key="font" type="system" pointSize="16"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="center" textAlignment="justified" numberOfLines="3" id="PD9-60-WTB">
+                                            <color key="textColor" red="0.95294117647058818" green="0.49019607843137253" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <fontDescription key="font" type="system" pointSize="16"/>
                                         </label>
                                     </items>
                                 </group>
@@ -65,11 +88,11 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="111" y="58"/>
+            <point key="canvasLocation" x="110" y="56"/>
         </scene>
     </scenes>
     <resources>
-        <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="star.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="CorrectMeal" width="16.5" height="21.5"/>
+        <image name="IncorrectMeal" width="17" height="21.5"/>
     </resources>
 </document>

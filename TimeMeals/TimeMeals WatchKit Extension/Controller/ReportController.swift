@@ -44,10 +44,10 @@ class ReportController: WKInterfaceController  {
             scene.animateCircleProgress(percent: reportMetrics.rigthTimeMealsPercent())
             
             let rightTimes = reportMetrics.atualReport?.totalRightTime
-            doneMealLabel.setText("\(rightTimes ?? 0) meals")
+            doneMealLabel.setText("\(rightTimes ?? 0)x")
             
             let wrongTimes = reportMetrics.atualReport?.totalWrongTime
-            missedMealLabel.setText("\(wrongTimes ?? 0) meals")
+            missedMealLabel.setText("\(wrongTimes ?? 0)x")
             
             reportMetrics.mostWrongTimeMeal { (mealText) in
                 inconsistentMealLabel.setText(mealText)

@@ -12,7 +12,6 @@ class CircleProgressScene: SKScene {
     
     var labelNode: SKLabelNode!
     var mainCircle: SKShapeNode!
-    
     override func sceneDidLoad() {
         setUpElements()
     }
@@ -37,7 +36,7 @@ class CircleProgressScene: SKScene {
         mainCircle.lineWidth = 10
         mainCircle.lineCap = .round
         mainCircle.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.7)
-        mainCircle.strokeColor = #colorLiteral(red: 0.3407858908, green: 0.7046723962, blue: 0.4099263251, alpha: 1)
+        mainCircle.strokeColor = #colorLiteral(red: 0.337254902, green: 0.6509803922, blue: 0.3254901961, alpha: 1)
         mainCircle.zPosition = 2
         mainCircle.isHidden = true
         self.addChild(mainCircle)
@@ -49,9 +48,13 @@ class CircleProgressScene: SKScene {
         shapeNode2.lineWidth = mainCircle.lineWidth
         shapeNode2.lineCap = mainCircle.lineCap
         shapeNode2.position = mainCircle.position
-        shapeNode2.strokeColor = #colorLiteral(red: 0.9001363516, green: 0.1284931004, blue: 0.3204272389, alpha: 1)
+        shapeNode2.strokeColor = #colorLiteral(red: 0.862745098, green: 0.01176470588, blue: 0.2549019608, alpha: 1)
         shapeNode2.zPosition = 1
         self.addChild(shapeNode2)
+        
+        //set up fork
+//        self.fork.position = CGPoint(x: self.mainCircle.position.x * -0.3, y:  self.mainCircle.position.y)
+//        self.addChild(self.fork)
     }
     
     /// Get the current circle format for the animation
