@@ -89,6 +89,7 @@ class CircleProgressScene: SKScene {
         
         if percent == 0{
             self.labelNode.text = "0%"
+            mainCircle.isHidden = true
             return
         }
         
