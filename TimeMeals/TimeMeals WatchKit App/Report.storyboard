@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -14,11 +14,12 @@
                         <group width="1" alignment="left" layout="vertical" spacing="6" id="IFA-sx-Ak0">
                             <items>
                                 <label alignment="center" text="You completed" id="bhJ-t1-vik">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="font" type="system" pointSize="18"/>
                                 </label>
                                 <group width="1" height="195" alignment="left" id="2iH-RS-M4l">
                                     <items>
-                                        <spriteKitScene alignment="center" id="OyP-EO-9h1"/>
+                                        <spriteKitScene width="1" height="1" alignment="center" id="OyP-EO-9h1"/>
                                     </items>
                                     <variation key="device=watch38mm" height="150"/>
                                     <variation key="device=watch40mm" height="170"/>
