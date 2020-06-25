@@ -119,8 +119,8 @@ class InterfaceController: WKInterfaceController  {
         if sameMeal >= defaultMeals.count{
             return
         }
-        
         self.clearMeals()
+        //TODO: Aqui Jojo
         for index in 0..<defaultMeals.count{
             if defaultMeals[index].time.addingTimeInterval(30 * 60) < currentDate{
                 defaultMeals[index].status = .wrongTime
@@ -138,6 +138,7 @@ class InterfaceController: WKInterfaceController  {
         self.mealsSchedule.forEach { (meal) in
             MealDAO.shared.delete(meal: meal, completion: {_ in return})
         }
+         //TODO: Aqui Jojo
     }
     
     //MARK: Created Methods
@@ -150,19 +151,16 @@ class InterfaceController: WKInterfaceController  {
         switch currentMealStatus {
         case .rightTime:
             row.buttonStatus.setBackgroundImageNamed("CorrectMeal")
-            //                row.statusLabel.setTextColor(UIColor(named: "Done"))
             row.statusLabel.setTextColor(UIColor(red: 0.34, green: 0.65, blue: 0.33, alpha: 1.00))
             row.statusLabel.setText("Done")
         case .notTimeYet:
             row.buttonStatus.setBackgroundImageNamed("NotDoneMeal")
-            //                row.statusLabel.setTextColor(UIColor(named: "Next"))
             row.statusLabel.setTextColor(UIColor(red: 0.95, green: 0.49, blue: 0.03, alpha: 1.00))
-            row.statusLabel.setText("Next")
+            row.statusLabel.setText("Coming")
         case .wrongTime:
             row.buttonStatus.setBackgroundImageNamed("IncorrectMeal")
-            //                row.statusLabel.setTextColor(UIColor(named: "Don't"))
             row.statusLabel.setTextColor(UIColor(red: 0.86, green: 0.01, blue: 0.25, alpha: 1.00))
-            row.statusLabel.setText("Don't")
+            row.statusLabel.setText("Missed")
         }
     }
     
