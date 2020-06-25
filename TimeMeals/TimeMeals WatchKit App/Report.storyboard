@@ -11,9 +11,11 @@
             <objects>
                 <controller identifier="ReportController" id="XYp-Ex-J4S" customClass="ReportController" customModule="TimeMeals_WatchKit_Extension">
                     <items>
-                        <group width="1" alignment="left" layout="vertical" spacing="8" id="IFA-sx-Ak0">
+                        <group width="1" alignment="left" layout="vertical" spacing="6" id="IFA-sx-Ak0">
                             <items>
-                                <label alignment="center" text="You completed" id="bhJ-t1-vik"/>
+                                <label alignment="center" text="You completed" id="bhJ-t1-vik">
+                                    <fontDescription key="font" type="system" pointSize="18"/>
+                                </label>
                                 <group width="1" height="195" alignment="left" id="2iH-RS-M4l">
                                     <items>
                                         <spriteKitScene alignment="center" id="OyP-EO-9h1"/>
@@ -31,9 +33,11 @@
                                         <imageView width="29" height="37" alignment="left" verticalAlignment="center" image="CorrectMeal" id="FPl-9v-9Wc"/>
                                         <group alignment="center" verticalAlignment="center" id="wzd-Zo-72d">
                                             <items>
-                                                <label alignment="left" text="Done" textAlignment="left" id="W5J-Mo-FJf"/>
+                                                <label alignment="left" text="Done" textAlignment="left" id="W5J-Mo-FJf">
+                                                    <fontDescription key="font" type="system" pointSize="16"/>
+                                                </label>
                                                 <label alignment="left" text="30" textAlignment="left" id="D87-SL-b5H">
-                                                    <color key="textColor" red="0.39665943380000002" green="0.85809940100000004" blue="0.49013745780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="textColor" red="0.33725490196078434" green="0.65098039215686276" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </label>
                                             </items>
                                         </group>
@@ -47,9 +51,11 @@
                                         <imageView width="29" height="38" alignment="left" verticalAlignment="center" image="IncorrectMeal" id="Tbi-Sr-Djy"/>
                                         <group alignment="center" verticalAlignment="center" id="IQ6-PU-5Cv">
                                             <items>
-                                                <label alignment="left" text="Not Done" textAlignment="left" id="MLc-Bd-pfe"/>
+                                                <label alignment="left" text="Not Done" textAlignment="left" id="MLc-Bd-pfe">
+                                                    <fontDescription key="font" type="system" pointSize="16"/>
+                                                </label>
                                                 <label alignment="left" text="10" textAlignment="left" id="hUg-ZS-hp8">
-                                                    <color key="textColor" red="0.90008777380000005" green="0.2110249102" blue="0.3294050992" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="textColor" red="0.86274509803921573" green="0.011764705882352941" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </label>
                                             </items>
                                         </group>
@@ -58,17 +64,14 @@
                                 <separator alignment="left" id="KqG-6H-ZN1">
                                     <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </separator>
-                                <group width="1" alignment="left" id="J8v-rY-RET">
+                                <group alignment="center" layout="vertical" id="z7X-X5-jt7">
                                     <items>
-                                        <imageView width="29" height="38" alignment="left" image="NotDoneMeal" id="XMd-AH-BMv"/>
-                                        <group alignment="center" layout="vertical" id="z7X-X5-jt7">
-                                            <items>
-                                                <label alignment="left" text="Forgotten meal" textAlignment="center" minimumScaleFactor="0.10000000000000001" id="c2J-6C-LDo"/>
-                                                <label alignment="center" verticalAlignment="center" text="Ola" textAlignment="center" minimumScaleFactor="0.5" id="PD9-60-WTB">
-                                                    <color key="textColor" red="0.95294117647058818" green="0.49019607843137253" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </label>
-                                            </items>
-                                        </group>
+                                        <label alignment="center" verticalAlignment="center" text="Forgotten meal" textAlignment="center" minimumScaleFactor="0.10000000000000001" id="c2J-6C-LDo">
+                                            <fontDescription key="font" type="system" pointSize="16"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="center" textAlignment="justified" numberOfLines="3" minimumScaleFactor="0.5" id="PD9-60-WTB">
+                                            <color key="textColor" red="0.95294117647058818" green="0.49019607843137253" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </label>
                                     </items>
                                 </group>
                             </items>
@@ -88,6 +91,5 @@
     <resources>
         <image name="CorrectMeal" width="16.5" height="21.5"/>
         <image name="IncorrectMeal" width="17" height="21.5"/>
-        <image name="NotDoneMeal" width="17.5" height="23.5"/>
     </resources>
 </document>
