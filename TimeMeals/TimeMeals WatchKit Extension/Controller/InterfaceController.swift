@@ -120,7 +120,7 @@ class InterfaceController: WKInterfaceController  {
             return
         }
         self.clearMeals()
-        //TODO: Aqui Jojo
+        
         for index in 0..<defaultMeals.count{
             if defaultMeals[index].time.addingTimeInterval(30 * 60) < currentDate{
                 defaultMeals[index].status = .wrongTime
@@ -128,8 +128,8 @@ class InterfaceController: WKInterfaceController  {
             MealDAO.shared.create(meal: defaultMeals[index]) { _ in
                 return
             }
-            
         }
+        resetWeekReportAction()
     }
 
     /// Delete all list of meals
@@ -138,7 +138,31 @@ class InterfaceController: WKInterfaceController  {
         self.mealsSchedule.forEach { (meal) in
             MealDAO.shared.delete(meal: meal, completion: {_ in return})
         }
-         //TODO: Aqui Jojo
+        
+        resetWeekReportAction()
+    }
+    
+    /// Description: Reset the week report
+    /// - Returns: A WKAlertAction to delete the week report
+    func resetWeekReportAction(){
+        
+        //Reset the week
+        let reportMetrics = ReportMetrics()
+        
+        reportMetrics.getAtualReport(completion: { _ in
+            
+            guard let report = reportMetrics.atualReport else { return }
+            
+            let newReport = Report(uuid: UUID(), week: report.week+1, totalRightTime: 0, totalWrongTime: 0, mostWrongTimeMeal: "None")
+            
+            // Create new report in Core Data
+            ReportDAO.shared.create(report: newReport) { _ in
+                // Remove pending notification from old report
+                AppNotification().notificationCenter.removePendingNotificationRequests(withIdentifiers: [report.uuid.uuidString])
+                //Create notification from new report
+                AppNotification().sendReportNotification(report: newReport)
+            }
+        })
     }
     
     //MARK: Created Methods
