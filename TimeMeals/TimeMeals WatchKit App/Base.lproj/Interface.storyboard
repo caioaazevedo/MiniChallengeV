@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -57,6 +57,16 @@
                             </items>
                         </group>
                     </items>
+                    <menu key="menu" id="19c-Fm-1yL">
+                        <items>
+                            <menuItem title="Default Meals" icon="info" id="uyH-au-A0K">
+                                <connections>
+                                    <action selector="defaultMeal" destination="AgC-eL-Hgc" id="6wo-iA-I6d"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Own Meals" icon="add" id="GSx-Kv-kdK"/>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="mealList" destination="nD8-oE-gbA" id="DGx-Tx-zgs"/>
                         <segue destination="sSA-dO-eKb" kind="relationship" relationship="nextPage" id="ZOQ-W7-NLg"/>
@@ -73,36 +83,42 @@
                         <group width="1" height="306" alignment="center" layout="vertical" spacing="10" id="9oq-h3-Qrd">
                             <items>
                                 <label alignment="left" text="Title:" id="gcj-Ca-O6g"/>
-                                <textField width="1" alignment="left" placeholder="Title" id="q3P-cp-5Il">
+                                <textField width="1" alignment="center" placeholder="Title" id="q3P-cp-5Il">
                                     <connections>
                                         <action selector="titleTextFieldAction:" destination="7i0-Ie-i24" id="wIh-DM-QYp"/>
                                     </connections>
                                 </textField>
-                                <label alignment="left" text="Time:" id="z19-0c-cu8"/>
-                                <group width="1" alignment="left" id="8HK-b8-GGb">
+                                <group width="1" alignment="center" layout="vertical" id="sNN-Wy-5zH">
                                     <items>
-                                        <picker width="60" height="100" alignment="left" id="ihS-sj-rCV">
-                                            <connections>
-                                                <action selector="hourPickerAction:" destination="7i0-Ie-i24" id="i4p-pd-vjV"/>
-                                            </connections>
-                                        </picker>
-                                        <label alignment="center" verticalAlignment="center" text=":" id="cQJ-hl-Pa1"/>
-                                        <picker width="60" height="100" alignment="right" verticalAlignment="center" id="Oxz-Iy-yyu">
-                                            <connections>
-                                                <action selector="minutePickerAction:" destination="7i0-Ie-i24" id="JIg-D5-st8"/>
-                                            </connections>
-                                        </picker>
+                                        <label alignment="left" text="Time:" id="z19-0c-cu8"/>
+                                        <group width="1" alignment="center" spacing="4" id="8HK-b8-GGb">
+                                            <items>
+                                                <picker width="60" height="100" alignment="center" focusStyle="sequence" id="ihS-sj-rCV">
+                                                    <connections>
+                                                        <action selector="hourPickerAction:" destination="7i0-Ie-i24" id="i4p-pd-vjV"/>
+                                                    </connections>
+                                                </picker>
+                                                <label alignment="center" verticalAlignment="center" text=":" id="cQJ-hl-Pa1">
+                                                    <fontDescription key="font" type="boldSystem" pointSize="22"/>
+                                                </label>
+                                                <picker width="60" height="100" alignment="center" verticalAlignment="center" focusStyle="sequence" id="Oxz-Iy-yyu">
+                                                    <connections>
+                                                        <action selector="minutePickerAction:" destination="7i0-Ie-i24" id="JIg-D5-st8"/>
+                                                    </connections>
+                                                </picker>
+                                            </items>
+                                        </group>
                                     </items>
                                 </group>
                                 <label alignment="left" text="Label" minimumScaleFactor="0.5" id="CV4-ls-LW7">
                                     <color key="textColor" red="0.7843137255" green="0.30196078430000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </label>
-                                <button width="1" alignment="left" title="Save" id="xqe-kN-A5S">
+                                <button width="1" alignment="center" title="Save" id="xqe-kN-A5S">
                                     <connections>
                                         <action selector="saveButtonAction" destination="7i0-Ie-i24" id="ers-B7-Xu0"/>
                                     </connections>
                                 </button>
-                                <button width="1" alignment="left" title="Delete" id="Efo-ie-OTC">
+                                <button width="1" alignment="center" title="Delete" id="Efo-ie-OTC">
                                     <connections>
                                         <action selector="deleteButtonAction" destination="7i0-Ie-i24" id="7RX-hQ-BuF"/>
                                     </connections>
@@ -274,7 +290,7 @@
             <objects>
                 <controller identifier="Criate" id="YB2-jT-Eo2" customClass="MealCreateController" customModule="TimeMeals_WatchKit_Extension">
                     <items>
-                        <group width="1" height="257" alignment="center" layout="vertical" spacing="10" id="htf-Go-u6D">
+                        <group width="1" height="257" alignment="center" layout="vertical" spacing="9" id="htf-Go-u6D">
                             <items>
                                 <label alignment="left" text="Title:" id="4Il-gw-rgZ"/>
                                 <textField width="1" alignment="left" placeholder="Title" id="TbJ-zD-16q">
@@ -282,20 +298,26 @@
                                         <action selector="titleTextFieldAction:" destination="YB2-jT-Eo2" id="xJQ-JR-Ju8"/>
                                     </connections>
                                 </textField>
-                                <label alignment="left" text="Time:" id="ChX-c4-Fej"/>
-                                <group width="1" alignment="left" id="Q9M-pK-xT1">
+                                <group width="1" alignment="center" layout="vertical" spacing="0.0" id="YYk-Ko-TAL">
                                     <items>
-                                        <picker width="60" height="100" alignment="left" id="f8H-8h-8T3">
-                                            <connections>
-                                                <action selector="hourPickerAction:" destination="YB2-jT-Eo2" id="xVR-YS-dNk"/>
-                                            </connections>
-                                        </picker>
-                                        <label alignment="center" verticalAlignment="center" text=":" id="ERB-UU-pXo"/>
-                                        <picker width="60" height="100" alignment="right" verticalAlignment="center" id="r10-5G-R4K">
-                                            <connections>
-                                                <action selector="minutePickerAction:" destination="YB2-jT-Eo2" id="6nw-hP-7Dc"/>
-                                            </connections>
-                                        </picker>
+                                        <label alignment="left" text="Time:" id="ChX-c4-Fej"/>
+                                        <group width="1" alignment="left" spacing="4" id="Q9M-pK-xT1">
+                                            <items>
+                                                <picker width="60" height="100" alignment="center" focusStyle="sequence" id="f8H-8h-8T3">
+                                                    <connections>
+                                                        <action selector="hourPickerAction:" destination="YB2-jT-Eo2" id="xVR-YS-dNk"/>
+                                                    </connections>
+                                                </picker>
+                                                <label alignment="center" verticalAlignment="center" text=":" id="ERB-UU-pXo">
+                                                    <fontDescription key="font" type="boldSystem" pointSize="22"/>
+                                                </label>
+                                                <picker width="60" height="100" alignment="center" focusStyle="sequence" id="r10-5G-R4K">
+                                                    <connections>
+                                                        <action selector="minutePickerAction:" destination="YB2-jT-Eo2" id="6nw-hP-7Dc"/>
+                                                    </connections>
+                                                </picker>
+                                            </items>
+                                        </group>
                                     </items>
                                 </group>
                                 <label alignment="left" text="Label" minimumScaleFactor="0.5" id="r6J-qf-gtM">

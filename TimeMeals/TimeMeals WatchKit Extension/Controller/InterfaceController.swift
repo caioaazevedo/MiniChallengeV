@@ -69,10 +69,37 @@ class InterfaceController: WKInterfaceController  {
             }
         }
     }
+    @IBAction func defaultMeal() {
+        self.createDefaultMeal()
+        self.fetchMealSchedule()
+        self.setUpTable()
+    }
     
     
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
         return self.mealsSchedule[rowIndex]
+    }
+    
+    
+    /// Description: creates and initializes the standard diet for the user to follow
+    func createDefaultMeal(){
+        let currentDate = Date()
+        let date = DateManager()
+        var defaultMeals = [Meal(uuid: UUID.init(), title: "Desjejum", time: date.setUpDate(hour: 7, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Café da Manhã", time: date.setUpDate(hour: 11, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Almoço", time: date.setUpDate(hour: 13, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Lanche da Tarde", time: date.setUpDate(hour: 17, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Jantar", time: date.setUpDate(hour: 20, minute: 0), status: .notTimeYet, wrongTimes: 0)
+        ]
+        for index in 0..<defaultMeals.count{
+            if defaultMeals[index].time.addingTimeInterval(30 * 60) < currentDate{
+                defaultMeals[index].status = .wrongTime
+            }
+            MealDAO.shared.create(meal: defaultMeals[index]) { _ in
+                return
+            }
+            
+        }
     }
     
     

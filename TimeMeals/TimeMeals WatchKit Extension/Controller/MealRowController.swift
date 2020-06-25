@@ -22,6 +22,7 @@ class MealRowController: NSObject {
     var rowNumber = 0
     
     
+    
     @IBAction func buttonClicked() {
         self.delegate?.rowClicked(at: rowNumber)
     }

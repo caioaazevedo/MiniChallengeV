@@ -71,8 +71,6 @@ class AppNotification: NSObject{
                     // Handle any errors
                     print(("Error: \(theError)"))
                 }
-                
-                print("notify")
             }
         }
         
@@ -106,7 +104,7 @@ class AppNotification: NSObject{
                 if let err = error {
                     print("Error : \(err)")
                 }
-                print("notify report")
+    
             }
             
             
@@ -119,7 +117,6 @@ class AppNotification: NSObject{
         checkAuthorization { (authorized) in
             guard authorized else { return }
             
-            print("authorized")
             
             let notification = UNMutableNotificationContent()
             notification.categoryIdentifier = "myCategory"
@@ -148,8 +145,6 @@ class AppNotification: NSObject{
                     // Handle any errors
                     print(("Error: \(theError)"))
                 }
-                
-                print("notify")
             }
         }
     }
