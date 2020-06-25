@@ -116,12 +116,21 @@ class InterfaceController: WKInterfaceController  {
         let currentMealStatus = self.mealsSchedule[row.rowNumber].status
         
         switch currentMealStatus {
-        case .rightTime:
-            row.buttonStatus.setBackgroundColor(.green)
-        case .notTimeYet:
-            row.buttonStatus.setBackgroundColor(.yellow)
-        case .wrongTime:
-            row.buttonStatus.setBackgroundColor(.red)
+            case .rightTime:
+                row.buttonStatus.setBackgroundImageNamed("CorrectMeal")
+//                row.statusLabel.setTextColor(UIColor(named: "Done"))
+                row.statusLabel.setTextColor(UIColor(red: 0.34, green: 0.65, blue: 0.33, alpha: 1.00))
+                row.statusLabel.setText("Done")
+            case .notTimeYet:
+                row.buttonStatus.setBackgroundImageNamed("NotDoneMeal")
+//                row.statusLabel.setTextColor(UIColor(named: "Next"))
+                row.statusLabel.setTextColor(UIColor(red: 0.95, green: 0.49, blue: 0.03, alpha: 1.00))
+                row.statusLabel.setText("Next")
+            case .wrongTime:
+                row.buttonStatus.setBackgroundImageNamed("IncorrectMeal")
+//                row.statusLabel.setTextColor(UIColor(named: "Don't"))
+                row.statusLabel.setTextColor(UIColor(red: 0.86, green: 0.01, blue: 0.25, alpha: 1.00))
+                row.statusLabel.setText("Don't")
         }
     }
     
