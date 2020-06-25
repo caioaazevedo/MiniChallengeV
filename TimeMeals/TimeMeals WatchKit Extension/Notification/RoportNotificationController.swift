@@ -12,11 +12,12 @@ import UserNotifications
 
 class RoportNotificationController: WKUserNotificationInterfaceController {
     
-    @IBOutlet weak var rightPercentLabel: WKInterfaceLabel!
-    @IBOutlet weak var wrongPercentLabel: WKInterfaceLabel!
+    @IBOutlet weak var circleProgressScene: WKInterfaceSKScene!
     
-    var reportMetrics: ReportMetrics = ReportMetrics()
+    var reportMetrics = ReportMetrics()
     var report: Report?
+    var scene: CircleProgressScene!
+    
     
     override init() {
         super.init()
@@ -24,6 +25,14 @@ class RoportNotificationController: WKUserNotificationInterfaceController {
         reportMetrics.getAtualReport { _ in
             report = reportMetrics.atualReport!
         }
+        
+        let currentDevice = WKInterfaceDevice.current()
+        let bounds = currentDevice.screenBounds
+        
+        scene = CircleProgressScene(size: CGSize(width: bounds.width, height: bounds.height))
+        scene.scaleMode = .aspectFill
+        
+        circleProgressScene.presentScene(scene)
     }
     
     override func didDeactivate() {
@@ -38,14 +47,18 @@ class RoportNotificationController: WKUserNotificationInterfaceController {
             AppNotification().notificationCenter.removePendingNotificationRequests(withIdentifiers: [report.uuid.uuidString])
             AppNotification().sendReportNotification(report: newReport)
         }
+        
+        
     }
     
     override func didReceive(_ notification: UNNotification) {
         
         guard let report = report else { return }
         
-        rightPercentLabel.setText("right: \(report.totalRightTime)%")
-
-        wrongPercentLabel.setText("wrong: \(report.totalWrongTime)%")
+        scene.animateCircleProgress(percent: reportMetrics.rigthTimeMealsPercent())
+        
+//        rightPercentLabel.setText("right: \(report.totalRightTime)%")
+//
+//        wrongPercentLabel.setText("wrong: \(report.totalWrongTime)%")
     }
 }

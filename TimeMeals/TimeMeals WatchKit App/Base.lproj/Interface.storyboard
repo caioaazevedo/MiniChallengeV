@@ -245,7 +245,7 @@
             <objects>
                 <notificationController id="joj-w7-DBG">
                     <items>
-                        <label alignment="left" text="Alert Label" id="Xgb-ju-0jU"/>
+                        <label alignment="left" text="Semanal Report " id="Xgb-ju-0jU"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="reportNotification" id="3tu-ve-TaE"/>
                     <connections>
@@ -254,7 +254,7 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="-112" y="2423"/>
+            <point key="canvasLocation" x="-96" y="2346"/>
         </scene>
         <!--Delay Notification Notification Controller-->
         <scene sceneID="IKy-bU-QqM">
@@ -359,19 +359,16 @@
             <objects>
                 <controller id="na1-Za-4iJ" customClass="RoportNotificationController" customModule="TimeMeals_WatchKit_Extension">
                     <items>
-                        <label alignment="left" text="Report" id="c0K-8Y-YYE"/>
-                        <imageView width="45" height="51" alignment="center" image="doc.text" catalog="system" contentMode="scaleAspectFit" id="XzX-vP-Jed"/>
-                        <separator alignment="left" id="Ezl-lZ-hr2"/>
-                        <label alignment="center" verticalAlignment="center" text="rigthPercent" id="FqN-oR-HfP"/>
-                        <label alignment="center" verticalAlignment="center" text="wrongPercent" id="Jv2-hp-iZV"/>
+                        <label alignment="center" text="Report" id="c0K-8Y-YYE"/>
+                        <spriteKitScene width="1" height="150" alignment="center" id="Pal-Bn-DyE"/>
+                        <label alignment="center" verticalAlignment="center" text="Tap Here" id="FqN-oR-HfP"/>
                     </items>
                     <connections>
-                        <outlet property="rightPercentLabel" destination="FqN-oR-HfP" id="sn7-dt-jeW"/>
-                        <outlet property="wrongPercentLabel" destination="Jv2-hp-iZV" id="eAu-RF-oak"/>
+                        <outlet property="circleProgressScene" destination="Pal-Bn-DyE" id="q8G-qo-5Jh"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="294" y="2430"/>
+            <point key="canvasLocation" x="294" y="2346.5"/>
         </scene>
     </scenes>
     <resources>

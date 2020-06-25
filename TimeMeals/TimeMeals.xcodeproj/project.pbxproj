@@ -11,6 +11,7 @@
 		0FA4B6B32496BE7B00A98649 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4B6B22496BE7B00A98649 /* Time.swift */; };
 		0FA4B6B62496C26E00A98649 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4B6B52496C26E00A98649 /* DateExtension.swift */; };
 		0FE732C42495D63500A0A67C /* MealRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE732C32495D63500A0A67C /* MealRowController.swift */; };
+		494480B224A4F15F003CE90E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494480B124A4F15F003CE90E /* Assets.xcassets */; };
 		49A8095B249976A00045A1B5 /* CircleProgressScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8095A249976A00045A1B5 /* CircleProgressScene.swift */; };
 		49A80961249A9DC90045A1B5 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A80960249A9DC90045A1B5 /* Report.storyboard */; };
 		49A80963249AA0DD0045A1B5 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A80962249AA0DD0045A1B5 /* ReportController.swift */; };
@@ -91,6 +92,7 @@
 		0FA4B6B22496BE7B00A98649 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		0FA4B6B52496C26E00A98649 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0FE732C32495D63500A0A67C /* MealRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRowController.swift; sourceTree = "<group>"; };
+		494480B124A4F15F003CE90E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49A8095A249976A00045A1B5 /* CircleProgressScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressScene.swift; sourceTree = "<group>"; };
 		49A80960249A9DC90045A1B5 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		49A80962249AA0DD0045A1B5 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		E2C1C75024915E4600EBBC46 /* TimeMeals WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				494480B124A4F15F003CE90E /* Assets.xcassets */,
 				E2C1C75B24915E4800EBBC46 /* Info.plist */,
 				E2321D512493B9DF00E4D76F /* Database */,
 				0FE732C22495D61B00A0A67C /* Controller */,
@@ -433,6 +436,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494480B224A4F15F003CE90E /* Assets.xcassets in Resources */,
 				E2C1C75A24915E4800EBBC46 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

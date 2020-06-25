@@ -21,44 +21,66 @@ class CircleProgressScene: SKScene {
     private func setUpElements() {
         
         // set the background scene color
-        backgroundColor = .black
+        backgroundColor = .clear
         
         // set up the label
         labelNode = SKLabelNode(fontNamed: "AvenirNext-Bold")
         labelNode.fontSize = self.size.width / 6
-        labelNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.7 - labelNode.fontSize / 2.5)
+        labelNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.8 - labelNode.fontSize / 2.5)
+        labelNode.color = #colorLiteral(red: 0.1807745993, green: 0.6628184319, blue: 0.2781128585, alpha: 1)
         self.addChild(labelNode)
         
         // set up the main circle
-        let path = UIBezierPath(arcCenter: .zero, radius: self.size.width / 3, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+        let path = UIBezierPath(arcCenter: .zero, radius: self.size.width / 3.5, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
         
         mainCircle = SKShapeNode(path: path.cgPath)
         mainCircle.fillColor = .clear
         mainCircle.lineWidth = 10
         mainCircle.lineCap = .round
-        mainCircle.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.7)
-        mainCircle.strokeColor = #colorLiteral(red: 0.3407858908, green: 0.7046723962, blue: 0.4099263251, alpha: 1)
+        mainCircle.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.8)
+        mainCircle.strokeColor = #colorLiteral(red: 0.1807745993, green: 0.6628184319, blue: 0.2781128585, alpha: 1)
         mainCircle.zPosition = 2
         mainCircle.isHidden = true
         self.addChild(mainCircle)
         
         // set up the background circle
-        let shapeNode2 = SKShapeNode(path: path.cgPath)
-        shapeNode2.strokeColor = mainCircle.strokeColor
-        shapeNode2.fillColor = mainCircle.fillColor
-        shapeNode2.lineWidth = mainCircle.lineWidth
-        shapeNode2.lineCap = mainCircle.lineCap
-        shapeNode2.position = mainCircle.position
-        shapeNode2.strokeColor = #colorLiteral(red: 0.9001363516, green: 0.1284931004, blue: 0.3204272389, alpha: 1)
-        shapeNode2.zPosition = 1
-        self.addChild(shapeNode2)
+        let backCircle = SKShapeNode(path: path.cgPath)
+        backCircle.strokeColor = mainCircle.strokeColor
+        backCircle.fillColor = mainCircle.fillColor
+        backCircle.lineWidth = mainCircle.lineWidth
+        backCircle.lineCap = mainCircle.lineCap
+        backCircle.position = mainCircle.position
+        backCircle.strokeColor = #colorLiteral(red: 0.9430144429, green: 0, blue: 0.2319390178, alpha: 1)
+        backCircle.zPosition = 1
+        self.addChild(backCircle)
+        
+        //set up fork and knife
+        let fork = SKSpriteNode()
+        fork.texture = SKTexture(imageNamed: "Fork")
+        fork.position = CGPoint(x: self.size.width * 0.1, y: self.size.height / 1.8)
+        fork.size = CGSize(width: self.size.width * 0.1, height: self.size.width * 0.45)
+        self.addChild(fork)
+        
+        let knife = SKSpriteNode()
+        knife.texture = SKTexture(imageNamed: "Knife")
+        knife.position = CGPoint(x: self.size.width * 0.9, y: self.size.height / 1.8)
+        knife.size = CGSize(width: self.size.width * 0.1, height: self.size.width * 0.45)
+        self.addChild(knife)
+        
+        //set up leaf
+        let leaf = SKSpriteNode()
+        leaf.texture = SKTexture(imageNamed: "DishDetail")
+        leaf.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.8 + self.size.width / 3.5 + mainCircle.lineWidth * 0.7)
+        leaf.size = CGSize(width: self.size.height * 0.3, height: self.size.height * 0.1)
+        leaf.anchorPoint = CGPoint(x: 0.5, y: 0)
+        self.addChild(leaf)
     }
     
     /// Get the current circle format for the animation
     /// - Parameter radius: the circle radius
     /// - Parameter withPercent: get the current percent of the circle
     private func getCirclePath(withPercent percent:CGFloat) -> CGPath {
-        return  UIBezierPath(arcCenter: .zero, radius: self.size.width / 3 , startAngle: 2 * .pi * percent, endAngle: 0, clockwise: true).cgPath
+        return  UIBezierPath(arcCenter: .zero, radius: self.size.width / 3.5 , startAngle: 2 * .pi * percent, endAngle: 0, clockwise: true).cgPath
     }
     
     /// Make the circle animation based on the percent
