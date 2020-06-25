@@ -145,7 +145,7 @@
                     <items>
                         <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategoryreportNotification" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <color key="backgroundColor" red="0.1741943061" green="0.3566455543" blue="0.58826529979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
@@ -240,7 +240,7 @@
                     <items>
                         <label alignment="left" text="Semanal Report " id="Xgb-ju-0jU"/>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="3tu-ve-TaE"/>
+                    <notificationCategory key="notificationCategory" identifier="reportNotification" id="3tu-ve-TaE"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="Xgb-ju-0jU" id="d9f-7J-8T1"/>
                         <segue destination="na1-Za-4iJ" kind="relationship" relationship="dynamicNotificationInterface" id="4Zz-f5-49P"/>
