@@ -21,7 +21,7 @@ class CircleProgressScene: SKScene {
     private func setUpElements() {
         
         // set the background scene color
-        backgroundColor = .black
+        backgroundColor = .clear
         
         // set up the label
         labelNode = SKLabelNode(fontNamed: "AvenirNext-Bold")
