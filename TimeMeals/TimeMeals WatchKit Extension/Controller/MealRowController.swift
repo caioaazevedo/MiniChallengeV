@@ -17,6 +17,7 @@ class MealRowController: NSObject {
     @IBOutlet weak var mealNameLabel: WKInterfaceLabel!
     
     @IBOutlet weak var hourLabel: WKInterfaceLabel!
+    @IBOutlet weak var statusLabel: WKInterfaceLabel!
     
     var delegate: rowButtonClicked? = nil
     var rowNumber = 0
