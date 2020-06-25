@@ -12,7 +12,7 @@ class CircleProgressScene: SKScene {
     
     var labelNode: SKLabelNode!
     var mainCircle: SKShapeNode!
-    
+
     override func sceneDidLoad() {
         setUpElements()
     }
