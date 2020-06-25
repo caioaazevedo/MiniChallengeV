@@ -232,8 +232,8 @@ class MealEditController: WKInterfaceController  {
             })
         }
         
-        let action2 = WKAlertAction(title: "Cancel", style: .cancel) {}
+        let action2 = WKAlertAction(title: "Cancel", style: .default) {}
         
-        presentAlert(withTitle: "Attention", message: "Are you sure you want to delete this meal? The weekly report will be restarted.", preferredStyle: .actionSheet, actions: [action1,action2])
+        presentAlert(withTitle: "Attention", message: "Are you sure you want to delete this meal?", preferredStyle: .actionSheet, actions: [action1,action2])
     }
 }
