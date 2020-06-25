@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="watch38"/>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch44"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
@@ -29,15 +29,15 @@
                                 <separator alignment="left" id="WVm-bi-ShT">
                                     <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </separator>
-                                <group width="134" alignment="left" spacing="10" id="zyv-AD-aa4">
+                                <group width="1" alignment="center" spacing="10" id="zyv-AD-aa4">
                                     <items>
                                         <imageView width="29" height="37" alignment="left" verticalAlignment="center" image="CorrectMeal" id="FPl-9v-9Wc"/>
-                                        <group width="71" height="23" alignment="center" verticalAlignment="center" spacing="4" id="wzd-Zo-72d">
+                                        <group width="62" alignment="left" verticalAlignment="center" spacing="4" id="wzd-Zo-72d">
                                             <items>
-                                                <label height="23" alignment="left" text="Done" textAlignment="left" id="W5J-Mo-FJf">
+                                                <label alignment="left" verticalAlignment="center" text="Done" textAlignment="left" id="W5J-Mo-FJf">
                                                     <fontDescription key="font" type="system" pointSize="16"/>
                                                 </label>
-                                                <label alignment="left" text="30" textAlignment="left" id="D87-SL-b5H">
+                                                <label alignment="left" verticalAlignment="center" text="30" textAlignment="left" id="D87-SL-b5H">
                                                     <color key="textColor" red="0.33725490196078434" green="0.65098039215686276" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <fontDescription key="font" type="system" pointSize="16"/>
                                                 </label>
@@ -48,15 +48,15 @@
                                 <separator alignment="left" id="Kxb-aS-omO">
                                     <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </separator>
-                                <group width="1" alignment="left" spacing="10" id="acN-gU-ycS">
+                                <group width="1" alignment="center" spacing="10" id="acN-gU-ycS">
                                     <items>
                                         <imageView width="29" height="37" alignment="left" verticalAlignment="center" image="IncorrectMeal" id="Tbi-Sr-Djy"/>
-                                        <group alignment="center" verticalAlignment="center" spacing="4" id="IQ6-PU-5Cv">
+                                        <group width="90" alignment="left" verticalAlignment="center" spacing="4" id="IQ6-PU-5Cv">
                                             <items>
-                                                <label alignment="left" text="Not Done" textAlignment="left" id="MLc-Bd-pfe">
+                                                <label alignment="left" verticalAlignment="center" text="Not Done" textAlignment="left" id="MLc-Bd-pfe">
                                                     <fontDescription key="font" type="system" pointSize="16"/>
                                                 </label>
-                                                <label alignment="left" text="10" textAlignment="left" id="hUg-ZS-hp8">
+                                                <label alignment="left" verticalAlignment="center" text="10" textAlignment="left" id="hUg-ZS-hp8">
                                                     <color key="textColor" red="0.86274509803921573" green="0.011764705882352941" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <fontDescription key="font" type="system" pointSize="16"/>
                                                 </label>
@@ -89,11 +89,11 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="110" y="56"/>
+            <point key="canvasLocation" x="109.39130434782608" y="55.401785714285715"/>
         </scene>
     </scenes>
     <resources>
-        <image name="CorrectMeal" width="16.5" height="21.5"/>
-        <image name="IncorrectMeal" width="17" height="21.5"/>
+        <image name="CorrectMeal" width="16.5" height="22"/>
+        <image name="IncorrectMeal" width="16.5" height="22"/>
     </resources>
 </document>

@@ -69,12 +69,16 @@
                     </items>
                     <menu key="menu" id="19c-Fm-1yL">
                         <items>
-                            <menuItem title="Default Meals" icon="info" id="uyH-au-A0K">
+                            <menuItem title="Use Default Schedule" image="defaultMeals" id="uyH-au-A0K">
                                 <connections>
                                     <action selector="defaultMeal" destination="AgC-eL-Hgc" id="6wo-iA-I6d"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Own Meals" icon="add" id="GSx-Kv-kdK"/>
+                            <menuItem title="Clear All Meals" icon="trash" id="GSx-Kv-kdK">
+                                <connections>
+                                    <action selector="clearMeals" destination="AgC-eL-Hgc" id="exc-TG-U3o"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>
@@ -377,6 +381,7 @@
     </scenes>
     <resources>
         <image name="NotDoneMeal" width="18" height="24"/>
+        <image name="defaultMeals" width="39.5" height="35"/>
         <namedColor name="Next">
             <color red="0.95294117647058818" green="0.49019607843137253" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

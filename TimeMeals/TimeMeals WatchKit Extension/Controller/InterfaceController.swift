@@ -26,9 +26,7 @@ class InterfaceController: WKInterfaceController  {
     
     override func willActivate() {
         super.willActivate()
-        self.fetchMealSchedule()
-        self.setUpStatusOnTable()
-        self.setUpTable()
+        self.refreshData()
     }
     
     override func didDeactivate() {
@@ -36,7 +34,30 @@ class InterfaceController: WKInterfaceController  {
         super.didDeactivate()
     }
     
+    //MARK: IBACTIONS
+    
+    /// The menu button that apply the default schedule
+    @IBAction func defaultMeal() {
+        self.createDefaultMeal()
+        self.refreshData()
+    }
+    
+    
+    /// The menu button that clear all meals in table
+    @IBAction func clearMeals() {
+        self.deleteAllMels()
+        self.refreshData()
+    }
+    
+    
     //MARK: Table Methods
+    
+    /// Refresh the data of core data
+    func refreshData(){
+        self.fetchMealSchedule()
+        self.setUpStatusOnTable()
+        self.setUpTable()
+    }
     
     /// Set up table rows
     func setUpTable(){
@@ -69,12 +90,6 @@ class InterfaceController: WKInterfaceController  {
             }
         }
     }
-    @IBAction func defaultMeal() {
-        self.createDefaultMeal()
-        self.fetchMealSchedule()
-        self.setUpTable()
-    }
-    
     
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
         return self.mealsSchedule[rowIndex]
@@ -83,14 +98,30 @@ class InterfaceController: WKInterfaceController  {
     
     /// Description: creates and initializes the standard diet for the user to follow
     func createDefaultMeal(){
+        var sameMeal = 0
         let currentDate = Date()
         let date = DateManager()
         var defaultMeals = [Meal(uuid: UUID.init(), title: "Desjejum", time: date.setUpDate(hour: 7, minute: 0), status: .notTimeYet, wrongTimes: 0),
-                            Meal(uuid: UUID.init(), title: "Café da Manhã", time: date.setUpDate(hour: 11, minute: 0), status: .notTimeYet, wrongTimes: 0),
-                            Meal(uuid: UUID.init(), title: "Almoço", time: date.setUpDate(hour: 13, minute: 0), status: .notTimeYet, wrongTimes: 0),
-                            Meal(uuid: UUID.init(), title: "Lanche da Tarde", time: date.setUpDate(hour: 17, minute: 0), status: .notTimeYet, wrongTimes: 0),
-                            Meal(uuid: UUID.init(), title: "Jantar", time: date.setUpDate(hour: 20, minute: 0), status: .notTimeYet, wrongTimes: 0)
+                            Meal(uuid: UUID.init(), title: "Breakfast", time: date.setUpDate(hour: 11, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Lunch", time: date.setUpDate(hour: 13, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Snack", time: date.setUpDate(hour: 17, minute: 0), status: .notTimeYet, wrongTimes: 0),
+                            Meal(uuid: UUID.init(), title: "Dinner", time: date.setUpDate(hour: 20, minute: 0), status: .notTimeYet, wrongTimes: 0)
         ]
+        
+        self.mealsSchedule.forEach { (meal) in
+            for defaultMeal in defaultMeals{
+                if meal.title == defaultMeal.title && meal.time.time == defaultMeal.time.time {
+                    sameMeal += 1
+                }
+            }
+        }
+        
+        if sameMeal >= defaultMeals.count{
+            return
+        }else{
+            self.clearMeals()
+        }
+        
         for index in 0..<defaultMeals.count{
             if defaultMeals[index].time.addingTimeInterval(30 * 60) < currentDate{
                 defaultMeals[index].status = .wrongTime
@@ -101,14 +132,16 @@ class InterfaceController: WKInterfaceController  {
             
         }
     }
-    
-    
-    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
-        return self.mealsSchedule
+
+    /// Delete all list of meals
+    func deleteAllMels(){
+        if self.mealsSchedule.isEmpty {return}
+        self.mealsSchedule.forEach { (meal) in
+            MealDAO.shared.delete(meal: meal, completion: {_ in return})
+        }
     }
     
     //MARK: Created Methods
-    
     
     /// Verify the meal status and change the view
     /// - Parameter row: The row to change
@@ -116,25 +149,23 @@ class InterfaceController: WKInterfaceController  {
         let currentMealStatus = self.mealsSchedule[row.rowNumber].status
         
         switch currentMealStatus {
-            case .rightTime:
-                row.buttonStatus.setBackgroundImageNamed("CorrectMeal")
-//                row.statusLabel.setTextColor(UIColor(named: "Done"))
-                row.statusLabel.setTextColor(UIColor(red: 0.34, green: 0.65, blue: 0.33, alpha: 1.00))
-                row.statusLabel.setText("Done")
-            case .notTimeYet:
-                row.buttonStatus.setBackgroundImageNamed("NotDoneMeal")
-//                row.statusLabel.setTextColor(UIColor(named: "Next"))
-                row.statusLabel.setTextColor(UIColor(red: 0.95, green: 0.49, blue: 0.03, alpha: 1.00))
-                row.statusLabel.setText("Next")
-            case .wrongTime:
-                row.buttonStatus.setBackgroundImageNamed("IncorrectMeal")
-//                row.statusLabel.setTextColor(UIColor(named: "Don't"))
-                row.statusLabel.setTextColor(UIColor(red: 0.86, green: 0.01, blue: 0.25, alpha: 1.00))
-                row.statusLabel.setText("Don't")
+        case .rightTime:
+            row.buttonStatus.setBackgroundImageNamed("CorrectMeal")
+            //                row.statusLabel.setTextColor(UIColor(named: "Done"))
+            row.statusLabel.setTextColor(UIColor(red: 0.34, green: 0.65, blue: 0.33, alpha: 1.00))
+            row.statusLabel.setText("Done")
+        case .notTimeYet:
+            row.buttonStatus.setBackgroundImageNamed("NotDoneMeal")
+            //                row.statusLabel.setTextColor(UIColor(named: "Next"))
+            row.statusLabel.setTextColor(UIColor(red: 0.95, green: 0.49, blue: 0.03, alpha: 1.00))
+            row.statusLabel.setText("Next")
+        case .wrongTime:
+            row.buttonStatus.setBackgroundImageNamed("IncorrectMeal")
+            //                row.statusLabel.setTextColor(UIColor(named: "Don't"))
+            row.statusLabel.setTextColor(UIColor(red: 0.86, green: 0.01, blue: 0.25, alpha: 1.00))
+            row.statusLabel.setText("Don't")
         }
     }
-    
-    
     
     /// Fetch the mels schedule from Core Data
     func fetchMealSchedule(){
@@ -143,7 +174,6 @@ class InterfaceController: WKInterfaceController  {
             self.mealsSchedule = meal
         }
     }
-    
     
     /// Deffine a date format to HH:mm
     /// - Parameter date: Date to recive a  format
@@ -154,7 +184,6 @@ class InterfaceController: WKInterfaceController  {
         return formater.string(from: date)
     }
 }
-
 
 //MARK: Row Button Clicked Protocol
 
@@ -176,7 +205,6 @@ extension InterfaceController: rowButtonClicked{
                 }else if meal.status == .wrongTime{
                     WKInterfaceDevice.current().play(.failure)
                 }
-                
                 
                 ///Remove Standart Meal Notification
                 print("Identifier: \(meal.uuid.uuidString)")
