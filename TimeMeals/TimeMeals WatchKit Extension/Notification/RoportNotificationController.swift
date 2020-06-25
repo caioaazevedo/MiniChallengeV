@@ -53,7 +53,7 @@ class RoportNotificationController: WKUserNotificationInterfaceController {
     
     override func didReceive(_ notification: UNNotification) {
         
-        guard let report = report else { return }
+//        guard let report = report else { return }
         
         scene.animateCircleProgress(percent: reportMetrics.rigthTimeMealsPercent())
         
