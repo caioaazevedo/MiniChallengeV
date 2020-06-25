@@ -12,6 +12,7 @@ class CircleProgressScene: SKScene {
     
     var labelNode: SKLabelNode!
     var mainCircle: SKShapeNode!
+    
     override func sceneDidLoad() {
         setUpElements()
     }
@@ -57,20 +58,21 @@ class CircleProgressScene: SKScene {
         let fork = SKSpriteNode()
         fork.texture = SKTexture(imageNamed: "Fork")
         fork.position = CGPoint(x: self.size.width * 0.1, y: self.size.height / 1.8)
-        fork.size = CGSize(width: self.size.width * 0.15, height: self.size.width * 0.56)
+        fork.size = CGSize(width: self.size.width * 0.1, height: self.size.width * 0.45)
         self.addChild(fork)
         
         let knife = SKSpriteNode()
         knife.texture = SKTexture(imageNamed: "Knife")
         knife.position = CGPoint(x: self.size.width * 0.9, y: self.size.height / 1.8)
-        knife.size = CGSize(width: self.size.width * 0.15, height: self.size.width * 0.56)
+        knife.size = CGSize(width: self.size.width * 0.1, height: self.size.width * 0.45)
         self.addChild(knife)
         
         //set up leaf
         let leaf = SKSpriteNode()
         leaf.texture = SKTexture(imageNamed: "DishDetail")
-        leaf.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.8 + self.size.width / 3.5 + 20)
-        leaf.size = CGSize(width: self.size.height * 0.22, height: self.size.height * 0.1)
+        leaf.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.8 + self.size.width / 3.5 + mainCircle.lineWidth * 0.7)
+        leaf.size = CGSize(width: self.size.height * 0.3, height: self.size.height * 0.1)
+        leaf.anchorPoint = CGPoint(x: 0.5, y: 0)
         self.addChild(leaf)
     }
     
