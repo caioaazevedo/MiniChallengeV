@@ -118,10 +118,9 @@ class InterfaceController: WKInterfaceController  {
         
         if sameMeal >= defaultMeals.count{
             return
-        }else{
-            self.clearMeals()
         }
         
+        self.clearMeals()
         for index in 0..<defaultMeals.count{
             if defaultMeals[index].time.addingTimeInterval(30 * 60) < currentDate{
                 defaultMeals[index].status = .wrongTime
