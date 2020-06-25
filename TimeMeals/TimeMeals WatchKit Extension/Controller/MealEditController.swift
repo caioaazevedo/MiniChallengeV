@@ -218,7 +218,16 @@ class MealEditController: WKInterfaceController  {
         
         let action2 = WKAlertAction(title: "Cancel", style: .default) {}
         
-        presentAlert(withTitle: "Attention", message: "Are you sure you want to edit this meal? The weekly report will be restarted.", preferredStyle: .actionSheet, actions: [action1,action2])
+        MealDAO.shared.retrieveById(id: self.currentMeal.uuid){ meal in
+            
+            if meal?.time != currentMeal.time{
+                presentAlert(withTitle: "Attention", message: "Are you sure you want to edit this meal? The weekly report will be restarted.", preferredStyle: .actionSheet, actions: [action1,action2])
+            }else{
+                MealDAO.shared.update(meal: self.currentMeal, completion: { _ in
+                    pop()
+                })
+            }
+        }
     }
     
     /// Description: Show the delete alert
