@@ -86,11 +86,9 @@ class MealCreateController: WKInterfaceController {
         let minute = calendar.component(.minute, from: newMeal.time)
         
         newMeal.time = calendar.date(bySettingHour: components.hour!, minute: minute, second: 0, of: newMeal.time)!
-        if let meals = self.mealList{
-            let isValid = self.dateManager.validTime(date: newMeal.time, mealList: meals)
-            self.invalidHourLabel.setHidden(isValid)
-            self.createBtn.setEnabled(isValid)
-        }
+        let isValid = self.dateManager.validTime(date: newMeal.time, mealList: [])
+        self.invalidHourLabel.setHidden(isValid)
+        self.createBtn.setEnabled(isValid)
         
     }
     
@@ -101,12 +99,11 @@ class MealCreateController: WKInterfaceController {
         let hour = calendar.component(.hour, from: newMeal.time)
         
         newMeal.time = calendar.date(bySettingHour: hour, minute: value, second: 0, of: newMeal.time)!
-        //if hava some meal created compare time with them
-        if let meals = self.mealList{
-            let isValid = self.dateManager.validTime(date: newMeal.time, mealList: meals)
-            self.invalidHourLabel.setHidden(isValid)
-            self.createBtn.setEnabled(isValid)
-        }
+        
+        
+        let isValid = self.dateManager.validTime(date: newMeal.time, mealList: [])
+        self.invalidHourLabel.setHidden(isValid)
+        self.createBtn.setEnabled(isValid)
         
     }
     

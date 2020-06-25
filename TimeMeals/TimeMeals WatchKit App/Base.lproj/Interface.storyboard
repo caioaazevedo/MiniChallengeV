@@ -29,7 +29,7 @@
                                                             </label>
                                                         </items>
                                                     </group>
-                                                    <group alignment="right" verticalAlignment="center" layout="vertical" spacing="1" id="7Qg-jt-fZE">
+                                                    <group width="30" alignment="right" verticalAlignment="center" layout="vertical" spacing="1" id="7Qg-jt-fZE">
                                                         <items>
                                                             <button width="17" height="21" alignment="center" verticalAlignment="center" backgroundImage="NotDoneMeal" id="hOW-YF-7xZ">
                                                                 <connections>

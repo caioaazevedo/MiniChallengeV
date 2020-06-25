@@ -33,12 +33,16 @@ class DateManager {
     func validTime(date:Date,mealList: [Meal]) -> Bool{
         var isValid = true
         
+        if getEndDateDiff(start: date) < 39  || getEndDateDiff(start: date) > 1399{
+            return false
+        }
+        
        for meal in mealList{
             if meal.time.time == date.time{
                 return false
-            }else if getDateDiff(start: meal.time, end: date) < -39  || getDateDiff(start: meal.time, end: date) > 39{
-                isValid =  true
-            }else{
+            } else if getDateDiff(start: meal.time, end: date) < -39  || getDateDiff(start: meal.time, end: date) > 39 {
+                isValid = true
+            } else {
                 return  false
             }
         }
@@ -56,6 +60,25 @@ class DateManager {
        let timeComponents = calendar.dateComponents([.hour, .minute], from: start)
        let nowComponents = calendar.dateComponents([.hour, .minute], from: end)
         return  calendar.dateComponents([.minute], from: timeComponents, to: nowComponents).minute!
+    }
+    
+    /// Compare both dates
+    /// - Parameters:
+    ///   - start: the starter date to compare if the end of the day
+    /// - Returns: Difference between the dates in minutes
+    func getEndDateDiff(start: Date, inverse: Bool? = nil) -> Int  {
+       let calendar = Calendar.current
+       let timeComponents = calendar.dateComponents([.hour, .minute], from: start)
+       
+       var endDayComponents = DateComponents()
+        endDayComponents.hour = 23
+        endDayComponents.minute = 59
+        
+//        if inverse == nil {
+//            return  calendar.dateComponents([.minute], from: timeComponents, to: endDayComponents).minute!
+//        }
+        
+        return  calendar.dateComponents([.minute], from: timeComponents, to: endDayComponents).minute!
     }
     
     

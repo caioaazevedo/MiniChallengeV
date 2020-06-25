@@ -126,6 +126,7 @@ class InterfaceController: WKInterfaceController  {
                 defaultMeals[index].status = .wrongTime
             }
             MealDAO.shared.create(meal: defaultMeals[index]) { _ in
+                AppNotification().sendDynamicNotification(meal: defaultMeals[index])
                 return
             }
         }
@@ -137,6 +138,7 @@ class InterfaceController: WKInterfaceController  {
         if self.mealsSchedule.isEmpty {return}
         self.mealsSchedule.forEach { (meal) in
             MealDAO.shared.delete(meal: meal, completion: {_ in return})
+            AppNotification().removeNotification(identifier: meal.uuid.uuidString)
         }
         
         resetWeekReportAction()
