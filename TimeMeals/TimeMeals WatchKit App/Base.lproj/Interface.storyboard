@@ -1,16 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14256" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14243"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14219"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="TimeMeals_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" spacing="10" id="DkS-aN-mId">
+                            <items>
+                                <table alignment="left" id="nD8-oE-gbA">
+                                    <items>
+                                        <tableRow identifier="MealRow" id="7o2-Ye-9xI" customClass="MealRowController" customModule="TimeMeals_WatchKit_Extension">
+                                            <group key="rootItem" width="1" height="55" alignment="left" id="pF8-4K-J2L">
+                                                <items>
+                                                    <group width="91" alignment="left" verticalAlignment="center" layout="vertical" spacing="2" id="sAE-BL-8Ye">
+                                                        <items>
+                                                            <label alignment="left" verticalAlignment="center" text="Label" numberOfLines="0" id="u9U-Bt-jyC">
+                                                                <fontDescription key="font" type="system" pointSize="16"/>
+                                                            </label>
+                                                            <label alignment="left" verticalAlignment="center" text="Label" id="JNv-cz-uxL">
+                                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
+                                                    <group width="33" alignment="right" verticalAlignment="center" layout="vertical" spacing="1" id="7Qg-jt-fZE">
+                                                        <items>
+                                                            <button width="17" height="21" alignment="center" verticalAlignment="center" backgroundImage="NotDoneMeal" id="hOW-YF-7xZ">
+                                                                <connections>
+                                                                    <action selector="buttonClicked" destination="7o2-Ye-9xI" id="zxU-BV-IZz"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label alignment="center" verticalAlignment="bottom" text="Label" id="5un-xt-tPg">
+                                                                <color key="textColor" name="Next"/>
+                                                                <fontDescription key="font" type="system" pointSize="8"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                            </group>
+                                            <connections>
+                                                <outlet property="buttonStatus" destination="hOW-YF-7xZ" id="07v-yi-SDq"/>
+                                                <outlet property="hourLabel" destination="JNv-cz-uxL" id="4NW-hc-e8g"/>
+                                                <outlet property="mealNameLabel" destination="u9U-Bt-jyC" id="9tO-5V-XgR"/>
+                                                <outlet property="statusLabel" destination="5un-xt-tPg" id="R8V-Q2-WYb"/>
+                                                <segue destination="7i0-Ie-i24" kind="push" id="lGb-Ke-roc"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                                <button width="1" alignment="left" title="Add Meal" id="W5e-UH-hYS">
+                                    <color key="backgroundColor" red="0.1039285138" green="0.54066789150000005" blue="0.85691267250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <segue destination="YB2-jT-Eo2" kind="push" id="kLW-bB-ngb"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <label width="1" alignment="left" text="Press and hold for more information" textAlignment="center" numberOfLines="0" id="lbd-5B-LRL">
+                            <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                        </label>
+                    </items>
+                    <menu key="menu" id="19c-Fm-1yL">
+                        <items>
+                            <menuItem title="Use Default Schedule" image="defaultMeals" id="uyH-au-A0K">
+                                <connections>
+                                    <action selector="defaultMeal" destination="AgC-eL-Hgc" id="6wo-iA-I6d"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Clear All Meals" icon="trash" id="GSx-Kv-kdK">
+                                <connections>
+                                    <action selector="clearMeals" destination="AgC-eL-Hgc" id="exc-TG-U3o"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="mealList" destination="nD8-oE-gbA" id="DGx-Tx-zgs"/>
+                        <segue destination="sSA-dO-eKb" kind="relationship" relationship="nextPage" id="ZOQ-W7-NLg"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="-7" y="-399"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="0Z2-dH-PNO">
+            <objects>
+                <controller identifier="Settings" id="7i0-Ie-i24" customClass="MealEditController" customModule="TimeMeals_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="306" alignment="center" layout="vertical" spacing="10" id="9oq-h3-Qrd">
+                            <items>
+                                <label alignment="left" text="Title:" id="gcj-Ca-O6g">
+                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                </label>
+                                <textField width="1" alignment="center" placeholder="Title" id="q3P-cp-5Il">
+                                    <connections>
+                                        <action selector="titleTextFieldAction:" destination="7i0-Ie-i24" id="wIh-DM-QYp"/>
+                                    </connections>
+                                </textField>
+                                <group width="1" alignment="center" layout="vertical" id="sNN-Wy-5zH">
+                                    <items>
+                                        <label alignment="left" text="Time:" id="z19-0c-cu8">
+                                            <fontDescription key="font" type="system" pointSize="13"/>
+                                        </label>
+                                        <group width="1" alignment="center" spacing="4" id="8HK-b8-GGb">
+                                            <items>
+                                                <picker width="60" height="100" alignment="center" focusStyle="sequence" id="ihS-sj-rCV">
+                                                    <connections>
+                                                        <action selector="hourPickerAction:" destination="7i0-Ie-i24" id="i4p-pd-vjV"/>
+                                                    </connections>
+                                                </picker>
+                                                <label alignment="center" verticalAlignment="center" text=":" id="cQJ-hl-Pa1">
+                                                    <fontDescription key="font" type="boldSystem" pointSize="22"/>
+                                                </label>
+                                                <picker width="60" height="100" alignment="center" verticalAlignment="center" focusStyle="sequence" id="Oxz-Iy-yyu">
+                                                    <connections>
+                                                        <action selector="minutePickerAction:" destination="7i0-Ie-i24" id="JIg-D5-st8"/>
+                                                    </connections>
+                                                </picker>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                                <label alignment="left" text="Label" minimumScaleFactor="0.5" id="CV4-ls-LW7">
+                                    <color key="textColor" red="0.7843137255" green="0.30196078430000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </label>
+                                <button width="1" alignment="center" title="Save" id="xqe-kN-A5S">
+                                    <color key="backgroundColor" red="0.1039285138" green="0.54066789150000005" blue="0.85691267250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="saveButtonAction" destination="7i0-Ie-i24" id="ers-B7-Xu0"/>
+                                    </connections>
+                                </button>
+                                <button width="1" alignment="center" title="Delete" id="Efo-ie-OTC">
+                                    <connections>
+                                        <action selector="deleteButtonAction" destination="7i0-Ie-i24" id="7RX-hQ-BuF"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="hourPicker" destination="ihS-sj-rCV" id="A8z-eC-Xti"/>
+                        <outlet property="invalidHourLabel" destination="CV4-ls-LW7" id="zUb-9n-Hje"/>
+                        <outlet property="minutePicker" destination="Oxz-Iy-yyu" id="ogZ-ah-7kv"/>
+                        <outlet property="saveBtn" destination="xqe-kN-A5S" id="tPE-uE-KuE"/>
+                        <outlet property="titleTextField" destination="q3P-cp-5Il" id="rMd-7e-McF"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="385" y="-673"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -27,21 +172,218 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="56" y="643"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="TimeMeals_WatchKit_App" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
+            <point key="canvasLocation" x="385" y="812"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="3Vb-AR-GRD">
+            <objects>
+                <notificationController id="wqS-uM-6E8">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IzJ-1Q-KZo"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="delayNotification" id="6Rv-bY-L2c"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IzJ-1Q-KZo" id="TMM-Am-VCU"/>
+                        <segue destination="NVc-Dt-z5b" kind="relationship" relationship="dynamicNotificationInterface" id="iEx-jm-Dwm"/>
+                        <segue destination="4D2-Wx-SE7" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="cUs-s5-dlU"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="-41" y="1439"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="TimeMeals_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" spacing="9" id="xqR-1D-PRj">
+                            <items>
+                                <label width="1" height="20" alignment="center" text="time" textAlignment="center" id="lBp-Xa-2eT"/>
+                                <label width="1" alignment="left" text="Meal" textAlignment="center" id="5Ic-mX-unv"/>
+                                <separator alignment="center" id="KQl-AN-FMG">
+                                    <color key="color" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </separator>
+                                <label width="1" alignment="center" text="Did you eat your meal?" textAlignment="center" numberOfLines="0" id="idP-Ao-4ls"/>
+                                <button width="1" alignment="left" title="Mark as done" id="J6f-zg-uyq">
+                                    <color key="backgroundColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="markMeal" destination="eXb-UN-Cd0" id="Vz4-Av-Vvk"/>
+                                    </connections>
+                                </button>
+                                <label width="1" alignment="left" text="Remind me in:" textAlignment="center" numberOfLines="0" id="npx-R4-rbg"/>
+                                <button width="1" alignment="left" title="15 min" id="ezF-ea-AfF">
+                                    <color key="backgroundColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="minDelayMeal" destination="eXb-UN-Cd0" id="6o4-zk-yDV"/>
+                                    </connections>
+                                </button>
+                                <button width="1" alignment="left" title="30 min" id="gCZ-x8-6Om">
+                                    <color key="backgroundColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="maxDelayMeal" destination="eXb-UN-Cd0" id="Ks2-dt-4f3"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="timeMealLabel" destination="lBp-Xa-2eT" id="7YQ-m1-Q79"/>
+                        <outlet property="titleMealLabel" destination="5Ic-mX-unv" id="RN3-Tt-35g"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="468" y="345"/>
+            <point key="canvasLocation" x="385" y="399"/>
+        </scene>
+        <!--Delay Notification Notification Controller-->
+        <scene sceneID="0NY-oM-9dS">
+            <objects>
+                <controller id="NVc-Dt-z5b" customClass="DelayNotificationNotificationController" customModule="TimeMeals_WatchKit_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="385" y="1233"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="oNk-ru-id5">
+            <objects>
+                <notificationController id="joj-w7-DBG">
+                    <items>
+                        <label alignment="left" text="Semanal Report " id="Xgb-ju-0jU"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="reportNotification" id="3tu-ve-TaE"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="Xgb-ju-0jU" id="d9f-7J-8T1"/>
+                        <segue destination="na1-Za-4iJ" kind="relationship" relationship="dynamicNotificationInterface" id="4Zz-f5-49P"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="-96" y="2346"/>
+        </scene>
+        <!--Delay Notification Notification Controller-->
+        <scene sceneID="IKy-bU-QqM">
+            <objects>
+                <controller id="4D2-Wx-SE7" customClass="DelayNotificationNotificationController" customModule="TimeMeals_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" spacing="9" id="Ttd-I7-0uc">
+                            <items>
+                                <label width="1" alignment="left" text="time" textAlignment="center" id="Cav-EJ-NvW"/>
+                                <label width="1" alignment="left" text="Meal" textAlignment="center" id="Ucg-Fp-lEp"/>
+                                <separator alignment="left" id="sdd-oj-Cuo"/>
+                                <label width="1" alignment="left" text="Did you eat your meal?" textAlignment="center" numberOfLines="0" id="eym-zt-LHk"/>
+                                <button width="1" alignment="left" title="Mark as done" id="0ru-fV-3zU">
+                                    <color key="backgroundColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="markAsDone" destination="4D2-Wx-SE7" id="Law-yN-Nu4"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="timeLabel" destination="Cav-EJ-NvW" id="u0t-a4-Lgo"/>
+                        <outlet property="titleLabel" destination="Ucg-Fp-lEp" id="GrR-69-2zT"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="385" y="1669"/>
+        </scene>
+        <!--ReportController-->
+        <scene sceneID="QRs-ec-4nq">
+            <objects>
+                <controllerPlaceholder referencedIdentifier="ReportController" id="sSA-dO-eKb"/>
+            </objects>
+            <point key="canvasLocation" x="388" y="-442"/>
+        </scene>
+        <!--Criate-->
+        <scene sceneID="GSc-Cj-KvX">
+            <objects>
+                <controller identifier="Criate" id="YB2-jT-Eo2" customClass="MealCreateController" customModule="TimeMeals_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="257" alignment="center" layout="vertical" spacing="9" id="htf-Go-u6D">
+                            <items>
+                                <label alignment="left" text="Title:" id="4Il-gw-rgZ">
+                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                </label>
+                                <textField width="1" alignment="left" placeholder="Title" id="TbJ-zD-16q">
+                                    <connections>
+                                        <action selector="titleTextFieldAction:" destination="YB2-jT-Eo2" id="xJQ-JR-Ju8"/>
+                                    </connections>
+                                </textField>
+                                <group width="1" alignment="center" layout="vertical" id="YYk-Ko-TAL">
+                                    <items>
+                                        <label alignment="left" text="Time:" id="ChX-c4-Fej">
+                                            <fontDescription key="font" type="system" pointSize="13"/>
+                                        </label>
+                                        <group width="1" alignment="left" spacing="4" id="Q9M-pK-xT1">
+                                            <items>
+                                                <picker width="60" height="100" alignment="center" focusStyle="sequence" id="f8H-8h-8T3">
+                                                    <connections>
+                                                        <action selector="hourPickerAction:" destination="YB2-jT-Eo2" id="xVR-YS-dNk"/>
+                                                    </connections>
+                                                </picker>
+                                                <label alignment="center" verticalAlignment="center" text=":" id="ERB-UU-pXo">
+                                                    <fontDescription key="font" type="boldSystem" pointSize="22"/>
+                                                </label>
+                                                <picker width="60" height="100" alignment="center" focusStyle="sequence" id="r10-5G-R4K">
+                                                    <connections>
+                                                        <action selector="minutePickerAction:" destination="YB2-jT-Eo2" id="6nw-hP-7Dc"/>
+                                                    </connections>
+                                                </picker>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                                <label alignment="left" text="Label" minimumScaleFactor="0.5" id="r6J-qf-gtM">
+                                    <color key="textColor" red="0.7843137255" green="0.30196078430000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </label>
+                                <button width="1" alignment="left" title="Create" id="qYN-03-hqs">
+                                    <color key="backgroundColor" red="0.25882595780000001" green="0.53195458650000005" blue="0.83533453940000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <connections>
+                                        <action selector="createButtonAction" destination="YB2-jT-Eo2" id="6tj-dB-Iq0"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="createBtn" destination="qYN-03-hqs" id="Wof-Uv-0yp"/>
+                        <outlet property="hourPicker" destination="f8H-8h-8T3" id="gLQ-wN-Qye"/>
+                        <outlet property="invalidHourLabel" destination="r6J-qf-gtM" id="C1W-t2-y5p"/>
+                        <outlet property="minutePicker" destination="r10-5G-R4K" id="gWb-gd-FtZ"/>
+                        <outlet property="titleTextField" destination="TbJ-zD-16q" id="qOv-lf-2vs"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="385" y="-190"/>
+        </scene>
+        <!--Roport Notification Controller-->
+        <scene sceneID="32t-cX-hdo">
+            <objects>
+                <controller id="na1-Za-4iJ" customClass="RoportNotificationController" customModule="TimeMeals_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" text="Report" id="c0K-8Y-YYE"/>
+                        <spriteKitScene width="1" height="150" alignment="center" id="Pal-Bn-DyE"/>
+                        <label alignment="center" verticalAlignment="center" text="Tap Here" id="FqN-oR-HfP"/>
+                    </items>
+                    <connections>
+                        <outlet property="circleProgressScene" destination="Pal-Bn-DyE" id="q8G-qo-5Jh"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="294" y="2346.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NotDoneMeal" width="18" height="24"/>
+        <image name="defaultMeals" width="39.5" height="35"/>
+        <namedColor name="Next">
+            <color red="0.95294117647058818" green="0.49019607843137253" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
