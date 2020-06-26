@@ -31,7 +31,7 @@
                                 </separator>
                                 <group width="1" alignment="center" spacing="10" id="zyv-AD-aa4">
                                     <items>
-                                        <imageView width="29" height="37" alignment="left" verticalAlignment="center" image="CorrectMeal" id="FPl-9v-9Wc"/>
+                                        <imageView width="31" height="40" alignment="left" verticalAlignment="center" image="CorrectMeal" id="FPl-9v-9Wc"/>
                                         <group width="62" alignment="left" verticalAlignment="center" spacing="4" id="wzd-Zo-72d">
                                             <items>
                                                 <label alignment="left" verticalAlignment="center" text="Done" textAlignment="left" id="W5J-Mo-FJf">
@@ -50,7 +50,7 @@
                                 </separator>
                                 <group width="1" alignment="center" spacing="10" id="acN-gU-ycS">
                                     <items>
-                                        <imageView width="29" height="37" alignment="left" verticalAlignment="center" image="IncorrectMeal" id="Tbi-Sr-Djy"/>
+                                        <imageView width="31" height="40" alignment="left" verticalAlignment="center" image="IncorrectMeal" id="Tbi-Sr-Djy"/>
                                         <group width="90" alignment="left" verticalAlignment="center" spacing="4" id="IQ6-PU-5Cv">
                                             <items>
                                                 <label alignment="left" verticalAlignment="center" text="Not Done" textAlignment="left" id="MLc-Bd-pfe">

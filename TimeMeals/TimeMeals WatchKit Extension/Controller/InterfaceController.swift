@@ -101,7 +101,7 @@ class InterfaceController: WKInterfaceController  {
         var sameMeal = 0
         let currentDate = Date()
         let date = DateManager()
-        var defaultMeals = [Meal(uuid: UUID.init(), title: "Desjejum", time: date.setUpDate(hour: 7, minute: 0), status: .notTimeYet, wrongTimes: 0),
+        var defaultMeals = [Meal(uuid: UUID.init(), title: "Snack", time: date.setUpDate(hour: 7, minute: 0), status: .notTimeYet, wrongTimes: 0),
                             Meal(uuid: UUID.init(), title: "Breakfast", time: date.setUpDate(hour: 11, minute: 0), status: .notTimeYet, wrongTimes: 0),
                             Meal(uuid: UUID.init(), title: "Lunch", time: date.setUpDate(hour: 13, minute: 0), status: .notTimeYet, wrongTimes: 0),
                             Meal(uuid: UUID.init(), title: "Snack", time: date.setUpDate(hour: 17, minute: 0), status: .notTimeYet, wrongTimes: 0),
