@@ -27,7 +27,7 @@ class CircleProgressScene: SKScene {
         labelNode = SKLabelNode(fontNamed: "AvenirNext-Bold")
         labelNode.fontSize = self.size.width / 6
         labelNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.8 - labelNode.fontSize / 2.5)
-        labelNode.color = #colorLiteral(red: 0.1807745993, green: 0.6628184319, blue: 0.2781128585, alpha: 1)
+        labelNode.fontColor = #colorLiteral(red: 0.3215686275, green: 0.5921568627, blue: 0.2470588235, alpha: 1)
         self.addChild(labelNode)
         
         // set up the main circle
@@ -38,7 +38,7 @@ class CircleProgressScene: SKScene {
         mainCircle.lineWidth = 10
         mainCircle.lineCap = .round
         mainCircle.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.8)
-        mainCircle.strokeColor = #colorLiteral(red: 0.1807745993, green: 0.6628184319, blue: 0.2781128585, alpha: 1)
+        mainCircle.strokeColor = #colorLiteral(red: 0.3215686275, green: 0.5921568627, blue: 0.2470588235, alpha: 1)
         mainCircle.zPosition = 2
         mainCircle.isHidden = true
         self.addChild(mainCircle)
@@ -50,7 +50,7 @@ class CircleProgressScene: SKScene {
         backCircle.lineWidth = mainCircle.lineWidth
         backCircle.lineCap = mainCircle.lineCap
         backCircle.position = mainCircle.position
-        backCircle.strokeColor = #colorLiteral(red: 0.9430144429, green: 0, blue: 0.2319390178, alpha: 1)
+        backCircle.strokeColor = #colorLiteral(red: 0.862745098, green: 0.01176470588, blue: 0.2549019608, alpha: 1)
         backCircle.zPosition = 1
         self.addChild(backCircle)
         
@@ -71,7 +71,7 @@ class CircleProgressScene: SKScene {
         let leaf = SKSpriteNode()
         leaf.texture = SKTexture(imageNamed: "DishDetail")
         leaf.position = CGPoint(x: self.size.width / 2, y: self.size.height / 1.8 + self.size.width / 3.5 + mainCircle.lineWidth * 0.7)
-        leaf.size = CGSize(width: self.size.height * 0.3, height: self.size.height * 0.1)
+        leaf.size = CGSize(width: self.size.height * 0.265, height: self.size.height * 0.11)
         leaf.anchorPoint = CGPoint(x: 0.5, y: 0)
         self.addChild(leaf)
     }
