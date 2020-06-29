@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch38"/>
+    <device id="watch42"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
@@ -29,9 +29,9 @@
                                                             </label>
                                                         </items>
                                                     </group>
-                                                    <group width="33" alignment="right" verticalAlignment="center" layout="vertical" spacing="1" id="7Qg-jt-fZE">
+                                                    <group alignment="right" verticalAlignment="center" layout="vertical" spacing="1" id="7Qg-jt-fZE">
                                                         <items>
-                                                            <button width="17" height="21" alignment="center" verticalAlignment="center" backgroundImage="NotDoneMeal" id="hOW-YF-7xZ">
+                                                            <button width="24" height="29" alignment="center" verticalAlignment="center" backgroundImage="NotDoneMeal" id="hOW-YF-7xZ">
                                                                 <connections>
                                                                     <action selector="buttonClicked" destination="7o2-Ye-9xI" id="zxU-BV-IZz"/>
                                                                 </connections>
@@ -380,7 +380,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NotDoneMeal" width="18" height="24"/>
+        <image name="NotDoneMeal" width="22" height="29.5"/>
         <image name="defaultMeals" width="39.5" height="35"/>
         <namedColor name="Next">
             <color red="0.95294117647058818" green="0.49019607843137253" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
