@@ -212,7 +212,7 @@
                                 </separator>
                                 <label width="1" alignment="center" text="Did you eat your meal?" textAlignment="center" numberOfLines="0" id="idP-Ao-4ls"/>
                                 <button width="1" alignment="left" title="Mark as done" id="J6f-zg-uyq">
-                                    <color key="backgroundColor" red="0.26104819769999998" green="0.53242182729999998" blue="0.83532911539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" red="0.25882595780000001" green="0.53195458650000005" blue="0.83533453940000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <connections>
                                         <action selector="markMeal" destination="eXb-UN-Cd0" id="Vz4-Av-Vvk"/>
                                     </connections>
@@ -276,7 +276,7 @@
                                 <separator alignment="left" id="sdd-oj-Cuo"/>
                                 <label width="1" alignment="left" text="Did you eat your meal?" textAlignment="center" numberOfLines="0" id="eym-zt-LHk"/>
                                 <button width="1" alignment="left" title="Mark as done" id="0ru-fV-3zU">
-                                    <color key="backgroundColor" red="0.26104819769999998" green="0.53242182729999998" blue="0.83532911539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" red="0.25882595780000001" green="0.53195458650000005" blue="0.83533453940000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <connections>
                                         <action selector="markAsDone" destination="4D2-Wx-SE7" id="Law-yN-Nu4"/>
                                     </connections>

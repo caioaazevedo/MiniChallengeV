@@ -26,7 +26,10 @@
                                     <variation key="device=watch42mm" height="172"/>
                                     <variation key="device=watch44mm" height="195"/>
                                 </group>
-                                <group width="1" alignment="center" spacing="10" id="zyv-AD-aa4">
+                                <separator alignment="left" id="WVm-bi-ShT">
+                                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </separator>
+                                <group width="136" height="22" alignment="center" spacing="10" id="zyv-AD-aa4">
                                     <items>
                                         <imageView width="17" height="22" alignment="left" verticalAlignment="center" image="CorrectMeal" id="FPl-9v-9Wc"/>
                                         <group width="62" alignment="left" verticalAlignment="center" spacing="4" id="wzd-Zo-72d">
@@ -46,7 +49,7 @@
                                 <separator alignment="left" id="Kxb-aS-omO">
                                     <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </separator>
-                                <group width="1" alignment="center" spacing="10" id="acN-gU-ycS">
+                                <group width="136" alignment="center" spacing="10" id="acN-gU-ycS">
                                     <items>
                                         <imageView width="17" height="22" alignment="left" verticalAlignment="center" image="IncorrectMeal" id="Tbi-Sr-Djy"/>
                                         <group width="90" alignment="left" verticalAlignment="center" spacing="4" id="IQ6-PU-5Cv">
