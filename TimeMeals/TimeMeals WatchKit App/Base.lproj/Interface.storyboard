@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch38"/>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch42"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
@@ -29,9 +29,9 @@
                                                             </label>
                                                         </items>
                                                     </group>
-                                                    <group width="33" alignment="right" verticalAlignment="center" layout="vertical" spacing="1" id="7Qg-jt-fZE">
+                                                    <group alignment="right" verticalAlignment="center" layout="vertical" spacing="1" id="7Qg-jt-fZE">
                                                         <items>
-                                                            <button width="17" height="21" alignment="center" verticalAlignment="center" backgroundImage="NotDoneMeal" id="hOW-YF-7xZ">
+                                                            <button width="24" height="29" alignment="center" verticalAlignment="center" backgroundImage="NotDoneMeal" id="hOW-YF-7xZ">
                                                                 <connections>
                                                                     <action selector="buttonClicked" destination="7o2-Ye-9xI" id="zxU-BV-IZz"/>
                                                                 </connections>
@@ -212,7 +212,7 @@
                                 </separator>
                                 <label width="1" alignment="center" text="Did you eat your meal?" textAlignment="center" numberOfLines="0" id="idP-Ao-4ls"/>
                                 <button width="1" alignment="left" title="Mark as done" id="J6f-zg-uyq">
-                                    <color key="backgroundColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.25882595780000001" green="0.53195458650000005" blue="0.83533453940000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <connections>
                                         <action selector="markMeal" destination="eXb-UN-Cd0" id="Vz4-Av-Vvk"/>
                                     </connections>
@@ -276,7 +276,7 @@
                                 <separator alignment="left" id="sdd-oj-Cuo"/>
                                 <label width="1" alignment="left" text="Did you eat your meal?" textAlignment="center" numberOfLines="0" id="eym-zt-LHk"/>
                                 <button width="1" alignment="left" title="Mark as done" id="0ru-fV-3zU">
-                                    <color key="backgroundColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.25882595780000001" green="0.53195458650000005" blue="0.83533453940000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <connections>
                                         <action selector="markAsDone" destination="4D2-Wx-SE7" id="Law-yN-Nu4"/>
                                     </connections>
@@ -368,7 +368,15 @@
                 <controller id="na1-Za-4iJ" customClass="RoportNotificationController" customModule="TimeMeals_WatchKit_Extension">
                     <items>
                         <label alignment="center" text="Report" id="c0K-8Y-YYE"/>
-                        <spriteKitScene width="1" height="150" alignment="center" id="Pal-Bn-DyE"/>
+                        <group width="1" height="195" alignment="left" id="Xv9-Zh-HHK">
+                            <items>
+                                <spriteKitScene width="1" height="1" alignment="center" id="Pal-Bn-DyE"/>
+                            </items>
+                            <variation key="device=watch38mm" height="150"/>
+                            <variation key="device=watch40mm" height="170"/>
+                            <variation key="device=watch42mm" height="172"/>
+                            <variation key="device=watch44mm" height="195"/>
+                        </group>
                         <label alignment="center" verticalAlignment="center" text="Tap Here" id="FqN-oR-HfP"/>
                     </items>
                     <connections>
@@ -380,7 +388,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NotDoneMeal" width="18" height="24"/>
+        <image name="NotDoneMeal" width="22" height="29.5"/>
         <image name="defaultMeals" width="39.5" height="35"/>
         <namedColor name="Next">
             <color red="0.95294117647058818" green="0.49019607843137253" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

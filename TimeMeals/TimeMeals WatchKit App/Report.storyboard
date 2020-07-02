@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="watch44"/>
+    <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
@@ -11,7 +11,7 @@
             <objects>
                 <controller identifier="ReportController" id="XYp-Ex-J4S" customClass="ReportController" customModule="TimeMeals_WatchKit_Extension">
                     <items>
-                        <group width="1" alignment="left" layout="vertical" spacing="6" id="IFA-sx-Ak0">
+                        <group width="1" alignment="left" layout="vertical" spacing="10" id="IFA-sx-Ak0">
                             <items>
                                 <label alignment="center" text="You completed" id="bhJ-t1-vik">
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -29,9 +29,9 @@
                                 <separator alignment="left" id="WVm-bi-ShT">
                                     <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </separator>
-                                <group width="1" alignment="center" spacing="10" id="zyv-AD-aa4">
+                                <group width="136" height="22" alignment="center" spacing="10" id="zyv-AD-aa4">
                                     <items>
-                                        <imageView width="31" height="40" alignment="left" verticalAlignment="center" image="CorrectMeal" id="FPl-9v-9Wc"/>
+                                        <imageView width="17" height="22" alignment="left" verticalAlignment="center" image="CorrectMeal" id="FPl-9v-9Wc"/>
                                         <group width="62" alignment="left" verticalAlignment="center" spacing="4" id="wzd-Zo-72d">
                                             <items>
                                                 <label alignment="left" verticalAlignment="center" text="Done" textAlignment="left" id="W5J-Mo-FJf">
@@ -44,13 +44,14 @@
                                             </items>
                                         </group>
                                     </items>
+                                    <edgeInsets key="margins" left="3" right="0.0" top="0.0" bottom="0.0"/>
                                 </group>
                                 <separator alignment="left" id="Kxb-aS-omO">
                                     <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </separator>
-                                <group width="1" alignment="center" spacing="10" id="acN-gU-ycS">
+                                <group width="136" alignment="center" spacing="10" id="acN-gU-ycS">
                                     <items>
-                                        <imageView width="31" height="40" alignment="left" verticalAlignment="center" image="IncorrectMeal" id="Tbi-Sr-Djy"/>
+                                        <imageView width="17" height="22" alignment="left" verticalAlignment="center" image="IncorrectMeal" id="Tbi-Sr-Djy"/>
                                         <group width="90" alignment="left" verticalAlignment="center" spacing="4" id="IQ6-PU-5Cv">
                                             <items>
                                                 <label alignment="left" verticalAlignment="center" text="Not Done" textAlignment="left" id="MLc-Bd-pfe">
@@ -63,6 +64,7 @@
                                             </items>
                                         </group>
                                     </items>
+                                    <edgeInsets key="margins" left="3" right="0.0" top="0.0" bottom="0.0"/>
                                 </group>
                                 <separator alignment="left" id="KqG-6H-ZN1">
                                     <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -93,7 +95,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CorrectMeal" width="16.5" height="22"/>
-        <image name="IncorrectMeal" width="16.5" height="22"/>
+        <image name="CorrectMeal" width="24" height="30"/>
+        <image name="IncorrectMeal" width="24" height="30"/>
     </resources>
 </document>
